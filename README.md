@@ -21,5 +21,5 @@ node index.js
 Pull json data from tmdb movie id `673`
 
 ```
-http://127.0.0.1:3000/rentalItem/673
+http://127.0.0.1:3000/rentalItem/movie/673
 ```
