@@ -42,8 +42,6 @@ Get data from TMDb using TMDb id `38700`
 http://127.0.0.1:3000/rentalItemTMDb/movie/38700
 ```
 
-JSON Response:
-
 ```
 {
     "title": "Bad Boys for Life",
