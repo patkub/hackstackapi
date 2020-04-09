@@ -54,7 +54,7 @@ app.get('/rentalItem/game/:id', (req, res) => {
   	  data: "fields name,genres,summary,age_ratings,release_dates;"
 	})
   	.then(response => {
-      console.log(response.data);
+      //console.log(response.data);
 
       response.data.forEach(function(game, i) {
         let gameData = {
