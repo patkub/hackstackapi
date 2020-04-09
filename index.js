@@ -3,6 +3,7 @@ const app = express()
 const port = 3000
 
 const TMDB_API_KEY = "cf7c502592526f1498d082fd122d7309"
+const OMDB_API_KEY = "87daca5d"
 const IGDB_API_KEY = "fde293b445a4f938af26cdd01f53820a"
 
 const tmdb = require("moviedb")(TMDB_API_KEY)
@@ -11,7 +12,25 @@ const axios = require("axios")
 
 app.get("/", (req, res) => res.send("Welcome to HackStackAPI!"))
 
+// OMDb implementation
 app.get("/rentalItem/movie/:id", (req, res) => {
+  const movieID = req.params.id
+
+  let movie = {
+    title: "",
+    itemID: req.params.id.toString(),
+    genre: "",
+    itemDesc: "",
+    contentRating: "",
+    yearReleased: "",
+    rentalStatus: "",
+    isLate: "",
+    fine: "",
+  }
+})
+
+// TMDb implementation
+app.get("/rentalItemTMDb/movie/:id", (req, res) => {
   const movieID = req.params.id
 
   let movie = {
@@ -28,6 +47,7 @@ app.get("/rentalItem/movie/:id", (req, res) => {
 
   tmdb.movieInfo({ id: movieID }, (err, resTMDB) => {
     //console.log(resTMDB)
+    //console.log(resTMDB.popularity)
     if (!err) {
       movie.title = resTMDB.title
       movie.genre = resTMDB.genres.map(({ name }) => name)
