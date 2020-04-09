@@ -20,7 +20,7 @@ app.get("/", (req, res) => res.send("Welcome to HackStackAPI!"))
 
 /**
  * OMDb implementation
- * OMDb has more information that we need than IMDb.
+ * OMDb has more information that we need than TMDb.
  *
  * @param imdb IMDb id
  * @return JSON movie object {title, itemID, genre, itemDesc, contentRating, yearReleased, rentalStatus, isLate, fine}
@@ -86,7 +86,7 @@ app.get("/rentalItem/movieTMDb/:id", (req, res) => {
   })
 })
 
-// TODO(patkub): get games by id. Right now this just pulls all games from igdb.
+// TODO(patkub): get games by id. Right now this just pulls all games from IGDB.
 app.get("/rentalItem/game/:id", (req, res) => {
   const games = []
 
