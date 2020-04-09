@@ -9,10 +9,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "apicalypse": "^0.1.6",
     "axios": "^0.19.2",
     "express": "^4.17.1",
-    "moviedb": "^0.2.10"
+    "moviedb": "^0.2.10",
+    "omdb-api-pt": "^2.0.1"
   },
   "devDependencies": {}
 }
