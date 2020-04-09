@@ -59,7 +59,7 @@ app.get("/rentalItem/movie/:imdb", (req, res) => {
 /**
  * TMDb implementation
  */
-app.get("/rentalItemTMDb/movie/:id", (req, res) => {
+app.get("/rentalItem/movieTMDb/:id", (req, res) => {
   const movieID = req.params.id
 
   let movie = {
