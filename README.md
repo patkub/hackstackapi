@@ -14,6 +14,8 @@ yarn install
 node index.js
 ```
 
+http://127.0.0.1:3000
+
 ### Examples
 
 Get data from OMDb using IMDb id `tt1502397`
