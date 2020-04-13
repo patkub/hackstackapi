@@ -1,20 +1,18 @@
-const fs = require("fs")
-const marked = require("marked")
 const express = require("express")
 const router = express.Router()
 
-router
-  // Add a binding for '/'
-  .get("/", (req, res) => {
-    fs.readFile("index.md", "utf8", function (err, contents) {
-      res.send(marked(contents))
-    })
-  })
+const rootRoutes = require("./root")
+const customerRoutes = require("./customer")
+const paymentRoutes = require("./payment")
+const reservationRoutes = require("./reservation")
+const rentalItemRoutes = require("./rentalItem")
+const transactionRoutes = require("./transaction")
 
-  .get("/README.md", (req, res) => {
-    fs.readFile("README.md", "utf8", function (err, contents) {
-      res.send(marked(contents))
-    })
-  })
+router.use("/", rootRoutes)
+router.use("/customer", customerRoutes)
+router.use("/payment", paymentRoutes)
+router.use("/reservation", reservationRoutes)
+router.use("/rentalItem", rentalItemRoutes)
+router.use("/transaction", transactionRoutes)
 
 module.exports = router

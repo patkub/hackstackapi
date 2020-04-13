@@ -18,7 +18,7 @@ node index.js
 
 Get data from OMDb using IMDb id `tt1502397`
 
-http://127.0.0.1:3000/rentalItem/movie/tt1502397
+http://127.0.0.1:3000/api/rentalItem/movie/tt1502397
 
 ```
 {
@@ -36,7 +36,7 @@ http://127.0.0.1:3000/rentalItem/movie/tt1502397
 
 Get data from TMDb using TMDb id `38700`
 
-http://127.0.0.1:3000/rentalItem/movieTMDb/38700
+http://127.0.0.1:3000/api/rentalItem/movieTMDb/38700
 
 ```
 {
@@ -54,4 +54,4 @@ http://127.0.0.1:3000/rentalItem/movieTMDb/38700
 
 Get a list of games from IGDB. id is unimplemented, this just gets a list of all games from IGDB.
 
-http://127.0.0.1:3000/rentalItem/game/1
+http://127.0.0.1:3000/api/rentalItem/game/1
