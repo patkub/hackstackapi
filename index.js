@@ -3,7 +3,10 @@ const config = require("./config")
 const express = require("express")
 const app = express()
 
-const apiRoutes = require("./routes")
+const appRoutes = require("./routes/app")
+app.use("/", appRoutes)
+
+const apiRoutes = require("./routes/api")
 app.use("/api", apiRoutes)
 
 app.listen(config.port, () =>

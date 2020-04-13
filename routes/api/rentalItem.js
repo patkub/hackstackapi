@@ -1,7 +1,7 @@
 const express = require("express")
 const router = express.Router()
 
-const config = require("../config")
+const config = require("../../config")
 const OmdbApi = require("omdb-api-pt")
 const omdb = new OmdbApi({
   apiKey: config.API_KEYS.OMDB,

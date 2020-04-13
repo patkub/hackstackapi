@@ -1,16 +1,16 @@
-const common = require("../common")
+const common = require("../../common")
 
 const path = require("path")
 const express = require("express")
 const router = express.Router()
 
 router
-  // Add a binding for '/reservation/'
+  // Add a binding for '/transaction/'
   .get("/", (req, res) => {
-    // render the /reservation view
+    // render the /transaction view
 
     const data = common.loadJSON(
-      path.resolve(__dirname, "../data/reservations.json")
+      path.resolve(__dirname, "./data/transactions.json")
     )
 
     return res.status(200).json(data)
@@ -23,7 +23,7 @@ router
     const id = req.params.id
 
     const data = common.loadJSON(
-      path.resolve(__dirname, "../data/reservations.json")
+      path.resolve(__dirname, "./data/transactions.json")
     )
 
     return res.status(200).json(data[id])
