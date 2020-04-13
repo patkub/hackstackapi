@@ -7,14 +7,12 @@ router
   // Add a binding for '/'
   .get("/", (req, res) => {
     fs.readFile("index.md", "utf8", function (err, contents) {
-      //console.log(contents)
       res.send(marked(contents))
     })
   })
 
   .get("/README.md", (req, res) => {
     fs.readFile("README.md", "utf8", function (err, contents) {
-      //console.log(contents)
       res.send(marked(contents))
     })
   })
