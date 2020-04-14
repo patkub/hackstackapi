@@ -93,10 +93,18 @@
 
     <script>
       $.getJSON("/api/customer", function (data) {
+        const parse = function (k, v) {
+          if (k == "email") {
+            return v.recipient + "@" + v.domain
+          } else if (k == "fines") {
+            return "not yet implemented"
+          }
+          return v
+        }
         $.each(data, function (key, val) {
           var items = []
           $.each(val, function (key2, val2) {
-            items.push("<li>" + key2 + ": " + val2 + "</li>")
+            items.push("<li>" + key2 + ": " + parse(key2, val2) + "</li>")
           })
           $("<ul/>", {
             class: "my-new-list",

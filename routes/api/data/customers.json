@@ -4,12 +4,10 @@
     "homeAddress": "4952 Crestview Manor",
     "homePhone": "317-308-8851",
     "mobilePhone": "317-658-7138",
-    "email": [
-      {
-        "domain": "powerencry.com",
-        "recipient": "c93h9eissan"
-      }
-    ],
+    "email": {
+      "domain": "powerencry.com",
+      "recipient": "c93h9eissan"
+    },
     "payments": "",
     "fines": []
   },
@@ -18,12 +16,10 @@
     "homeAddress": "4615  Christie Way",
     "homePhone": "978-805-7283",
     "mobilePhone": "508-726-8845",
-    "email": [
-      {
-        "domain": "fakemailgenerator.net",
-        "recipient": "GregoryDalton"
-      }
-    ],
+    "email": {
+      "domain": "fakemailgenerator.net",
+      "recipient": "GregoryDalton"
+    },
     "payments": "",
     "fines": [
       {
