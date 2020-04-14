@@ -88,28 +88,41 @@
     <h1>Hello, world!</h1>
 
     <div class="container">
-      <div id="customers" class="row row-cols-md-2"></div>
+      <div id="customers" class="row"></div>
     </div>
 
     <script>
       $.getJSON("/api/customer", function (data) {
-        const parse = function (k, v) {
-          if (k == "email") {
-            return v.recipient + "@" + v.domain
-          } else if (k == "fines") {
-            return "not yet implemented"
-          }
-          return v
+        function parseEmail(email) {
+          return email.recipient + "@" + email.domain
         }
         $.each(data, function (key, val) {
-          var items = []
-          $.each(val, function (key2, val2) {
-            items.push("<li>" + key2 + ": " + parse(key2, val2) + "</li>")
-          })
-          $("<ul/>", {
-            class: "my-new-list",
-            html: items.join(""),
-          }).appendTo("#customers")
+          var item = $(
+            [
+              "<div class='col-md-6'>",
+              "  <div class='card'>",
+              "    <div class='card-body'>",
+              "      <h5 class='card-title'>" + val.name + "</h5>",
+              "      <p class='card-text'>",
+              "         Email: <a href='mailto:" + parseEmail(val.email) + "'>",
+              parseEmail(val.email) + "</a><br>",
+              "         Home Address: " + val.homeAddress + "<br>",
+              "         Home Phone: <a href='tel:" + val.homePhone + "'>",
+              val.homePhone + "</a><br>",
+              "         Mobile Phone: <a href='tel:" + val.mobilePhone + "'>",
+              val.mobilePhone + "</a>" + "<br>",
+              "      </p><a href='mailto:" +
+                parseEmail(val.email) +
+                "' class='card-link'>Email",
+              "      </a>",
+              "<a href='tel:" +
+                val.homePhone +
+                "' class='card-link'>Home Phone</a>",
+              "    </div>",
+              "  </div>",
+              "</div>",
+            ].join("\n")
+          ).appendTo("#customers")
         })
       })
     </script>
