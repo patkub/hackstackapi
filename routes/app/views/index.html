@@ -9,13 +9,16 @@
     />
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css" />
 
     <!-- jQuery -->
-    <script src="jquery.min.js"></script>
+    <script src="vendor/jquery/jquery.min.js"></script>
 
     <!-- Bootstrap JS -->
-    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <link rel="stylesheet" href="static/css/index.css" />
+    <script src="static/js/index.js"></script>
 
     <title>Hello, world!</title>
   </head>
@@ -89,42 +92,20 @@
 
     <div class="container">
       <div id="customers" class="row"></div>
-    </div>
 
-    <script>
-      $.getJSON("/api/customer", function (data) {
-        function parseEmail(email) {
-          return email.recipient + "@" + email.domain
-        }
-        $.each(data, function (key, val) {
-          var item = $(
-            [
-              "<div class='col-md-6'>",
-              "  <div class='card'>",
-              "    <div class='card-body'>",
-              "      <h5 class='card-title'>" + val.name + "</h5>",
-              "      <p class='card-text'>",
-              "         Email: <a href='mailto:" + parseEmail(val.email) + "'>",
-              parseEmail(val.email) + "</a><br>",
-              "         Home Address: " + val.homeAddress + "<br>",
-              "         Home Phone: <a href='tel:" + val.homePhone + "'>",
-              val.homePhone + "</a><br>",
-              "         Mobile Phone: <a href='tel:" + val.mobilePhone + "'>",
-              val.mobilePhone + "</a>" + "<br>",
-              "      </p><a href='mailto:" +
-                parseEmail(val.email) +
-                "' class='card-link'>Email",
-              "      </a>",
-              "<a href='tel:" +
-                val.homePhone +
-                "' class='card-link'>Home Phone</a>",
-              "    </div>",
-              "  </div>",
-              "</div>",
-            ].join("\n")
-          ).appendTo("#customers")
-        })
-      })
-    </script>
+      <div>
+        <table class="table table-sm">
+          <thead>
+            <tr>
+              <th scope="col">Type</th>
+              <th scope="col">Charge Amount</th>
+              <th scope="col">Change Owned</th>
+              <th scope="col">Success</th>
+            </tr>
+          </thead>
+          <tbody id="payments"></tbody>
+        </table>
+      </div>
+    </div>
   </body>
 </html>

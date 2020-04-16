@@ -1,3 +1,6 @@
+const common = require("../../common")
+
+const path = require("path")
 const express = require("express")
 const router = express.Router()
 
@@ -5,27 +8,12 @@ router
   // Add a binding for '/payment/'
   .get("/", (req, res) => {
     // render the /payment view
-    let payment = {
-      paymentType: "Cash",
-      chargeAmount: 25.0,
-      changeOwned: 3.88,
-      transactionSuccessful: true,
-    }
 
-    return res.status(200).json(payment)
-  })
+    const data = common.loadJSON(
+      path.resolve(__dirname, "./data/payments.json")
+    )
 
-  .get("/cash", (req, res) => {
-    // render the /payment/cash view
-    let payment = {
-      paymentType: "Cash",
-      chargeAmount: 25.0,
-      changeOwned: 3.88,
-      transactionSuccessful: true,
-      value: 25.0,
-    }
-
-    return res.status(200).json(payment)
+    return res.status(200).json(data)
   })
 
 module.exports = router

@@ -57,3 +57,5 @@ http://127.0.0.1:3000/api/rentalItem/movieTMDb/38700
 Get a list of games from IGDB. id is unimplemented, this just gets a list of all games from IGDB.
 
 http://127.0.0.1:3000/api/rentalItem/game/1
+
+Dependencies are defined in `index.js`. For example, bootstrap is under `/vendor/bootstrap/css/bootstrap.min.css`. App css and js are under `static/css/` and `static/js/` respectively.
