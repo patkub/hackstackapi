@@ -8,3 +8,7 @@
 #movies .card {
   margin-bottom: 1em;
 }
+
+.list-group-flush .list-group-item:first-child {
+  border-top-width: 1px;
+}
