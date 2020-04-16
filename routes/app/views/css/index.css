@@ -1,3 +1,10 @@
 #customers .card {
   margin-bottom: 1em;
 }
+
+#movies .card-title {
+  font-weight: bold;
+}
+#movies .card {
+  margin-bottom: 1em;
+}

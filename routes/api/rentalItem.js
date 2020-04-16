@@ -1,3 +1,6 @@
+const common = require("../../common")
+
+const path = require("path")
 const express = require("express")
 const router = express.Router()
 
@@ -11,6 +14,14 @@ const tmdb = require("moviedb")(config.API_KEYS.TMDB)
 const axios = require("axios")
 
 router
+  .get("/movies", (req, res) => {
+    // render the /movies view
+
+    const data = common.loadJSON(path.resolve(__dirname, "./data/movies.json"))
+
+    return res.status(200).json(data)
+  })
+
   /**
    * OMDb implementation
    * OMDb has more information that we need than TMDb.
@@ -28,6 +39,7 @@ router
       itemDesc: "",
       contentRating: "",
       yearReleased: "",
+      poster: "",
       rentalStatus: "",
       isLate: "",
       fine: "",
@@ -45,6 +57,7 @@ router
         movie.itemDesc = resOMDb.Plot
         movie.contentRating = resOMDb.Rated
         movie.yearReleased = resOMDb.Year
+        movie.poster = resOMDb.Poster
         return res.status(200).json(movie)
       })
   })

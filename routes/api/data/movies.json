@@ -1,0 +1,62 @@
+{
+  "0": {
+    "title": "Bad Boys for Life",
+    "itemID": "tt1502397",
+    "genre": "Action, Comedy, Crime, Thriller",
+    "itemDesc": "Miami detectives Mike Lowrey and Marcus Burnett must face off against a mother-and-son pair of drug lords who wreak vengeful havoc on their city.",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMWU0MGYwZWQtMzcwYS00NWVhLTlkZTAtYWVjOTYwZTBhZTBiXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_SX300.jpg",
+    "contentRating": "R",
+    "yearReleased": "2020",
+    "rentalStatus": "something",
+    "isLate": "something",
+    "fine": "something"
+  },
+  "1": {
+    "title": "The Dark Knight",
+    "itemID": "tt0468569",
+    "genre": "Action, Crime, Drama, Thriller",
+    "itemDesc": "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.",
+    "contentRating": "PG-13",
+    "yearReleased": "2008",
+    "poster": "https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_SX300.jpg",
+    "rentalStatus": "",
+    "isLate": "",
+    "fine": ""
+  },
+  "2": {
+    "title": "The Book of Eli",
+    "itemID": "tt1037705",
+    "genre": "Action, Adventure, Drama, Thriller",
+    "itemDesc": "A post-apocalyptic tale, in which a lone man fights his way across America in order to protect a sacred book that holds the secrets to saving humankind.",
+    "contentRating": "R",
+    "yearReleased": "2010",
+    "poster": "https://m.media-amazon.com/images/M/MV5BNTE1OWI1YzgtZjEyMy00MjQ4LWE0NWMtYTNhYjc0ZDQ3ZGRkXkEyXkFqcGdeQXVyNDQ2MTMzODA@._V1_SX300.jpg",
+    "rentalStatus": "",
+    "isLate": "",
+    "fine": ""
+  },
+  "3": {
+    "title": "Like a Boss",
+    "itemID": "tt7545266",
+    "genre": "Comedy",
+    "itemDesc": "Two friends with very different ideals start a beauty company together. One is more practical while the other wants to earn her fortune and live a lavish lifestyle.",
+    "contentRating": "R",
+    "yearReleased": "2020",
+    "poster": "https://m.media-amazon.com/images/M/MV5BNjAyZDRjMjQtODE3MC00ODI2LTgxODktZThjYTgzZDE5NTc4XkEyXkFqcGdeQXVyMDM2NDM2MQ@@._V1_SX300.jpg",
+    "rentalStatus": "",
+    "isLate": "",
+    "fine": ""
+  },
+  "4": {
+    "title": "Island of the Hungry Ghosts",
+    "itemID": "tt8106566",
+    "genre": "Documentary",
+    "itemDesc": "Millions of crabs journey across Australia's Christmas Island in one of the planet's largest land migrations.",
+    "contentRating": "N/A",
+    "yearReleased": "2018",
+    "poster": "https://m.media-amazon.com/images/M/MV5BYWI4MmI0YjktMGVjZC00NzE0LWE4NTAtMDJkNmE3OTQxMjZiXkEyXkFqcGdeQXVyMzU4MDkxNzQ@._V1_SX300.jpg",
+    "rentalStatus": "",
+    "isLate": "",
+    "fine": ""
+  }
+}
