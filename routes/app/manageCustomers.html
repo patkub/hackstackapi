@@ -9,7 +9,7 @@
     />
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css" />
 
     <!-- Font Awesome CSS -->
     <link
@@ -20,13 +20,13 @@
     />
 
     <!-- jQuery -->
-    <script src="../vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/jquery/jquery.min.js"></script>
 
     <!-- Bootstrap JS -->
-    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <link rel="stylesheet" href="../static/css/index.css" />
-    <script src="../static/js/index.js"></script>
+    <link rel="stylesheet" href="static/css/index.css" />
+    <script src="static/js/index.js"></script>
 
     <title>Hello, world!</title>
   </head>
@@ -68,6 +68,7 @@
               Add
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownReports">
+              <!-- TODO: add route for Adding a Movie -->
               <a class="dropdown-item" href="/addMovie">Add a Movie</a>
               <a class="dropdown-item disabled" href="#">Add a Game</a>
             </div>
@@ -109,21 +110,12 @@
       A simple primary alert—check it out!
     </div>
 
-    <h1>Rent a Movie!</h1>
+    <h1>Add a Movie!</h1>
 
     <div class="container">
       <div>
-        RENT THE MOVIE HERE
+        MANAGE DA CUSTOMERS HERE :)
       </div>
     </div>
-
-    <script>
-
-      // ugly but works
-      const movieID = window.location.href.substring(window.location.href.lastIndexOf('/') + 1)
-      console.log(movieID)
-      // use movieID to generate the detailed movie view that's one the homepage right now
-    </script>
-
   </body>
 </html>

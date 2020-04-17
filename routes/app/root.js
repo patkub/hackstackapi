@@ -27,7 +27,7 @@ router
   })
 
   // renting a movie
-  .get("/rentMovie", (req, res) => {
+  .get("/rentMovie/:id", (req, res) => {
     fs.readFile(
       path.resolve(__dirname, "./views/rentMovie.html"),
       "utf8",

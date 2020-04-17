@@ -83,6 +83,7 @@ $(function () {
               "    <h5 class='card-title'>" + val.title + "</h5>",
               "    <p class='card-text'>" + val.itemDesc + "</p>",
               "  </div>",
+              // TODO: remove these details from card view
               /*"  <ul class='list-group list-group-flush'>",
               "    <li class='list-group-item'>Genre: " + val.genre + "</li>",
               "    <li class='list-group-item'>Content Rating: " +
@@ -98,7 +99,9 @@ $(function () {
               "    <li class='list-group-item'>Fine: " + val.fine + "</li>",
               "  </ul>",*/
               "  <div class='card-footer'>",
-              "    <small class='text-muted'>Last updated 3 mins ago</small>",
+              //"    <small class='text-muted'>Last updated 3 mins ago</small>",
+              "    <a href='/rentMovie/" + val.itemID + "' class='btn btn-primary'>Rent</a>",
+              "    <a href='/reserveMovie' class='btn btn-secondary disabled'>Reserve</a>",
               "  </div>",
               "</div>",
             ].join("\n")
