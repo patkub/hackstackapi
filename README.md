@@ -1,5 +1,12 @@
 # HackStackAPI
 
+### UI
+
+- [ ] Renting a movie
+- [ ] Reserving a movie
+- [ ] Adding a movie
+- [ ] Generating an inventory report
+
 Pulls movie and game data from [OMDb](https://www.omdbapi.com/), [TMDb](https://www.themoviedb.org/), and [IGDB](https://www.igdb.com/discover)
 
 ### Setup
