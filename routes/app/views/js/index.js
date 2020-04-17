@@ -83,7 +83,7 @@ $(function () {
               "    <h5 class='card-title'>" + val.title + "</h5>",
               "    <p class='card-text'>" + val.itemDesc + "</p>",
               "  </div>",
-              "  <ul class='list-group list-group-flush'>",
+              /*"  <ul class='list-group list-group-flush'>",
               "    <li class='list-group-item'>Genre: " + val.genre + "</li>",
               "    <li class='list-group-item'>Content Rating: " +
                 val.contentRating +
@@ -96,7 +96,7 @@ $(function () {
                 "</li>",
               "    <li class='list-group-item'>Late: " + val.isLate + "</li>",
               "    <li class='list-group-item'>Fine: " + val.fine + "</li>",
-              "  </ul>",
+              "  </ul>",*/
               "  <div class='card-footer'>",
               "    <small class='text-muted'>Last updated 3 mins ago</small>",
               "  </div>",

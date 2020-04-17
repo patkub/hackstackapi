@@ -12,3 +12,24 @@
 .list-group-flush .list-group-item:first-child {
   border-top-width: 1px;
 }
+
+/* big movie display */
+.big-movie .col-md-8 {
+  display: flex;
+  flex-flow: column;
+}
+.big-movie .tags {
+  margin-bottom: 1em;
+}
+.big-movie .card-body {
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url("https://image.tmdb.org/t/p/original/upUy2QhMZEmtypPW3PdieKLAHxh.jpg")
+      center center/cover no-repeat #ccc;
+  line-height: 1.7;
+  color: rgb(255, 255, 255);
+  text-shadow: rgba(0, 0, 0, 0.8) 1.3px 1.5px;
+  font-size: 14pt;
+}
+.big-movie .card-title {
+  font-size: 16pt;
+}
