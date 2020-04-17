@@ -53,7 +53,7 @@
             >
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Manage Customers</a>
+            <a class="nav-link" href="/manageCustomers">Manage Customers</a>
           </li>
           <li class="nav-item dropdown">
             <a
@@ -111,11 +111,81 @@
 
     <h1>Rent a Movie!</h1>
 
-    <div class="container">
-      <div>
-        RENT THE MOVIE HERE
+
+    <!-- Big display for movie -->
+    <div class="container big-movie">
+      <div class="card mb-3">
+        <div class="row no-gutters">
+          <div class="col-md-4 bg-dark">
+            <img
+              src="https://m.media-amazon.com/images/M/MV5BMWU0MGYwZWQtMzcwYS00NWVhLTlkZTAtYWVjOTYwZTBhZTBiXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_SX300.jpg"
+              class="card-img rounded-0"
+              alt="..."
+            />
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title font-weight-bolder">
+                Bad Boys for Life 2020
+              </h5>
+              <p class="card-text">
+                <div class="tags">
+                  <span class="badge badge-secondary"
+                    ><i class="fa fa-tag"></i> Action</span
+                  >
+                  <span class="badge badge-secondary"
+                    ><i class="fa fa-tag"></i> Comedy</span
+                  >
+                  <span class="badge badge-secondary"
+                    ><i class="fa fa-tag"></i> Crime</span
+                  >
+                  <span class="badge badge-secondary"
+                    ><i class="fa fa-tag"></i> Thriller</span
+                  >
+                </div>
+
+                Miami detectives Mike Lowrey and Marcus Burnett must face off
+                against a mother-and-son pair of drug lords who wreak vengeful
+                havoc on their city.
+                <br>
+
+                <!-- TODO: hit api/rentalItem/movieTMDbCredits/38700 for this data-->
+                <figure class="figure">
+                  <img src="https://image.tmdb.org/t/p/w200/eze9FO9VuryXLP0aF2cRqPCcibN.jpg" alt="actor" class="img-thumbnail figure-img img-fluid rounded" style="height: 75px">
+                  <figcaption class="figure-caption">Will Smith</figcaption>
+                </figure>
+                <figure class="figure">
+                  <img src="https://image.tmdb.org/t/p/w200/tnLGwtSFvAWHAXPyw98Cz6gsYYf.jpg" alt="actor" class="img-thumbnail figure-img img-fluid rounded" style="height: 75px">
+                  <figcaption class="figure-caption">Martin Lawrence</figcaption>
+                </figure>
+                <figure class="figure">
+                  <img src="https://image.tmdb.org/t/p/w200/1PlN0Wkez6F84YgIoFcRU1jPtXG.jpg" alt="actor" class="img-thumbnail figure-img img-fluid rounded" style="height: 75px">
+                  <figcaption class="figure-caption">Paola Nuñez</figcaption>
+                </figure>
+              </p>
+            </div>
+
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item list-group-item-dark">
+                Content Rating: R
+              </li>
+              <li class="list-group-item list-group-item-dark">
+                Rental Status:
+              </li>
+              <li class="list-group-item list-group-item-warning">Late:</li>
+              <li class="list-group-item list-group-item-danger">Fine:</li>
+            </ul>
+
+            <div class="card-footer bg-dark rounded-0">
+              <a href="#" class="btn btn-primary">Rent</a>
+              <!-- TODO: add route for Reserving a Movie -->
+              <a href="#" class="btn btn-secondary">Reserve</a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+
 
     <script>
 
@@ -123,6 +193,8 @@
       const movieID = window.location.href.substring(window.location.href.lastIndexOf('/') + 1)
       console.log(movieID)
       // use movieID to generate the detailed movie view that's one the homepage right now
+
+      
     </script>
 
   </body>

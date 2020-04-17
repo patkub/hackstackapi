@@ -48,4 +48,15 @@ router
     )
   })
 
+  // manage customers
+  .get("/manageCustomers", (req, res) => {
+    fs.readFile(
+      path.resolve(__dirname, "./views/manageCustomers.html"),
+      "utf8",
+      function (err, contents) {
+        res.send(contents)
+      }
+    )
+  })
+
 module.exports = router
