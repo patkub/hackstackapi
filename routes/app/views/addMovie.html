@@ -110,12 +110,67 @@
       A simple primary alert—check it out!
     </div>
 
-    <h1>Add a Movie!</h1>
+    <h2 class="text-center">Add a new Movie!</h2>
 
     <div class="container">
-      <div>
-        ADD MOVIES HERE :)
-      </div>
+
+      <form id="addNewMovie">
+        <div class="form-group">
+          <label for="inputTitle">Title</label>
+          <input type="text" class="form-control" id="inputTitle" placeholder="movie title">
+        </div>
+        <div class="form-group">
+          <label for="inputYear">Year</label>
+          <input type="number" class="form-control" id="inputYear" placeholder="year released" min="0">
+        </div>
+        <div class="form-group">
+          <label for="inputId">Item ID</label>
+          <input type="text" class="form-control" id="inputId" placeholder="item id">
+        </div>
+        <div class="form-group">
+          <label for="inputGenre">Genre</label>
+          <input type="text" class="form-control" id="inputGenre" placeholder="genre">
+        </div>
+        <div class="form-group">
+          <label for="inputDesc">Description</label>
+          <textarea class="form-control" id="inputDesc" rows="5"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="inputContentRating">Content Rating</label>
+          <select class="form-control" id="inputContentRating">
+            <option></option>
+            <option>G</option>
+            <option>PG</option>
+            <option>PG-13</option>
+            <option>R</option>
+            <option>NC-17</option>
+            <option>UR</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Add</button>
+      </form>
+
     </div>
+
+    <script>
+      $(function () {
+        $("#addNewMovie").submit(function (e) {
+          const new_movie = {
+            "title": $("#inputTitle").val(),
+            "itemID": $("#inputId").val(),
+            "genre": $("#inputGenre").val(),
+            "itemDesc": $("#inputDesc").val(),
+            "contentRating": $("#inputContentRating").val(),
+            "yearReleased": $("#inputYear").val(),
+            "rentalStatus": "",
+            "isLate": "",
+            "fine": []
+          }
+          console.log(new_movie)
+          return false
+        })
+      })
+    </script>
   </body>
 </html>
