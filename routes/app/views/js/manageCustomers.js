@@ -25,6 +25,9 @@ $(function () {
             "<a href='tel:" +
               val.homePhone +
               "' class='card-link'>Home Phone</a>",
+            "<a href='tel:" +
+              val.mobilePhone +
+              "' class='card-link'>Mobile Phone</a>",
             "    </div>",
             "  </div>",
             "</div>",
