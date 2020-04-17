@@ -67,8 +67,8 @@ $(function () {
               "  </ul>",*/
               "  <div class='card-footer'>",
               //"    <small class='text-muted'>Last updated 3 mins ago</small>",
-              "    <a href='/rentMovie/" + val.itemID + "' class='btn btn-primary'>Rent</a>",
-              "    <a href='/reserveMovie' class='btn btn-secondary disabled'>Reserve</a>",
+              "    <a href='/rentMovie/" + val.imdb + ":" + val.tmdb + "' class='btn btn-primary'>Rent</a>",
+              "    <a href='/rentMovie/" + val.imdb + ":" + val.tmdb + "' class='btn btn-secondary'>Reserve</a>",
               "  </div>",
               "</div>",
             ].join("\n")
@@ -92,7 +92,8 @@ $(function () {
     }
   })
 
-  $("#imdbid").keypress(function (e) {
+  // unusued omdb frontend
+  /*$("#imdbid").keypress(function (e) {
     if (e.keyCode == 13) {
       // enter pressed
       const imdbid = this.value
@@ -102,5 +103,5 @@ $(function () {
         $("#omdbOutputTextarea").val(JSON.stringify(data))
       })
     }
-  })
+  })*/
 })

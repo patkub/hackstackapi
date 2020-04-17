@@ -22,9 +22,9 @@
   margin-bottom: 1em;
 }
 .big-movie .card-body {
-  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+  /*background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
     url("https://image.tmdb.org/t/p/original/upUy2QhMZEmtypPW3PdieKLAHxh.jpg")
-      center center/cover no-repeat #ccc;
+      center center/cover no-repeat #ccc;*/
   line-height: 1.7;
   font-size: 14pt;
 }

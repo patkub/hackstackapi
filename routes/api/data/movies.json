@@ -1,7 +1,8 @@
 {
   "0": {
     "title": "Bad Boys for Life",
-    "itemID": "tt1502397",
+    "imdb": "tt1502397",
+    "tmdb": "38700",
     "genre": "Action, Comedy, Crime, Thriller",
     "itemDesc": "Miami detectives Mike Lowrey and Marcus Burnett must face off against a mother-and-son pair of drug lords who wreak vengeful havoc on their city.",
     "poster": "https://m.media-amazon.com/images/M/MV5BMWU0MGYwZWQtMzcwYS00NWVhLTlkZTAtYWVjOTYwZTBhZTBiXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_SX300.jpg",
@@ -13,7 +14,8 @@
   },
   "1": {
     "title": "The Dark Knight",
-    "itemID": "tt0468569",
+    "imdb": "tt0468569",
+    "tmdb": "155",
     "genre": "Action, Crime, Drama, Thriller",
     "itemDesc": "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.",
     "contentRating": "PG-13",
@@ -25,7 +27,8 @@
   },
   "2": {
     "title": "The Book of Eli",
-    "itemID": "tt1037705",
+    "imdb": "tt1037705",
+    "tmdb": "20504",
     "genre": "Action, Adventure, Drama, Thriller",
     "itemDesc": "A post-apocalyptic tale, in which a lone man fights his way across America in order to protect a sacred book that holds the secrets to saving humankind.",
     "contentRating": "R",
@@ -37,7 +40,8 @@
   },
   "3": {
     "title": "Like a Boss",
-    "itemID": "tt7545266",
+    "imdb": "tt7545266",
+    "tmdb": "526019",
     "genre": "Comedy",
     "itemDesc": "Two friends with very different ideals start a beauty company together. One is more practical while the other wants to earn her fortune and live a lavish lifestyle.",
     "contentRating": "R",
@@ -49,7 +53,8 @@
   },
   "4": {
     "title": "Island of the Hungry Ghosts",
-    "itemID": "tt8106566",
+    "imdb": "tt8106566",
+    "tmdb": "511539",
     "genre": "Documentary",
     "itemDesc": "Millions of crabs journey across Australia's Christmas Island in one of the planet's largest land migrations.",
     "contentRating": "N/A",

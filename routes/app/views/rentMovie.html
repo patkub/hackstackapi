@@ -105,96 +105,96 @@
       </div>
     </nav>
 
-    <div class="alert alert-primary" role="alert">
-      A simple primary alert—check it out!
-    </div>
+    <div id="alert" class="alert alert-primary d-none" role="alert"></div>
 
-    <h1>Rent a Movie!</h1>
-
+    <h2 class="text-center">Get this Movie!</h2>
 
     <!-- Big display for movie -->
-    <div class="container big-movie">
-      <div class="card mb-3">
-        <div class="row no-gutters">
-          <div class="col-md-4 bg-dark">
-            <img
-              src="https://m.media-amazon.com/images/M/MV5BMWU0MGYwZWQtMzcwYS00NWVhLTlkZTAtYWVjOTYwZTBhZTBiXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_SX300.jpg"
-              class="card-img rounded-0"
-              alt="..."
-            />
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <h5 class="card-title font-weight-bolder">
-                Bad Boys for Life 2020
-              </h5>
-              <p class="card-text">
-                <div class="tags">
-                  <span class="badge badge-secondary"
-                    ><i class="fa fa-tag"></i> Action</span
-                  >
-                  <span class="badge badge-secondary"
-                    ><i class="fa fa-tag"></i> Comedy</span
-                  >
-                  <span class="badge badge-secondary"
-                    ><i class="fa fa-tag"></i> Crime</span
-                  >
-                  <span class="badge badge-secondary"
-                    ><i class="fa fa-tag"></i> Thriller</span
-                  >
-                </div>
-
-                Miami detectives Mike Lowrey and Marcus Burnett must face off
-                against a mother-and-son pair of drug lords who wreak vengeful
-                havoc on their city.
-                <br>
-
-                <!-- TODO: hit api/rentalItem/movieTMDbCredits/38700 for this data-->
-                <figure class="figure">
-                  <img src="https://image.tmdb.org/t/p/w200/eze9FO9VuryXLP0aF2cRqPCcibN.jpg" alt="actor" class="img-thumbnail figure-img img-fluid rounded" style="height: 75px">
-                  <figcaption class="figure-caption">Will Smith</figcaption>
-                </figure>
-                <figure class="figure">
-                  <img src="https://image.tmdb.org/t/p/w200/tnLGwtSFvAWHAXPyw98Cz6gsYYf.jpg" alt="actor" class="img-thumbnail figure-img img-fluid rounded" style="height: 75px">
-                  <figcaption class="figure-caption">Martin Lawrence</figcaption>
-                </figure>
-                <figure class="figure">
-                  <img src="https://image.tmdb.org/t/p/w200/1PlN0Wkez6F84YgIoFcRU1jPtXG.jpg" alt="actor" class="img-thumbnail figure-img img-fluid rounded" style="height: 75px">
-                  <figcaption class="figure-caption">Paola Nuñez</figcaption>
-                </figure>
-              </p>
-            </div>
-
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item list-group-item-dark">
-                Content Rating: R
-              </li>
-              <li class="list-group-item list-group-item-dark">
-                Rental Status:
-              </li>
-              <li class="list-group-item list-group-item-warning">Late:</li>
-              <li class="list-group-item list-group-item-danger">Fine:</li>
-            </ul>
-
-            <div class="card-footer bg-dark rounded-0">
-              <a href="#" class="btn btn-primary">Rent</a>
-              <!-- TODO: add route for Reserving a Movie -->
-              <a href="#" class="btn btn-secondary">Reserve</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
+    <div id="bigmovie" class="container big-movie"></div>
 
     <script>
-
-      // ugly but works
+      // get the movie id from url
       const movieID = window.location.href.substring(window.location.href.lastIndexOf('/') + 1)
-      console.log(movieID)
-      // use movieID to generate the detailed movie view that's one the homepage right now
-
       
+      /**
+       * Convert genre list into bootstrap badges
+       * @param genre {String} tags "Action, Crime, Drama"
+       * @return {String} bootstrap tag html
+       */
+      function getTags(genre) {
+        const tags = genre.split(", ")
+        let content = ""
+        for (const tag of tags) {
+          // note: space after </span> is important for spacing
+          content += "<span class='badge badge-secondary'><i class='fa fa-tag'></i>" + tag + "</span> "
+        }
+        return content
+      }
+
+      /**
+       * Get Movie api data
+       */
+      // hit omdb
+      const movieIDParts = movieID.split(':')
+      const imdbID = movieIDParts[0]
+      const tmdbID = movieIDParts[1]
+      $.getJSON("/api/rentalItem/movie/{0}".format(imdbID), function (dataOMDB) {
+        //console.log(data)
+        // now hit tmdb for the backdrop
+        $.getJSON("/api/rentalItem/movieTMDb/{0}".format(tmdbID), function(dataTMDB) {
+          $(
+            [
+              "<div class='card mb-3'>",
+              "   <div class='row no-gutters'>",
+              "    <div class='col-md-4 bg-dark'>",
+              "      <img",
+              "       src='" + dataOMDB.poster + "'",
+              "       class='card-img rounded-0'",
+              "       alt='...'",
+              "      />",
+              "    </div>",
+              "    <div class='col-md-8'>",
+              "      <div class='card-body' style=\"background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://image.tmdb.org/t/p/original" + dataTMDB.backdropPath + "') center center/cover no-repeat #ccc;\">",
+              "        <h5 class='card-title font-weight-bolder'>" + dataOMDB.title + " " + dataOMDB.yearReleased + "</h5>",
+              "        <p class='card-text'>",
+              "          <div class='tags' id='tags'>",
+                getTags(dataOMDB.genre),
+              "          </div>",
+              dataOMDB.itemDesc,
+              "          <br>",
+              "        </p>",
+              "      </div>",
+              "      <ul class='list-group list-group-flush'>",
+              "        <li class='list-group-item list-group-item-dark'>",
+              "          Content Rating: " + dataOMDB.contentRating,
+              "        </li>",
+              "        <li class='list-group-item list-group-item-dark'>",
+              "          Rental Status: " + dataOMDB.rentalStatus,
+              "        </li>",
+              "        <li class='list-group-item list-group-item-warning'>Late:" + dataOMDB.isLate + "</li>",
+              "        <li class='list-group-item list-group-item-danger'>Fine:" + dataOMDB.fine + "</li>",
+              "      </ul>",
+              "      <div class='card-footer bg-dark rounded-0'>",
+              "        <a id='btnRent' href='#' class='btn btn-primary'>Rent</a>",
+              "        <a id='btnReserve' href='#' class='btn btn-secondary'>Reserve</a>",
+              "      </div>",
+              "    </div>",
+              "  </div>",
+              "</div>"
+            ].join("\n")
+          ).appendTo("#bigmovie")
+
+          $("#btnRent").click(function() {
+            //alert( "Rent button clicked" );
+            $("#alert").removeClass("d-none").html("<strong>You Rented the Movie!</strong>")
+          })
+
+          $("#btnReserve").click(function() {
+            //alert( "Reserve button clicked" );
+            $("#alert").removeClass("d-none").html("<strong>You Reserved the Movie!</strong>")
+          })
+        })
+      })
     </script>
 
   </body>
