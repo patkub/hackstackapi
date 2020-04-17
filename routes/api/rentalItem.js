@@ -81,7 +81,7 @@ router
     }
 
     tmdb.movieInfo({ id: movieID }, (err, resTMDb) => {
-      console.log(resTMDb)
+      //console.log(resTMDb)
       if (!err) {
         movie.title = resTMDb.title
         movie.genre = resTMDb.genres.map(({ name }) => name)
@@ -89,6 +89,16 @@ router
         movie.yearReleased = resTMDb.release_date
         movie.backdropPath = resTMDb.backdrop_path
         return res.status(200).json(movie)
+      }
+    })
+  })
+
+  .get("/movieTMDbCredits/:id", (req, res) => {
+    // movieCredits
+    const movieID = req.params.id
+    tmdb.movieCredits({ id: movieID }, (err, resTMDb) => {
+      if (!err) {
+        return res.status(200).json(resTMDb)
       }
     })
   })

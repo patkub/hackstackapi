@@ -26,10 +26,16 @@
     url("https://image.tmdb.org/t/p/original/upUy2QhMZEmtypPW3PdieKLAHxh.jpg")
       center center/cover no-repeat #ccc;
   line-height: 1.7;
+  font-size: 14pt;
+}
+.big-movie .card-body,
+.figure-caption {
   color: rgb(255, 255, 255);
   text-shadow: rgba(0, 0, 0, 0.8) 1.3px 1.5px;
-  font-size: 14pt;
 }
 .big-movie .card-title {
   font-size: 16pt;
+}
+.big-movie figure {
+  width: 100px;
 }
