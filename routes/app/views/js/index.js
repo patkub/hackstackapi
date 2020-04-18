@@ -38,7 +38,11 @@ $(function () {
                 val.poster +
                 "' alt='Poster' />",
               "  <div class='card-body'>",
-              "    <h5 class='card-title'>" + val.title + "</h5>",
+              "    <h5 class='card-title'>" +
+                val.title +
+                " " +
+                val.yearReleased +
+                "</h5>",
               "    <p class='card-text'>" + val.itemDesc + "</p>",
               "  </div>",
               // These details are not included in card view
