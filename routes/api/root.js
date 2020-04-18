@@ -6,7 +6,7 @@ const router = express.Router()
 router
   // Add a binding for '/'
   .get("/", (req, res) => {
-    fs.readFile("index.md", "utf8", function (err, contents) {
+    fs.readFile("api.md", "utf8", function (err, contents) {
       res.send(marked(contents))
     })
   })
