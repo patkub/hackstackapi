@@ -9,7 +9,7 @@
     />
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css" />
 
     <!-- Font Awesome CSS -->
     <link
@@ -20,13 +20,13 @@
     />
 
     <!-- jQuery -->
-    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/jquery/jquery.min.js"></script>
 
     <!-- Bootstrap JS -->
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <link rel="stylesheet" href="static/css/index.css" />
-    <script src="static/js/index.js"></script>
+    <link rel="stylesheet" href="/static/css/index.css" />
+    <script src="/static/js/index.js"></script>
 
     <title>Hello, world!</title>
   </head>
@@ -87,7 +87,9 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownReports">
               <!-- TODO: add route for Inventory Report -->
-              <a class="dropdown-item" href="/inventoryReport">Inventory Report</a>
+              <a class="dropdown-item" href="/inventoryReport"
+                >Inventory Report</a
+              >
               <a class="dropdown-item disabled" href="#">Customer Report</a>
             </div>
           </li>
@@ -113,23 +115,43 @@
     <h2 class="text-center">Add a new Movie!</h2>
 
     <div class="container">
-
       <form id="addNewMovie">
         <div class="form-group">
           <label for="inputTitle">Title</label>
-          <input type="text" class="form-control" id="inputTitle" placeholder="movie title">
+          <input
+            type="text"
+            class="form-control"
+            id="inputTitle"
+            placeholder="movie title"
+          />
         </div>
         <div class="form-group">
           <label for="inputYear">Year</label>
-          <input type="number" class="form-control" id="inputYear" placeholder="year released" min="0">
+          <input
+            type="number"
+            class="form-control"
+            id="inputYear"
+            placeholder="year released"
+            min="0"
+          />
         </div>
         <div class="form-group">
           <label for="inputId">Item ID</label>
-          <input type="text" class="form-control" id="inputId" placeholder="item id">
+          <input
+            type="text"
+            class="form-control"
+            id="inputId"
+            placeholder="item id"
+          />
         </div>
         <div class="form-group">
           <label for="inputGenre">Genre</label>
-          <input type="text" class="form-control" id="inputGenre" placeholder="genre">
+          <input
+            type="text"
+            class="form-control"
+            id="inputGenre"
+            placeholder="genre"
+          />
         </div>
         <div class="form-group">
           <label for="inputDesc">Description</label>
@@ -150,22 +172,21 @@
 
         <button type="submit" class="btn btn-primary">Add</button>
       </form>
-
     </div>
 
     <script>
       $(function () {
         $("#addNewMovie").submit(function (e) {
           const new_movie = {
-            "title": $("#inputTitle").val(),
-            "itemID": $("#inputId").val(),
-            "genre": $("#inputGenre").val(),
-            "itemDesc": $("#inputDesc").val(),
-            "contentRating": $("#inputContentRating").val(),
-            "yearReleased": $("#inputYear").val(),
-            "rentalStatus": "",
-            "isLate": "",
-            "fine": []
+            title: $("#inputTitle").val(),
+            itemID: $("#inputId").val(),
+            genre: $("#inputGenre").val(),
+            itemDesc: $("#inputDesc").val(),
+            contentRating: $("#inputContentRating").val(),
+            yearReleased: $("#inputYear").val(),
+            rentalStatus: "",
+            isLate: "",
+            fine: [],
           }
           console.log(new_movie)
           return false
