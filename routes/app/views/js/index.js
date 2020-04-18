@@ -1,12 +1,3 @@
-if (!String.prototype.format) {
-  String.prototype.format = function () {
-    var args = arguments
-    return this.replace(/{(\d+)}/g, function (match, number) {
-      return typeof args[number] != "undefined" ? args[number] : match
-    })
-  }
-}
-
 $(function () {
   // unused payments table
   /*$.getJSON("/api/payment", function (data) {
@@ -24,7 +15,7 @@ $(function () {
     })
   })*/
 
-  $.getJSON("/api/rentalItem/movies", function (data) {
+  $.getJSON(window.hackstack.API_SERVER + "rentalItem/movies", function (data) {
     // movies per row
     const NUM_CHUNKS = 3
 
@@ -67,8 +58,16 @@ $(function () {
               "  </ul>",*/
               "  <div class='card-footer'>",
               //"    <small class='text-muted'>Last updated 3 mins ago</small>",
-              "    <a href='/rentMovie/" + val.imdb + ":" + val.tmdb + "' class='btn btn-primary'>Rent</a>",
-              "    <a href='/rentMovie/" + val.imdb + ":" + val.tmdb + "' class='btn btn-secondary'>Reserve</a>",
+              "    <a href='/rentMovie/" +
+                val.imdb +
+                ":" +
+                val.tmdb +
+                "' class='btn btn-primary'>Rent</a>",
+              "    <a href='/rentMovie/" +
+                val.imdb +
+                ":" +
+                val.tmdb +
+                "' class='btn btn-secondary'>Reserve</a>",
               "  </div>",
               "</div>",
             ].join("\n")
