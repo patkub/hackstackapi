@@ -38,7 +38,16 @@
 }
 .big-movie figure {
   width: 100px;
+  margin-right: 1em;
 }
 .big-movie .movie-description {
   margin-bottom: 1.5rem;
+}
+@media (max-width: 768px) {
+  /* make the movie less giant on mobile */
+  .big-movie .card-img {
+    max-width: 300px;
+    margin: 0 auto;
+    display: block;
+  }
 }
