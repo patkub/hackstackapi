@@ -93,6 +93,11 @@ $(function () {
               "          <div class='tags' id='tags'>",
               getTags(dataOMDB.genre),
               "          </div>",
+              "          <div class='runtime'>",
+              "             <span class='badge badge-secondary'><i class='fa fa-clock-o'></i> Runtime: " +
+                dataOMDB.runtime +
+                "</span> ",
+              "          </div>",
               "          <p class='movie-description'>" +
                 dataOMDB.itemDesc +
                 "</p>",

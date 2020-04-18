@@ -19,6 +19,9 @@
   flex-flow: column;
 }
 .big-movie .tags {
+  margin-bottom: 0.5em;
+}
+.big-movie .runtime {
   margin-bottom: 1em;
 }
 .big-movie .card-body {
