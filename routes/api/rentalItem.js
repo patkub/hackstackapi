@@ -40,6 +40,7 @@ router
       contentRating: "",
       yearReleased: "",
       poster: "",
+      runtime: "",
       rentalStatus: "",
       isLate: "",
       fine: "",
@@ -58,6 +59,7 @@ router
         movie.contentRating = resOMDb.Rated
         movie.yearReleased = resOMDb.Year
         movie.poster = resOMDb.Poster
+        movie.runtime = resOMDb.Runtime
         return res.status(200).json(movie)
       })
   })
@@ -75,6 +77,7 @@ router
       itemDesc: "",
       contentRating: "",
       yearReleased: "",
+      runtime: "",
       rentalStatus: "",
       isLate: "",
       fine: "",
@@ -87,6 +90,7 @@ router
         movie.genre = resTMDb.genres.map(({ name }) => name)
         movie.itemDesc = resTMDb.overview
         movie.yearReleased = resTMDb.release_date
+        movie.runtime = resTMDb.runtime
         movie.backdropPath = resTMDb.backdrop_path
         return res.status(200).json(movie)
       }
