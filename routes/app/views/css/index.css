@@ -39,3 +39,6 @@
 .big-movie figure {
   width: 100px;
 }
+.big-movie .movie-description {
+  margin-bottom: 1.5rem;
+}
