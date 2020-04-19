@@ -27,6 +27,7 @@
 
     <link rel="stylesheet" href="/static/css/index.css" />
     <script src="/static/js/utils.js"></script>
+    <script src="/static/js/addMovie.js"></script>
 
     <title>Hello, world!</title>
   </head>
@@ -171,25 +172,5 @@
         <button type="submit" class="btn btn-primary">Add</button>
       </form>
     </div>
-
-    <script>
-      $(function () {
-        $("#addNewMovie").submit(function (e) {
-          const new_movie = {
-            title: $("#inputTitle").val(),
-            itemID: $("#inputId").val(),
-            genre: $("#inputGenre").val(),
-            itemDesc: $("#inputDesc").val(),
-            contentRating: $("#inputContentRating").val(),
-            yearReleased: $("#inputYear").val(),
-            rentalStatus: "",
-            isLate: "",
-            fine: [],
-          }
-          console.log(new_movie)
-          return false
-        })
-      })
-    </script>
   </body>
 </html>
