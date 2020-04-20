@@ -96,12 +96,15 @@ $(function () {
                     dataOMDB.yearReleased +
                     "</h5>",
                   "        <div class='card-text'>",
-                  "          <div class='tags' id='tags'>",
+                  "          <div class='tags'>",
                   getTags(dataOMDB.genre),
                   "          </div>",
-                  "          <div class='runtime'>",
+                  "          <div class='badges'>",
                   "             <span class='badge badge-secondary'><i class='fa fa-clock-o'></i> Runtime: " +
                     dataOMDB.runtime +
+                    "</span> ",
+                  "             <span class='badge badge-secondary'>Content Rating: " +
+                    dataOMDB.contentRating +
                     "</span> ",
                   "          </div>",
                   "          <p class='movie-description'>" +
@@ -111,9 +114,6 @@ $(function () {
                   "        </div>",
                   "      </div>",
                   "      <ul class='list-group list-group-flush'>",
-                  "        <li class='list-group-item list-group-item-dark'>",
-                  "          Content Rating: " + dataOMDB.contentRating,
-                  "        </li>",
                   "        <li class='list-group-item list-group-item-dark'>",
                   "          Rental Status: " + dataOMDB.rentalStatus,
                   "        </li>",
