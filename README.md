@@ -23,7 +23,12 @@ node index.js
 
 http://127.0.0.1:3000
 
-For testing, set `window.hackstack.API_SERVER` to the api server in `routes/app/views/js/utils.js`.
+For testing, set `window.hackstack.API_SERVER` to the api server in `routes/app/views/js/utils.js`. To automate switching APIs, use the following scripts:
+
+```
+./scripts/useJavaApi.sh
+./scripts/useExpressJs.sh
+```
 
 ### Examples
 
