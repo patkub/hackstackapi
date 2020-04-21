@@ -1,3 +1,7 @@
+// TODO: port to Java api
+// the express.js api for testing purposes
+window.hackstack.API_SERVER = "http://127.0.0.1:3000/api/"
+
 $(function () {
   $.getJSON(window.hackstack.API_SERVER + "customer", function (data) {
     function parseEmail(email) {
