@@ -29,9 +29,9 @@ $(function () {
           $(
             [
               "<div class='card'>",
-              /*"  <img class='card-img-top' src='" +
+              "  <img class='card-img-top' src='" +
                 val.imagePath +
-                "' alt='Poster' />",*/
+                "' alt='Poster' />",
               "  <div class='card-body'>",
               "    <h5 class='card-title'>" +
                 val.title +
@@ -76,7 +76,7 @@ $(function () {
       })
 
       // if uneven, add empty cards for spacing
-      for (let i = 0; i < (movies.length % NUM_CHUNKS) - 1; i++) {
+      for (let i = 0; i < NUM_CHUNKS - temparray.length; i++) {
         deck.append("<div class='card' style='visibility: hidden;'></div>")
       }
 
