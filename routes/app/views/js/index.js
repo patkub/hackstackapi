@@ -15,17 +15,12 @@ $(function () {
     })
   })*/
 
-  $.getJSON(window.hackstack.API_SERVER + "rentalItem/movies", function (data) {
+  $.getJSON(window.hackstack.API_SERVER + "movies", function (data) {
     // movies per row
     const NUM_CHUNKS = 3
 
-    // convert data json to an array
-    let dataArray = $.map(data, function (value, _) {
-      return [value]
-    })
-
-    for (let i = 0; i < dataArray.length; i += NUM_CHUNKS) {
-      let temparray = dataArray.slice(i, i + NUM_CHUNKS)
+    for (let i = 0; i < data.length; i += NUM_CHUNKS) {
+      let temparray = data.slice(i, i + NUM_CHUNKS)
 
       // make array of chunks
       let movies = []
@@ -34,16 +29,16 @@ $(function () {
           $(
             [
               "<div class='card'>",
-              "  <img class='card-img-top' src='" +
-                val.poster +
-                "' alt='Poster' />",
+              /*"  <img class='card-img-top' src='" +
+                val.imagePath +
+                "' alt='Poster' />",*/
               "  <div class='card-body'>",
               "    <h5 class='card-title'>" +
                 val.title +
                 " " +
-                val.yearReleased +
+                val.year +
                 "</h5>",
-              "    <p class='card-text'>" + val.itemDesc + "</p>",
+              "    <p class='card-text'>" + val.description + "</p>",
               "  </div>",
               // These details are not included in card view
               /*"  <ul class='list-group list-group-flush'>",
@@ -62,14 +57,10 @@ $(function () {
               "  </ul>",*/
               "  <div class='card-footer'>",
               "    <a href='/rentMovie/" +
-                val.imdb +
-                ":" +
-                val.tmdb +
+                val.itemID +
                 "' class='btn btn-primary'>Rent</a>",
               "    <a href='/rentMovie/" +
-                val.imdb +
-                ":" +
-                val.tmdb +
+                val.itemID +
                 "' class='btn btn-secondary'>Reserve</a>",
               "  </div>",
               "</div>",

@@ -53,6 +53,7 @@ $(function () {
   // uncomment to use expressjs api for testing
   //window.hackstack.API_SERVER = "http://127.0.0.1:3000/api/"
 
+  // TODO: port to Java api
   // get movie OMDb api data using imdb id
   $.getJSON(
     window.hackstack.API_SERVER + "rentalItem/movie/{0}".format(imdbID),
@@ -75,6 +76,7 @@ $(function () {
                 })
                 .slice(0, 5)
 
+              // TODO: port to Java api
               $(
                 [
                   "<div class='card mb-3'>",
