@@ -14,3 +14,17 @@ if (!String.prototype.format) {
     })
   }
 }
+
+;(function (hackstack) {
+  /**
+   * Get item id from url
+   * @return {String} item id
+   */
+  function computeURLItemID() {
+    return window.location.href.substring(
+      window.location.href.lastIndexOf("/") + 1
+    )
+  }
+
+  hackstack.computeURLItemID = computeURLItemID
+})(window.hackstack)
