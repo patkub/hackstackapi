@@ -15,6 +15,17 @@ router
     )
   })
 
+  // games
+  .get("/games", (req, res) => {
+    fs.readFile(
+      path.resolve(__dirname, "./views/games.html"),
+      "utf8",
+      function (err, contents) {
+        res.send(contents)
+      }
+    )
+  })
+
   // adding a movie
   .get("/addMovie", (req, res) => {
     fs.readFile(

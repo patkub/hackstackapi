@@ -1,0 +1,3 @@
+$(function () {
+  // insert code for games page here...
+})
