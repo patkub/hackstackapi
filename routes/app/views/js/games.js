@@ -3,6 +3,10 @@ $(function () {
   const navbar = new HackStackNavBar("home")
   navbar.inject("#navbar")
 
+  // render the navtabs
+  const navtabs = new HackStackNavTabs("games")
+  navtabs.inject("#navtabs")
+
   $.getJSON(window.hackstack.API_SERVER + "games", function (data) {
     // games per row
     const NUM_CHUNKS = 3

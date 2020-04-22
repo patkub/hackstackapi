@@ -3,6 +3,10 @@ $(function () {
   const navbar = new HackStackNavBar("home")
   navbar.inject("#navbar")
 
+  // render the navtabs
+  const navtabs = new HackStackNavTabs("movies")
+  navtabs.inject("#navtabs")
+
   $.getJSON(window.hackstack.API_SERVER + "movies", function (data) {
     // movies per row
     const NUM_CHUNKS = 3

@@ -27,6 +27,7 @@
     <script src="/static/js/utils.js"></script>
     <script src="/static/js/components/injectable.js"></script>
     <script src="/static/js/components/navbar.js"></script>
+    <script src="/static/js/components/navtabs.js"></script>
     <script src="/static/js/components/rentalItemSmall.js"></script>
     <script src="/static/js/components/cardDeck.js"></script>
     <script src="/static/js/games.js"></script>
@@ -42,14 +43,8 @@
     </div>
 
     <div class="container">
-      <ul class="nav nav-pills nav-justified">
-        <li class="nav-item">
-          <a class="nav-link" href="/">Movies</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" href="#">Games</a>
-        </li>
-      </ul>
+      <!-- anchor point for nav tabs html -->
+      <div id="navtabs"></div>
 
       <div id="games"></div>
     </div>
