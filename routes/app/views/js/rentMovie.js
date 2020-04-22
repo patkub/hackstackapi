@@ -72,7 +72,7 @@ $(function () {
             "          <div class='badges'>",
             "             <span class='badge badge-secondary'><i class='fa fa-clock-o'></i> Runtime: " +
               hsRentalMovie.getRuntime() +
-              "min</span> ",
+              " min</span> ",
             "             <span class='badge badge-secondary'>Content Rating: " +
               hsRentalMovie.getRating() +
               "</span> ",
