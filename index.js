@@ -27,6 +27,10 @@ app.use(
   "/static/js",
   express.static(path.join(__dirname, "/routes/app/views/js"))
 )
+app.use(
+  "/static/img",
+  express.static(path.join(__dirname, "/routes/app/views/img"))
+)
 
 app.listen(config.port, () =>
   console.log(`HackStackAPI listening at http://localhost:${config.port}`)
