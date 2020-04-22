@@ -26,19 +26,10 @@ $(function () {
         games.push(smallRentalItem.render())
       })
 
-      // make a deck out of these cards
-      var deck = $("<div class='card-deck'></div>")
-      $.each(games, function (_, val) {
-        deck.append(val)
-      })
-
-      // if uneven, add empty cards for spacing
-      for (let i = 0; i < NUM_CHUNKS - temparray.length; i++) {
-        deck.append("<div class='card' style='visibility: hidden;'></div>")
-      }
-
-      // add the current deck to the page
-      deck.appendTo("#games")
+      // make a card deck out of current games
+      // aligns empty spaces evenly
+      let cardDeck = new HackStackCardDeck(games, NUM_CHUNKS)
+      document.getElementById("games").append(cardDeck.render())
     }
   })
 })
