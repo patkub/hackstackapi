@@ -1,6 +1,6 @@
 $(function () {
-  // get the movie id from url
-  const movieID = window.location.href.substring(
+  // get the game id from url
+  const gameID = window.location.href.substring(
     window.location.href.lastIndexOf("/") + 1
   )
 
@@ -28,28 +28,11 @@ $(function () {
     return content
   }
 
-  /**
-   * HTML for the credits (actors/actresses)
-   */
-  function getCredits(credits) {
-    let content = ""
-    for (const credit of credits) {
-      content += [
-        "<figure class='figure'>",
-        "<img src='https://image.tmdb.org/t/p/original/" +
-          credit.profile_path +
-          "' alt='actor' class='img-thumbnail figure-img img-fluid rounded' style='height: 75px'>",
-        "<figcaption class='figure-caption'>" + credit.name + "</figcaption>",
-        "</figure>",
-      ].join("\n")
-    }
-    return content
-  }
-
-  // get movie data
+  // get game data
   $.getJSON(
-    window.hackstack.API_SERVER + "rentalItem/movie?itemID={0}".format(movieID),
+    window.hackstack.API_SERVER + "rentalItem/game?itemID={0}".format(gameID),
     function (data) {
+      console.log(data)
       setLoadingProgress(50)
       $(
         [
@@ -74,9 +57,9 @@ $(function () {
           getTags(data.genre),
           "          </div>",
           "          <div class='badges'>",
-          "             <span class='badge badge-secondary'><i class='fa fa-clock-o'></i> Runtime: " +
-            data.runtime +
-            "min</span> ",
+          !data.isMultiplayer
+            ? "<span class='badge badge-secondary'><i class='fa fa-user-friends'></i> Multiplayer</span> "
+            : "<span class='badge badge-secondary'><i class='fa fa-user-friends'></i> Not Multiplayer</span> ",
           "             <span class='badge badge-secondary'>Content Rating: " +
             data.rating +
             "</span> ",
@@ -106,20 +89,20 @@ $(function () {
           "  </div>",
           "</div>",
         ].join("\n")
-      ).appendTo("#bigmovie")
+      ).appendTo("#biggame")
 
       $("#btnRent").click(function () {
         //alert( "Rent button clicked" );
         $("#alert")
           .removeClass("d-none")
-          .html("<strong>You Rented the Movie!</strong>")
+          .html("<strong>You Rented the Game!</strong>")
       })
 
       $("#btnReserve").click(function () {
         //alert( "Reserve button clicked" );
         $("#alert")
           .removeClass("d-none")
-          .html("<strong>You Reserved the Movie!</strong>")
+          .html("<strong>You Reserved the Game!</strong>")
       })
 
       // done

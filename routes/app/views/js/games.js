@@ -40,10 +40,10 @@ $(function () {
               "    <li class='list-group-item'>Fine: " + val.fine + "</li>",
               "  </ul>",*/
               "  <div class='card-footer'>",
-              "    <a href='/rentMovie/" +
+              "    <a href='/rentGame/" +
                 val.itemID +
                 "' class='btn btn-primary'>Rent</a>",
-              "    <a href='/rentMovie/" +
+              "    <a href='/rentGame/" +
                 val.itemID +
                 "' class='btn btn-secondary'>Reserve</a>",
               "  </div>",

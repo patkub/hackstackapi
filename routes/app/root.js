@@ -48,6 +48,17 @@ router
     )
   })
 
+  // renting a game
+  .get("/rentGame/:id", (req, res) => {
+    fs.readFile(
+      path.resolve(__dirname, "./views/rentGame.html"),
+      "utf8",
+      function (err, contents) {
+        res.send(contents)
+      }
+    )
+  })
+
   // inventory report
   .get("/inventoryReport", (req, res) => {
     fs.readFile(
