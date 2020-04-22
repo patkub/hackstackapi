@@ -1,4 +1,8 @@
 $(function () {
+  // render the navbar
+  const navbar = new HackStackNavBar("home")
+  navbar.inject("#navbar")
+
   $.getJSON(window.hackstack.API_SERVER + "games", function (data) {
     // movies per row
     const NUM_CHUNKS = 3

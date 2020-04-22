@@ -1,4 +1,8 @@
 $(function () {
+  // render the navbar
+  const navbar = new HackStackNavBar("home")
+  navbar.inject("#navbar")
+
   // unused payments table
   /*$.getJSON("/api/payment", function (data) {
     $.each(data, function (_, val) {

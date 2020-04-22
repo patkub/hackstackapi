@@ -1,4 +1,8 @@
 $(function () {
+  // render the navbar
+  const navbar = new HackStackNavBar("home")
+  navbar.inject("#navbar")
+
   // get the movie id from url
   const movieID = window.location.href.substring(
     window.location.href.lastIndexOf("/") + 1

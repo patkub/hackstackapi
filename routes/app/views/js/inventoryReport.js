@@ -1,3 +1,5 @@
 $(function () {
-  // insert code for inventory report page here...
+  // render the navbar
+  const navbar = new HackStackNavBar("inventoryReport")
+  navbar.inject("#navbar")
 })

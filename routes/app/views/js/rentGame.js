@@ -1,4 +1,8 @@
 $(function () {
+  // render the navbar
+  const navbar = new HackStackNavBar("home")
+  navbar.inject("#navbar")
+
   // get the game id from url
   const gameID = window.location.href.substring(
     window.location.href.lastIndexOf("/") + 1

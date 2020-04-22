@@ -3,6 +3,10 @@
 window.hackstack.API_SERVER = "http://127.0.0.1:3000/api/"
 
 $(function () {
+  // render the navbar
+  const navbar = new HackStackNavBar("manageCustomers")
+  navbar.inject("#navbar")
+
   $.getJSON(window.hackstack.API_SERVER + "customer", function (data) {
     function parseEmail(email) {
       return email.recipient + "@" + email.domain
