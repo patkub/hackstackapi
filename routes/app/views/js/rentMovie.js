@@ -1,12 +1,8 @@
 $(function () {
   // get the movie id from url
-  const movieIDUrl = window.location.href.substring(
+  const movieID = window.location.href.substring(
     window.location.href.lastIndexOf("/") + 1
   )
-  // split out the api ids
-  const movieIDParts = movieIDUrl.split(":")
-  const imdbID = movieIDParts[0]
-  const tmdbID = movieIDParts[1]
 
   function setLoadingProgress(val) {
     $("#loadingProgress")
@@ -50,117 +46,89 @@ $(function () {
     return content
   }
 
-  // uncomment to use expressjs api for testing
-  //window.hackstack.API_SERVER = "http://127.0.0.1:3000/api/"
-
-  // TODO: port to Java api
-  // get movie OMDb api data using imdb id
+  // get movie data
   $.getJSON(
-    window.hackstack.API_SERVER + "rentalItem/movie/{0}".format(imdbID),
-    function (dataOMDB) {
+    window.hackstack.API_SERVER + "rentalItem/movie?itemID={0}".format(movieID),
+    function (data) {
       setLoadingProgress(50)
-      // now grab the movie backdrop from tmdb
-      $.getJSON(
-        window.hackstack.API_SERVER + "rentalItem/movieTMDb/{0}".format(tmdbID),
-        function (dataTMDB) {
-          setLoadingProgress(75)
-          // now get the cast from tmdb
-          $.getJSON(
-            window.hackstack.API_SERVER +
-              "rentalItem/movieTMDbCredits/{0}".format(tmdbID),
-            function (dataTMDBCredits) {
-              // keep only first 5 cast members that have a name and picture
-              const cast = dataTMDBCredits.cast
-                .filter(function (el) {
-                  return el.name !== null && el.profile_path !== null
-                })
-                .slice(0, 5)
+      $(
+        [
+          "<div class='card mb-3'>",
+          "   <div class='row no-gutters'>",
+          "    <div class='col-md-4 bg-dark'>",
+          "      <img",
+          "       src='" + data.imagePath + "'",
+          "       class='card-img rounded-0'",
+          "       alt='" + data.title + " poster'",
+          "      />",
+          "    </div>",
+          "    <div class='col-md-8'>",
+          "      <div class='card-body bg-dark'>",
+          "        <h5 class='card-title font-weight-bolder'>" +
+            data.title +
+            " " +
+            data.year +
+            "</h5>",
+          "        <div class='card-text'>",
+          "          <div class='tags'>",
+          getTags(data.genre),
+          "          </div>",
+          "          <div class='badges'>",
+          "             <span class='badge badge-secondary'><i class='fa fa-clock-o'></i> Runtime: " +
+            data.runtime +
+            "min</span> ",
+          "             <span class='badge badge-secondary'>Content Rating: " +
+            data.rating +
+            "</span> ",
+          "          </div>",
+          "          <p class='movie-description'>" + data.description + "</p>",
+          //getCredits(cast),
+          "        </div>",
+          "      </div>",
+          "      <ul class='list-group list-group-flush'>",
+          "        <li class='list-group-item list-group-item-dark'>",
+          "          Rental Status: " + data.rentalStatus,
+          "        </li>",
+          data.late
+            ? "<li class='list-group-item list-group-item-warning'>Late</li>"
+            : "",
+          data.fine > 0
+            ? "<li class='list-group-item list-group-item-danger'>Fine: " +
+              data.fine +
+              "</li>"
+            : "",
+          "      </ul>",
+          "      <div class='card-footer bg-dark rounded-0'>",
+          "        <a id='btnRent' href='#' class='btn btn-primary'>Rent</a>",
+          "        <a id='btnReserve' href='#' class='btn btn-secondary'>Reserve</a>",
+          "      </div>",
+          "    </div>",
+          "  </div>",
+          "</div>",
+        ].join("\n")
+      ).appendTo("#bigmovie")
 
-              // TODO: port to Java api
-              $(
-                [
-                  "<div class='card mb-3'>",
-                  "   <div class='row no-gutters'>",
-                  "    <div class='col-md-4 bg-dark'>",
-                  "      <img",
-                  "       src='" + dataOMDB.poster + "'",
-                  "       class='card-img rounded-0'",
-                  "       alt='" + dataOMDB.title + " poster'",
-                  "      />",
-                  "    </div>",
-                  "    <div class='col-md-8'>",
-                  "      <div class='card-body' style=\"background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://image.tmdb.org/t/p/original" +
-                    dataTMDB.backdropPath +
-                    "') center center/cover no-repeat #ccc;\">",
-                  "        <h5 class='card-title font-weight-bolder'>" +
-                    dataOMDB.title +
-                    " " +
-                    dataOMDB.yearReleased +
-                    "</h5>",
-                  "        <div class='card-text'>",
-                  "          <div class='tags'>",
-                  getTags(dataOMDB.genre),
-                  "          </div>",
-                  "          <div class='badges'>",
-                  "             <span class='badge badge-secondary'><i class='fa fa-clock-o'></i> Runtime: " +
-                    dataOMDB.runtime +
-                    "</span> ",
-                  "             <span class='badge badge-secondary'>Content Rating: " +
-                    dataOMDB.contentRating +
-                    "</span> ",
-                  "          </div>",
-                  "          <p class='movie-description'>" +
-                    dataOMDB.itemDesc +
-                    "</p>",
-                  getCredits(cast),
-                  "        </div>",
-                  "      </div>",
-                  "      <ul class='list-group list-group-flush'>",
-                  "        <li class='list-group-item list-group-item-dark'>",
-                  "          Rental Status: " + dataOMDB.rentalStatus,
-                  "        </li>",
-                  "        <li class='list-group-item list-group-item-warning'>Late:" +
-                    dataOMDB.isLate +
-                    "</li>",
-                  "        <li class='list-group-item list-group-item-danger'>Fine:" +
-                    dataOMDB.fine +
-                    "</li>",
-                  "      </ul>",
-                  "      <div class='card-footer bg-dark rounded-0'>",
-                  "        <a id='btnRent' href='#' class='btn btn-primary'>Rent</a>",
-                  "        <a id='btnReserve' href='#' class='btn btn-secondary'>Reserve</a>",
-                  "      </div>",
-                  "    </div>",
-                  "  </div>",
-                  "</div>",
-                ].join("\n")
-              ).appendTo("#bigmovie")
+      $("#btnRent").click(function () {
+        //alert( "Rent button clicked" );
+        $("#alert")
+          .removeClass("d-none")
+          .html("<strong>You Rented the Movie!</strong>")
+      })
 
-              $("#btnRent").click(function () {
-                //alert( "Rent button clicked" );
-                $("#alert")
-                  .removeClass("d-none")
-                  .html("<strong>You Rented the Movie!</strong>")
-              })
+      $("#btnReserve").click(function () {
+        //alert( "Reserve button clicked" );
+        $("#alert")
+          .removeClass("d-none")
+          .html("<strong>You Reserved the Movie!</strong>")
+      })
 
-              $("#btnReserve").click(function () {
-                //alert( "Reserve button clicked" );
-                $("#alert")
-                  .removeClass("d-none")
-                  .html("<strong>You Reserved the Movie!</strong>")
-              })
+      // done
+      setLoadingProgress(100)
 
-              // done
-              setLoadingProgress(100)
-
-              // hide progress after 0.5 seconds
-              setTimeout(function () {
-                $(".progress").css("display", "none")
-              }, 500)
-            }
-          )
-        }
-      )
+      // hide progress after 0.5 seconds
+      setTimeout(function () {
+        $(".progress").css("display", "none")
+      }, 500)
     }
   )
 })
