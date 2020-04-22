@@ -11,24 +11,6 @@ $(function () {
         .attr("aria-valuenow", val)
     }
 
-    /**
-     * HTML for the credits (actors/actresses)
-     */
-    function getCredits(credits) {
-      let content = ""
-      for (const credit of credits) {
-        content += [
-          "<figure class='figure'>",
-          "<img src='https://image.tmdb.org/t/p/original/" +
-            credit.profile_path +
-            "' alt='actor' class='img-thumbnail figure-img img-fluid rounded' style='height: 75px'>",
-          "<figcaption class='figure-caption'>" + credit.name + "</figcaption>",
-          "</figure>",
-        ].join("\n")
-      }
-      return content
-    }
-
     // get movie id from url
     const movieID = hackstack.computeURLItemID()
     // get movie data
@@ -47,7 +29,8 @@ $(function () {
           data.rentalStatus,
           data.late,
           data.fine,
-          data.runtime
+          data.runtime,
+          data.actorList
         )
         $(
           [
@@ -80,7 +63,7 @@ $(function () {
             "          <p class='movie-description'>" +
               hsRentalMovie.getDescription() +
               "</p>",
-            //getCredits(cast),
+            hsRentalMovie.computeActors(),
             "        </div>",
             "      </div>",
             "      <ul class='list-group list-group-flush'>",
