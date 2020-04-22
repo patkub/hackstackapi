@@ -73,10 +73,24 @@ $(function () {
         rating: $("inputContentRating").val(),
       }
 
-      let posted = $.post("http://localhost:8080/movies/add", data)
+      // it will return a boolean with whether or not the item was added
+      $.post("http://localhost:8080/movies/add", data)
+        .done(function (msg) {
+          $("#alert")
+            .removeClass("d-none")
+            .addClass("alert-success")
+            .html("<strong>Movie added successfully!</strong>")
+        })
+        .fail(function (xhr, textStatus, errorThrown) {
+          $("#alert")
+            .removeClass("d-none")
+            .addClass("alert-danger")
+            .html(
+              "<strong>Oh no! An error occurred trying to add the movie.</strong>"
+            )
+        })
 
-      //it will return a boolean with whether or not the item was added
-
+      // disable default browser form submit action
       return false
     })
   })(window.hackstack)
