@@ -29,48 +29,17 @@ $(function () {
       // make array of chunks
       let movies = []
       $.each(temparray, function (_, val) {
-        movies.push(
-          $(
-            [
-              "<div class='card'>",
-              "  <img class='card-img-top' src='" +
-                val.imagePath +
-                "' alt='Poster' />",
-              "  <div class='card-body'>",
-              "    <h5 class='card-title'>" +
-                val.title +
-                " " +
-                val.year +
-                "</h5>",
-              "    <p class='card-text'>" + val.description + "</p>",
-              "  </div>",
-              // These details are not included in card view
-              /*"  <ul class='list-group list-group-flush'>",
-              "    <li class='list-group-item'>Genre: " + val.genre + "</li>",
-              "    <li class='list-group-item'>Content Rating: " +
-                val.contentRating +
-                "</li>",
-              "    <li class='list-group-item'>Year Released: " +
-                val.yearReleased +
-                "</li>",
-              "    <li class='list-group-item'>Rental Status: " +
-                val.rentalStatus +
-                "</li>",
-              "    <li class='list-group-item'>Late: " + val.isLate + "</li>",
-              "    <li class='list-group-item'>Fine: " + val.fine + "</li>",
-              "  </ul>",*/
-              "  <div class='card-footer'>",
-              "    <a href='/rentMovie/" +
-                val.itemID +
-                "' class='btn btn-primary'>Rent</a>",
-              "    <a href='/rentMovie/" +
-                val.itemID +
-                "' class='btn btn-secondary'>Reserve</a>",
-              "  </div>",
-              "</div>",
-            ].join("\n")
-          )
+        const smallRentalItem = new HackStackRentalItemSmall(
+          "movie",
+          val.itemID,
+          val.title,
+          val.year,
+          val.description,
+          val.imagePath,
+          "/rentMovie/"
         )
+
+        movies.push(smallRentalItem.render())
       })
 
       // make a deck out of these cards

@@ -1,17 +1,9 @@
-class HackStackNavBar {
+class HackStackNavBar extends Injectable {
   constructor(active) {
+    super()
+
     /** The active tab. 'home', 'manageCustomers', 'addMovie', or 'inventoryReport' */
     this.active = active
-  }
-
-  /**
-   * Inject navbar to page
-   * @param {String} selector query selector
-   */
-  inject(selector) {
-    document
-      .querySelector(selector)
-      .insertAdjacentHTML("afterend", this.render())
   }
 
   /**
