@@ -6,10 +6,12 @@
   margin-bottom: 1em;
 }
 
-#movies .card-title {
+#movies .card-title,
+#games .card-title {
   font-weight: bold;
 }
-#movies .card {
+#movies .card,
+#games .card {
   margin-bottom: 1em;
 }
 
