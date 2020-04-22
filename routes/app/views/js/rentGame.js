@@ -26,10 +26,11 @@ $(function () {
           data.description,
           data.genre,
           data.imagePath,
-          data.isMultiplayer,
+          data.rating,
           data.rentalStatus,
           data.late,
-          data.fine
+          data.fine,
+          data.isMultiplayer
         )
         $(
           [
@@ -56,7 +57,7 @@ $(function () {
               ? "<span class='badge badge-secondary'><i class='fa fa-user-friends'></i> Multiplayer</span> "
               : "<span class='badge badge-secondary'><i class='fa fa-user'></i> Single Player</span> ",
             "             <span class='badge badge-secondary'>Content Rating: " +
-              data.rating +
+              hsRentalGame.getRating() +
               "</span> ",
             "          </div>",
             "          <p class='movie-description'>" +
@@ -69,14 +70,8 @@ $(function () {
             "        <li class='list-group-item list-group-item-dark'>",
             "          Rental Status: " + hsRentalGame.getRentalStatus(),
             "        </li>",
-            hsRentalGame.isLate()
-              ? "<li class='list-group-item list-group-item-warning'>Late</li>"
-              : "",
-            hsRentalGame.getFine() > 0
-              ? "<li class='list-group-item list-group-item-danger'>Fine: " +
-                data.fine +
-                "</li>"
-              : "",
+            hsRentalGame.computeLate(),
+            hsRentalGame.computeFine(),
             "      </ul>",
             "      <div class='card-footer bg-dark rounded-0'>",
             "        <a id='btnRent' href='#' class='btn btn-primary'>Rent</a>",

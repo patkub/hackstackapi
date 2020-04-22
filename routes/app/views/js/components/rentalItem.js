@@ -7,6 +7,7 @@ class HackStackRentalItem {
    * @param {String} description item description
    * @param {String[]} genre item genre
    * @param {String} imagePath poster image
+   * @param {String} rating content rating
    * @param {String} rentalStatus rental status
    * @param {Boolean} late is item late
    * @param {Double} fine fine
@@ -18,6 +19,7 @@ class HackStackRentalItem {
     description,
     genre,
     imagePath,
+    rating,
     rentalStatus,
     late,
     fine
@@ -39,6 +41,9 @@ class HackStackRentalItem {
 
     /** poster image */
     this.imagePath = imagePath
+
+    /** content rating */
+    this.rating = rating
 
     /** item rental status */
     this.rentalStatus = rentalStatus
@@ -147,6 +152,22 @@ class HackStackRentalItem {
   }
 
   /**
+   * Get content rating
+   * @return {String} content rating
+   */
+  getRating() {
+    return this.rating
+  }
+
+  /**
+   * Set image path
+   * @param {String} rating content rating
+   */
+  setRating(rating) {
+    this.rating = rating
+  }
+
+  /**
    * Get rental status
    * @return {String} rentalStatus
    */
@@ -217,5 +238,27 @@ class HackStackRentalItem {
         "</span> "
     }
     return content
+  }
+
+  /**
+   * Compute the late list item
+   * @return {String} bootstrap list group item html
+   */
+  computeLate() {
+    return this.isLate()
+      ? "<li class='list-group-item list-group-item-warning'>Late</li>"
+      : ""
+  }
+
+  /**
+   * Compute the fine list item
+   * @return {String} bootstrap list group item html
+   */
+  computeFine() {
+    return this.getFine() > 0
+      ? "<li class='list-group-item list-group-item-danger'>Fine: " +
+          this.getFine() +
+          "</li>"
+      : ""
   }
 }

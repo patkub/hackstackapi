@@ -7,6 +7,7 @@ class HackStackRentalMovie extends HackStackRentalItem {
    * @param {String} description item description
    * @param {String[]} genre item genre
    * @param {String} imagePath poster image
+   * @param {String} rating content rating
    * @param {String} rentalStatus rental status
    * @param {Boolean} late is item late
    * @param {Double} fine fine
@@ -19,6 +20,7 @@ class HackStackRentalMovie extends HackStackRentalItem {
     description,
     genre,
     imagePath,
+    rating,
     rentalStatus,
     late,
     fine,
@@ -31,6 +33,7 @@ class HackStackRentalMovie extends HackStackRentalItem {
       description,
       genre,
       imagePath,
+      rating,
       rentalStatus,
       late,
       fine

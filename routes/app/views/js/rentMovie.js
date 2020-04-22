@@ -43,10 +43,11 @@ $(function () {
           data.description,
           data.genre,
           data.imagePath,
-          data.runtime,
+          data.rating,
           data.rentalStatus,
           data.late,
-          data.fine
+          data.fine,
+          data.runtime
         )
         $(
           [
@@ -73,27 +74,21 @@ $(function () {
               hsRentalMovie.getRuntime() +
               "min</span> ",
             "             <span class='badge badge-secondary'>Content Rating: " +
-              data.rating +
+              hsRentalMovie.getRating() +
               "</span> ",
             "          </div>",
             "          <p class='movie-description'>" +
-              data.description +
+              hsRentalMovie.getDescription() +
               "</p>",
             //getCredits(cast),
             "        </div>",
             "      </div>",
             "      <ul class='list-group list-group-flush'>",
             "        <li class='list-group-item list-group-item-dark'>",
-            "          Rental Status: " + data.rentalStatus,
+            "          Rental Status: " + hsRentalMovie.getRentalStatus(),
             "        </li>",
-            data.late
-              ? "<li class='list-group-item list-group-item-warning'>Late</li>"
-              : "",
-            data.fine > 0
-              ? "<li class='list-group-item list-group-item-danger'>Fine: " +
-                data.fine +
-                "</li>"
-              : "",
+            hsRentalMovie.computeLate(),
+            hsRentalMovie.computeFine(),
             "      </ul>",
             "      <div class='card-footer bg-dark rounded-0'>",
             "        <a id='btnRent' href='#' class='btn btn-primary'>Rent</a>",
