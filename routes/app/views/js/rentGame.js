@@ -57,9 +57,9 @@ $(function () {
           getTags(data.genre),
           "          </div>",
           "          <div class='badges'>",
-          !data.isMultiplayer
+          data.isMultiplayer
             ? "<span class='badge badge-secondary'><i class='fa fa-user-friends'></i> Multiplayer</span> "
-            : "<span class='badge badge-secondary'><i class='fa fa-user-friends'></i> Not Multiplayer</span> ",
+            : "<span class='badge badge-secondary'><i class='fa fa-user'></i> Single Player</span> ",
           "             <span class='badge badge-secondary'>Content Rating: " +
             data.rating +
             "</span> ",
