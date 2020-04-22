@@ -11,6 +11,9 @@ $(function () {
       placement: "bottom",
     })
 
+    /**
+     * Automatically fill out the form using OMDb API
+     */
     $("#btnFill").click(function (e) {
       // extract imdb id, supported formats:
       // 1) https://www.imdb.com/title/tt1502397/
@@ -25,7 +28,6 @@ $(function () {
 
       const new_movie = {
         title: "",
-        itemID: "",
         genre: "",
         itemDesc: "",
         contentRating: "",
@@ -50,38 +52,30 @@ $(function () {
       })
     })
 
-    $("#addNewMovie").submit(function (e) {
-      const new_movie = {
-        title: $("#inputTitle").val(),
-        itemID: $("#inputId").val(),
-        genre: $("#inputGenre").val(),
-        itemDesc: $("#inputDesc").val(),
-        contentRating: $("#inputContentRating").val(),
-        yearReleased: $("#inputYear").val(),
-        rentalStatus: "",
-        isLate: "",
-        fine: [],
-      }
-      console.log(new_movie)
-
-      let data = {
+    /**
+     * Add the new movie
+     */
+    $("#addNewMovie").submit(function () {
+      const data = {
         title: $("#inputTitle").val(),
         year: $("#inputYear").val(),
-        itemID: $("#inputId").val(),
         genre: $("#inputGenre").val(),
         description: $("#inputDesc").val(),
-        rating: $("inputContentRating").val(),
+        rating: $("#inputContentRating").val(),
       }
+      console.log(data)
 
       // it will return a boolean with whether or not the item was added
       $.post("http://localhost:8080/movies/add", data)
         .done(function (msg) {
+          // successfully added
           $("#alert")
             .removeClass("d-none")
             .addClass("alert-success")
             .html("<strong>Movie added successfully!</strong>")
         })
         .fail(function (xhr, textStatus, errorThrown) {
+          // failed to add
           $("#alert")
             .removeClass("d-none")
             .addClass("alert-danger")
