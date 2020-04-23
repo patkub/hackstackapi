@@ -14,7 +14,10 @@ $(function () {
     /**
      * Automatically fill out the form using OMDb API
      */
-    $("#btnFill").click(function (e) {
+    $("#imdbID").on("input", function (e) {
+      // clear movie search
+      $("#movieSearch").val("")
+
       // extract imdb id, supported formats:
       // 1) https://www.imdb.com/title/tt1502397/
       // 2) tt1502397
@@ -34,6 +37,9 @@ $(function () {
      */
 
     $("#movieSearch").on("input", function () {
+      // clear imdb id
+      $("#imdbID").val("")
+
       $("#movieSearch").autocomplete({
         source: function (request, response) {
           // replace spaces with a '+'
