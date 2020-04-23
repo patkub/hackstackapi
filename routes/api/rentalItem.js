@@ -194,7 +194,85 @@ router
         return res.status(200).json(gameData)
       })
       .catch((err) => {
-        console.error(err)
+        //console.error(err)
+      })
+  })
+
+  /**
+   * Search for a list of games
+   */
+  .get("/giantbombSearch/:query", (req, res) => {
+    const query = req.params.query
+
+    gb.search({
+      query: query,
+      format: "json",
+      fields: ["name"],
+      limit: 10,
+      resources: ["game"],
+    })
+      .then((body) => {
+        const data = JSON.parse(body)
+        // get a list of game names from search results
+        const list = data.results.map(({ name }) => name)
+        return res.status(200).json(list)
+      })
+      .catch((err) => {
+        console.log("Promise error")
+        console.log(err)
+      })
+  })
+
+  .get("/giantbombInfo/:query", (req, res) => {
+    const query = req.params.query
+
+    //console.log(query)
+
+    gb.search({
+      query: query,
+      format: "json",
+      fields: ["name", "deck", "genres", "original_release_date", "image"],
+      limit: 1,
+      resources: ["game"],
+    })
+      .then((body) => {
+        let gameData = {
+          title: "",
+          genre: "",
+          itemDesc: "",
+          yearReleased: "",
+          imagePath: "",
+        }
+
+        const data = JSON.parse(body)
+        if (data.results.length >= 1) {
+          //console.log(data.results[0])
+          const result = data.results[0]
+
+          if (result.name) gameData.title = result.name
+
+          if (result.genres) {
+            gameData.genre = result.genres.map(({ name }) => name).join(", ")
+          }
+
+          if (result.deck) gameData.itemDesc = result.deck
+
+          if (result.original_release_date)
+            gameData.yearReleased = new Date(
+              result.original_release_date
+            ).getFullYear()
+
+          if (result.image && result.image.original_url)
+            gameData.imagePath = result.image.original_url
+        } else {
+          // error
+        }
+
+        return res.status(200).json(gameData)
+      })
+      .catch((err) => {
+        console.log("Promise error")
+        console.log(err)
       })
   })
 
