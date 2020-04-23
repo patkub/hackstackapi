@@ -19,46 +19,16 @@ $(function () {
       console.log("Giant Bomb ID: " + giantBombId)
 
       $.ajax({
-        url: "https://cors-anywhere.herokuapp.com/www.giantbomb.com/api/game/{0}/".format(
-          giantBombId
-        ),
-        dataType: "xml",
+        url: "/api/rentalItem/giantbomb/{0}".format(giantBombId),
+        dataType: "json",
         method: "GET",
-        data: {
-          api_key: hackstack.API_KEYS.GiantBomb,
-        },
       })
-        .then((xml) => {
-          // parse the giant bomb xml with CDATA response
-          console.log(xml)
-
-          const nameEl = xml.querySelector("response > results > name")
-          if (nameEl) {
-            $("#inputTitle").val(nameEl.textContent)
-          }
-
-          const yearEl = xml.querySelector(
-            "response > results > original_release_date"
-          )
-          if (yearEl) {
-            $("#inputYear").val(new Date(yearEl.textContent).getFullYear())
-          }
-
-          const posterEl = xml.querySelector(
-            "response > results > image > original_url"
-          )
-          if (posterEl) {
-            $("#inputImagePath").val(posterEl.textContent)
-          }
-
-          const genres = [
-            ...xml.querySelectorAll(
-              "response > results > genres > genre > name"
-            ),
-          ]
-            .map((g) => g.textContent)
-            .join(", ")
-          $("#inputGenre").val(genres)
+        .then((data) => {
+          console.log(data)
+          $("#inputTitle").val(data.title)
+          $("#inputYear").val(data.yearReleased)
+          $("#inputImagePath").val(data.imagePath)
+          $("#inputGenre").val(data.genre)
         })
         .catch((err) => {
           console.error(err)

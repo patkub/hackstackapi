@@ -13,6 +13,12 @@ const omdb = new OmdbApi({
 const tmdb = require("moviedb")(config.API_KEYS.TMDB)
 const axios = require("axios")
 
+const GiantBomb = require("giant-bomb")
+const gb = new GiantBomb(
+  config.API_KEYS.GiantBomb.Key,
+  config.API_KEYS.GiantBomb.UserAgent
+)
+
 router
   .get("/movies", (req, res) => {
     // render the /movies view
@@ -141,6 +147,46 @@ router
         })
 
         return res.status(200).json(games)
+      })
+      .catch((err) => {
+        console.error(err)
+      })
+  })
+
+  // Wrapper for giantbomb to get around restrictions
+  .get("/giantbomb/:id", (req, res) => {
+    const giantBombId = req.params.id
+
+    let gameData = {
+      title: "",
+      genre: "",
+      itemDesc: "",
+      yearReleased: "",
+      imagePath: "",
+    }
+
+    gb.getGame({
+      id: giantBombId,
+      fields: ["name", "genres", "original_release_date", "image"],
+      format: "json",
+    })
+      .then((body) => {
+        const data = JSON.parse(body)
+
+        if (data.results.name) gameData.title = data.results.name
+
+        if (data.results.genres)
+          gameData.genre = data.results.genres.map(({ name }) => name)
+
+        if (data.results.original_release_date)
+          gameData.yearReleased = new Date(
+            data.results.original_release_date
+          ).getFullYear()
+
+        if (data.results.image && data.results.image.original_url)
+          gameData.imagePath = data.results.image.original_url
+
+        return res.status(200).json(gameData)
       })
       .catch((err) => {
         console.error(err)
