@@ -99,9 +99,6 @@ $(function () {
         description: $("#inputDesc").val(),
         rating: $("#inputContentRating").val(),
         imagePath: $("#inputImagePath").val(),
-        // TODO(patkub): remove this and auto-increment in mysql
-        // random 4 digit item id
-        itemID: Math.floor(1000 + Math.random() * 9000),
       }
       console.log(data)
 
