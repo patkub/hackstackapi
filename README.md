@@ -21,6 +21,16 @@ yarn install
 node index.js
 ```
 
+### Babel Transpile ES6 (ES2015) to ES5
+
+There are ES6 (ES2015) classes in `app/views/js/components`. In order for them to work on browsers that only support ES5 (ex. IE), they need to be transpiled with babel. This command will generate `app/views/js/components.js` which is included on every page.
+
+```
+yarn transpile
+```
+
+### Old Stuff Below
+
 http://127.0.0.1:3000
 
 For testing, set `window.hackstack.API_SERVER` to the api server in `routes/app/views/js/utils.js`. To automate switching APIs, use the following scripts:

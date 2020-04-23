@@ -4,11 +4,21 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "transpile": "babel ./routes/app/views/js/components/injectable.js ./routes/app/views/js/components/cardDeck.js ./routes/app/views/js/components/navbar.js ./routes/app/views/js/components/navtabs.js ./routes/app/views/js/components/rentalItem.js ./routes/app/views/js/components/rentalMovie.js ./routes/app/views/js/components/rentalGame.js ./routes/app/views/js/components/rentalItemSmall.js --out-file ./routes/app/views/js/components.js"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.5",
+    "@babel/register": "^7.9.0",
     "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
     "express": "^4.17.1",
