@@ -45,9 +45,18 @@ $(function () {
             "response > results > image > original_url"
           ).textContent
 
+          const genres = [
+            ...xml.querySelectorAll(
+              "response > results > genres > genre > name"
+            ),
+          ]
+            .map((g) => g.textContent)
+            .join(", ")
+
           // fill out the form
           $("#inputTitle").val(name)
           $("#inputYear").val(year)
+          $("#inputGenre").val(genres)
           $("#inputImagePath").val(poster)
         })
         .catch((err) => {
