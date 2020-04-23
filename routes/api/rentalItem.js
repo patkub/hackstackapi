@@ -199,8 +199,8 @@ router
         return res.status(200).json(list)
       })
       .catch((err) => {
-        console.log("Promise error")
-        console.log(err)
+        //console.log("Promise error")
+        //console.log(err)
       })
   })
 
@@ -229,8 +229,8 @@ router
         return res.status(200).json(gameData)
       })
       .catch((err) => {
-        console.log("Promise error")
-        console.log(err)
+        //console.log("Promise error")
+        //console.log(err)
       })
   })
 
