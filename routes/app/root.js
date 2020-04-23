@@ -37,6 +37,17 @@ router
     )
   })
 
+  // adding a game
+  .get("/addGame", (req, res) => {
+    fs.readFile(
+      path.resolve(__dirname, "./views/addGame.html"),
+      "utf8",
+      function (err, contents) {
+        res.send(contents)
+      }
+    )
+  })
+
   // renting a movie
   .get("/rentMovie/:id", (req, res) => {
     fs.readFile(

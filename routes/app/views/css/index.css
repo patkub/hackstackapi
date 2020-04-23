@@ -3,7 +3,8 @@
 }
 
 h2,
-.movie-id-input {
+.movie-id-input,
+.game-id-input {
   margin-bottom: 1rem;
 }
 

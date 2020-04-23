@@ -69,7 +69,13 @@ class HackStackNavBar extends Injectable {
       this.active === "addMovie" ? "<span class='sr-only'>(current)</span>" : ""
     }</a
                 >
-                <a class="dropdown-item disabled" href="#">Add a Game</a>
+                <a
+                  class="dropdown-item ${
+                    this.active === "addGame" ? "active" : ""
+                  }" href="/addGame">Add a Game ${
+      this.active === "addGame" ? "<span class='sr-only'>(current)</span>" : ""
+    }</a
+                >
               </div>
             </li>
             <li class="nav-item dropdown">

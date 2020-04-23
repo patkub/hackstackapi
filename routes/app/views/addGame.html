@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css" />
+
+    <!-- Font Awesome -->
+    <script
+      src="https://kit.fontawesome.com/cfea56daf0.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- jQuery -->
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <!-- jQuery UI -->
+    <link rel="stylesheet" href="/vendor/jquery-ui/jquery-ui.min.css" />
+    <script src="/vendor/jquery-ui/jquery-ui.min.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <link rel="stylesheet" href="/static/css/index.css" />
+    <script src="/static/js/utils.js"></script>
+    <script src="/static/js/components/injectable.js"></script>
+    <script src="/static/js/components/navbar.js"></script>
+    <script src="/static/js/addGame.js"></script>
+
+    <title>Hello, world!</title>
+  </head>
+  <body>
+    <!-- anchor point for navbar html -->
+    <div id="navbar"></div>
+
+    <div id="alert" class="alert d-none" role="alert"></div>
+
+    <h2 class="text-center">Add a new Game!</h2>
+
+    <div class="container">
+      <div class="row">
+        <div class="input-group col-md-4 game-id-input">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="addon-giantBomb"
+              >Giant Bomb</span
+            >
+          </div>
+          <input
+            id="giantBombID"
+            type="text"
+            class="form-control"
+            placeholder="Giant Bomb url or id"
+            aria-label="Giant Bomb url or id"
+            aria-describedby="addon-giantBomb"
+          />
+        </div>
+      </div>
+
+      <form id="addNewGame">
+        <div class="form-group">
+          <label for="inputTitle">Title</label>
+          <input
+            id="inputTitle"
+            type="text"
+            class="form-control"
+            placeholder="game title"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="inputYear">Year</label>
+          <input
+            id="inputYear"
+            type="number"
+            class="form-control"
+            placeholder="year released"
+            min="0"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="inputGenre">Genre</label>
+          <input
+            id="inputGenre"
+            type="text"
+            class="form-control"
+            placeholder="genre"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="inputDesc">Description</label>
+          <textarea
+            id="inputDesc"
+            class="form-control"
+            rows="5"
+            required
+          ></textarea>
+        </div>
+        <div class="form-group">
+          <label for="inputContentRating">Content Rating</label>
+          <select class="form-control" id="inputContentRating" required>
+            <option></option>
+            <option>G</option>
+            <option>PG</option>
+            <option>PG-13</option>
+            <option>R</option>
+            <option>NC-17</option>
+            <option>UR</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="inputImagePath">Poster</label>
+          <input
+            id="inputImagePath"
+            type="text"
+            class="form-control"
+            placeholder="poster image"
+            required
+          />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Add</button>
+      </form>
+    </div>
+  </body>
+</html>
