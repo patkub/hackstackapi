@@ -18,6 +18,10 @@ app.use(
   "/vendor/bootstrap",
   express.static(path.join(__dirname, "/node_modules/bootstrap/dist"))
 )
+app.use(
+  "/vendor/jquery-ui",
+  express.static(path.join(__dirname, "/node_modules/jquery-ui-dist"))
+)
 
 app.use(
   "/static/css",

@@ -19,6 +19,9 @@
 
     <!-- jQuery -->
     <script src="/vendor/jquery/jquery.min.js"></script>
+    <!-- jQuery UI -->
+    <link rel="stylesheet" href="/vendor/jquery-ui/jquery-ui.min.css" />
+    <script src="/vendor/jquery-ui/jquery-ui.min.js"></script>
 
     <!-- Bootstrap JS -->
     <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -57,6 +60,21 @@
 
         <div class="col-md-4 movie-id-input">
           <button class="btn btn-primary" id="btnFill">Fill out</button>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-group col-md-4 movie-id-input">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="addon-imdb">Search</span>
+          </div>
+          <input
+            id="movieSearch"
+            type="text"
+            class="form-control"
+            placeholder="Search here..."
+            autocomplete="off"
+          />
         </div>
       </div>
 

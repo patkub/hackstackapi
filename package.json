@@ -13,6 +13,7 @@
     "bootstrap": "^4.4.1",
     "express": "^4.17.1",
     "jquery": "3.4.1",
+    "jquery-ui-dist": "^1.12.1",
     "marked": "^0.8.2",
     "moviedb": "^0.2.10",
     "omdb-api-pt": "^2.0.1"

@@ -53,6 +53,60 @@ $(function () {
     })
 
     /**
+     * Movie auto-complete code is adapted from: https://jsfiddle.net/yassarikhan786/0kcpqeg5/
+     */
+
+    $("#movieSearch").on("input", function () {
+      $("#movieSearch").autocomplete({
+        source: function (request, response) {
+          // replace spaces with a '+'
+          const search = request.term.replace(/\s/g, "+")
+          return $.ajax({
+            // http://www.omdbapi.com/?apikey=[yourkey]&
+            url: "http://www.omdbapi.com/?apikey={0}&s={1}&type=movie&r=json".format(
+              hackstack.API_KEYS.OMDB,
+              search
+            ),
+            dataType: "json",
+            success: function (data) {
+              var results = []
+              const list = data.Search
+              if (list != undefined) {
+                // we only care about the imdbID, so we can use it to query all the data we need
+                results = $.map(list, function (v, i) {
+                  return {
+                    label: v.Title + " (" + v.Year + ")",
+                    value: v.imdbID,
+                  }
+                })
+              } else results = undefined
+              response(results)
+            },
+          })
+        },
+      })
+    })
+
+    $("#movieSearch").on("autocompleteselect", function (e, ui) {
+      console.log(ui.item.value)
+      const imdbID = ui.item.value
+      // http://www.omdbapi.com/?apikey=[yourkey]&
+      const omdb_url = "http://www.omdbapi.com/?apikey={0}&i={1}".format(
+        hackstack.API_KEYS.OMDB,
+        imdbID
+      )
+      $.getJSON(omdb_url, function (data) {
+        console.log(data)
+
+        $("#inputTitle").val(data.Title)
+        $("#inputYear").val(data.Year)
+        $("#inputGenre").val(data.Genre)
+        $("#inputDesc").val(data.Plot)
+        $("#inputContentRating").val(data.Rated)
+      })
+    })
+
+    /**
      * Add the new movie
      */
     $("#addNewMovie").submit(function () {
