@@ -91,7 +91,9 @@ $(function () {
       $("#inputGenre").val(data.Genre)
       $("#inputDesc").val(data.Plot)
       $("#inputContentRating").val(data.Rated)
-      $("#inputImagePath").val(data.Poster)
+      if (data.Poster !== "N/A") {
+        $("#inputImagePath").val(data.Poster)
+      }
       $("#inputRuntime").val(data.Runtime.match(/\d+/)[0])
     }
 
