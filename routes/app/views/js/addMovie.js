@@ -92,6 +92,7 @@ $(function () {
       $("#inputDesc").val(data.Plot)
       $("#inputContentRating").val(data.Rated)
       $("#inputImagePath").val(data.Poster)
+      $("#inputRuntime").val(data.Runtime.match(/\d+/)[0])
     }
 
     /**
@@ -105,6 +106,7 @@ $(function () {
         description: $("#inputDesc").val(),
         rating: $("#inputContentRating").val(),
         imagePath: $("#inputImagePath").val(),
+        runtime: $("#inputRuntime").val(),
       }
       console.log(data)
 
