@@ -26,30 +26,7 @@ $(function () {
         imdb_id
       )
 
-      const new_movie = {
-        title: "",
-        genre: "",
-        itemDesc: "",
-        contentRating: "",
-        yearReleased: "",
-        rentalStatus: "",
-        isLate: "",
-        fine: [],
-      }
-
-      $.getJSON(omdb_url, function (data) {
-        new_movie.title = data.Title
-        new_movie.year = data.Year
-        new_movie.genre = data.Genre
-        new_movie.description = data.Plot
-        new_movie.contentRating = data.Rated
-
-        $("#inputTitle").val(new_movie.title)
-        $("#inputYear").val(new_movie.year)
-        $("#inputGenre").val(new_movie.genre)
-        $("#inputDesc").val(new_movie.description)
-        $("#inputContentRating").val(new_movie.contentRating)
-      })
+      $.getJSON(omdb_url, (data) => fillFormData(data))
     })
 
     /**
@@ -95,16 +72,21 @@ $(function () {
         hackstack.API_KEYS.OMDB,
         imdbID
       )
-      $.getJSON(omdb_url, function (data) {
-        console.log(data)
-
-        $("#inputTitle").val(data.Title)
-        $("#inputYear").val(data.Year)
-        $("#inputGenre").val(data.Genre)
-        $("#inputDesc").val(data.Plot)
-        $("#inputContentRating").val(data.Rated)
-      })
+      $.getJSON(omdb_url, (data) => fillFormData(data))
     })
+
+    /**
+     * Fill the add movie form with data
+     * @param {Object} data movie data from OMDb API
+     */
+    function fillFormData(data) {
+      $("#inputTitle").val(data.Title)
+      $("#inputYear").val(data.Year)
+      $("#inputGenre").val(data.Genre)
+      $("#inputDesc").val(data.Plot)
+      $("#inputContentRating").val(data.Rated)
+      $("#inputImagePath").val(data.Poster)
+    }
 
     /**
      * Add the new movie
@@ -116,6 +98,10 @@ $(function () {
         genre: $("#inputGenre").val(),
         description: $("#inputDesc").val(),
         rating: $("#inputContentRating").val(),
+        imagePath: $("#inputImagePath").val(),
+        // TODO(patkub): remove this and auto-increment in mysql
+        // random 4 digit item id
+        itemID: Math.floor(1000 + Math.random() * 9000),
       }
       console.log(data)
 
