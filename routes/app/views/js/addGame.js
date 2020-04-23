@@ -27,8 +27,9 @@ $(function () {
           console.log(data)
           $("#inputTitle").val(data.title)
           $("#inputYear").val(data.yearReleased)
-          $("#inputImagePath").val(data.imagePath)
           $("#inputGenre").val(data.genre)
+          $("#inputDesc").val(data.itemDesc)
+          $("#inputImagePath").val(data.imagePath)
         })
         .catch((err) => {
           console.error(err)

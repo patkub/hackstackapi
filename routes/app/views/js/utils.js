@@ -9,7 +9,6 @@ window.hackstack.API_SERVER = "http://127.0.0.1:8080/"
 window.hackstack.API_KEYS = Object.freeze({
   OMDB: "87daca5d",
   TMDB: "cf7c502592526f1498d082fd122d7309",
-  GiantBomb: "82e15653dc07b80859e016ec0cde31e0b5a7d176",
 })
 
 if (!String.prototype.format) {

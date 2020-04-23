@@ -167,7 +167,7 @@ router
 
     gb.getGame({
       id: giantBombId,
-      fields: ["name", "genres", "original_release_date", "image"],
+      fields: ["name", "deck", "genres", "original_release_date", "image"],
       format: "json",
     })
       .then((body) => {
@@ -175,8 +175,13 @@ router
 
         if (data.results.name) gameData.title = data.results.name
 
-        if (data.results.genres)
-          gameData.genre = data.results.genres.map(({ name }) => name)
+        if (data.results.genres) {
+          gameData.genre = data.results.genres
+            .map(({ name }) => name)
+            .join(", ")
+        }
+
+        if (data.results.deck) gameData.itemDesc = data.results.deck
 
         if (data.results.original_release_date)
           gameData.yearReleased = new Date(
