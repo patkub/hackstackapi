@@ -42,6 +42,44 @@ $(function () {
     })
 
     /**
+     * Add the new game
+     */
+    $("#addNewGame").submit(function () {
+      const data = {
+        title: $("#inputTitle").val(),
+        year: $("#inputYear").val(),
+        genre: $("#inputGenre").val(),
+        description: $("#inputDesc").val(),
+        rating: $("#inputContentRating").val(),
+        imagePath: $("#inputImagePath").val(),
+        isMultiplayer: $("#isMultiplayer").is(":checked"),
+      }
+      console.log(data)
+
+      // it will return a boolean with whether or not the item was added
+      $.post("http://localhost:8080/games/add", data)
+        .done(function (msg) {
+          // successfully added
+          $("#alert")
+            .removeClass("d-none")
+            .addClass("alert-success")
+            .html("<strong>Game added successfully!</strong>")
+        })
+        .fail(function (xhr, textStatus, errorThrown) {
+          // failed to add
+          $("#alert")
+            .removeClass("d-none")
+            .addClass("alert-danger")
+            .html(
+              "<strong>Oh no! An error occurred trying to add the game.</strong>"
+            )
+        })
+
+      // disable default browser form submit action
+      return false
+    })
+
+    /**
      * Fill the add game form with data
      * @param {Object} data game data from GiantBomb API
      */
