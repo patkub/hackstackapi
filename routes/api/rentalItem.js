@@ -231,12 +231,20 @@ router
     gb.search({
       query: query,
       format: "json",
-      fields: ["name", "deck", "genres", "original_release_date", "image"],
+      fields: [
+        "id",
+        "name",
+        "deck",
+        "genres",
+        "original_release_date",
+        "image",
+      ],
       limit: 1,
       resources: ["game"],
     })
       .then((body) => {
         let gameData = {
+          id: "",
           title: "",
           genre: "",
           itemDesc: "",
@@ -246,12 +254,15 @@ router
 
         const data = JSON.parse(body)
         if (data.results.length >= 1) {
-          //console.log(data.results[0])
           const result = data.results[0]
+
+          if (result.id) gameData.id = result.id
 
           if (result.name) gameData.title = result.name
 
+          //console.log(result.genres)
           if (result.genres) {
+            //console.log(result.genres)
             gameData.genre = result.genres.map(({ name }) => name).join(", ")
           }
 

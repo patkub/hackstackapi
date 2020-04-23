@@ -64,7 +64,18 @@ $(function () {
 
       $.getJSON(
         encodeURI("/api/rentalItem/giantbombInfo/" + gameName),
-        (data) => fillFormData(data)
+        (data) => {
+          fillFormData(data)
+          const gameId = data.id
+          console.log(gameId)
+          // use gameId to get genre
+          $.getJSON(
+            encodeURI("/api/rentalItem/giantbomb/" + gameId),
+            (data2) => {
+              $("#inputGenre").val(data2.genre)
+            }
+          )
+        }
       )
     })
 
@@ -73,10 +84,9 @@ $(function () {
      * @param {Object} data game data from GiantBomb API
      */
     function fillFormData(data) {
-      console.log(data)
+      //console.log(data)
       $("#inputTitle").val(data.title)
       $("#inputYear").val(data.yearReleased)
-      $("#inputGenre").val(data.genre)
       $("#inputDesc").val(data.itemDesc)
       $("#inputImagePath").val(data.imagePath)
     }
