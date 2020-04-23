@@ -32,18 +32,24 @@ $(function () {
           // parse the giant bomb xml with CDATA response
           console.log(xml)
 
-          const name = xml.querySelector("response > results > name")
-            .textContent
+          const nameEl = xml.querySelector("response > results > name")
+          if (nameEl) {
+            $("#inputTitle").val(nameEl.textContent)
+          }
 
-          const year = new Date(
-            xml.querySelector(
-              "response > results > original_release_date"
-            ).textContent
-          ).getFullYear()
+          const yearEl = xml.querySelector(
+            "response > results > original_release_date"
+          )
+          if (yearEl) {
+            $("#inputYear").val(new Date(yearEl.textContent).getFullYear())
+          }
 
-          const poster = xml.querySelector(
+          const posterEl = xml.querySelector(
             "response > results > image > original_url"
-          ).textContent
+          )
+          if (posterEl) {
+            $("#inputImagePath").val(posterEl.textContent)
+          }
 
           const genres = [
             ...xml.querySelectorAll(
@@ -52,12 +58,7 @@ $(function () {
           ]
             .map((g) => g.textContent)
             .join(", ")
-
-          // fill out the form
-          $("#inputTitle").val(name)
-          $("#inputYear").val(year)
           $("#inputGenre").val(genres)
-          $("#inputImagePath").val(poster)
         })
         .catch((err) => {
           console.error(err)
