@@ -157,40 +157,21 @@ router
   .get("/giantbomb/:id", (req, res) => {
     const giantBombId = req.params.id
 
-    let gameData = {
-      title: "",
-      genre: "",
-      itemDesc: "",
-      yearReleased: "",
-      imagePath: "",
-    }
-
     gb.getGame({
       id: giantBombId,
-      fields: ["name", "deck", "genres", "original_release_date", "image"],
+      fields: [
+        "id",
+        "name",
+        "deck",
+        "genres",
+        "original_release_date",
+        "image",
+      ],
       format: "json",
     })
       .then((body) => {
         const data = JSON.parse(body)
-
-        if (data.results.name) gameData.title = data.results.name
-
-        if (data.results.genres) {
-          gameData.genre = data.results.genres
-            .map(({ name }) => name)
-            .join(", ")
-        }
-
-        if (data.results.deck) gameData.itemDesc = data.results.deck
-
-        if (data.results.original_release_date)
-          gameData.yearReleased = new Date(
-            data.results.original_release_date
-          ).getFullYear()
-
-        if (data.results.image && data.results.image.original_url)
-          gameData.imagePath = data.results.image.original_url
-
+        const gameData = getGameData(data)
         return res.status(200).json(gameData)
       })
       .catch((err) => {
@@ -243,42 +224,8 @@ router
       resources: ["game"],
     })
       .then((body) => {
-        let gameData = {
-          id: "",
-          title: "",
-          genre: "",
-          itemDesc: "",
-          yearReleased: "",
-          imagePath: "",
-        }
-
         const data = JSON.parse(body)
-        if (data.results.length >= 1) {
-          const result = data.results[0]
-
-          if (result.id) gameData.id = result.id
-
-          if (result.name) gameData.title = result.name
-
-          //console.log(result.genres)
-          if (result.genres) {
-            //console.log(result.genres)
-            gameData.genre = result.genres.map(({ name }) => name).join(", ")
-          }
-
-          if (result.deck) gameData.itemDesc = result.deck
-
-          if (result.original_release_date)
-            gameData.yearReleased = new Date(
-              result.original_release_date
-            ).getFullYear()
-
-          if (result.image && result.image.original_url)
-            gameData.imagePath = result.image.original_url
-        } else {
-          // error
-        }
-
+        const gameData = getGameData(data)
         return res.status(200).json(gameData)
       })
       .catch((err) => {
@@ -286,5 +233,35 @@ router
         console.log(err)
       })
   })
+
+/**
+ * Parse GiantBomb results into Game data needed
+ * @param {Object} data
+ */
+function getGameData(data) {
+  const gameData = {
+    id: "",
+    title: "",
+    genre: "",
+    itemDesc: "",
+    yearReleased: "",
+    imagePath: "",
+  }
+
+  // get first result
+  const result = data.results.length >= 1 ? data.results[0] : data.results
+
+  if (result.id) gameData.id = result.id
+  if (result.name) gameData.title = result.name
+  if (result.genres)
+    gameData.genre = result.genres.map(({ name }) => name).join(", ")
+  if (result.deck) gameData.itemDesc = result.deck
+  if (result.original_release_date)
+    gameData.yearReleased = new Date(result.original_release_date).getFullYear()
+  if (result.image && result.image.original_url)
+    gameData.imagePath = result.image.original_url
+
+  return gameData
+}
 
 module.exports = router

@@ -46,7 +46,7 @@
       <div class="row">
         <div class="input-group col-md-4 movie-id-input">
           <div class="input-group-prepend">
-            <span class="input-group-text" id="addon-imdb">IMDb</span>
+            <span class="input-group-text" id="addon-imdb-id">IMDb</span>
           </div>
           <input
             id="imdbID"
@@ -54,7 +54,7 @@
             class="form-control"
             placeholder="IMDb url or id"
             aria-label="IMDb url or id"
-            aria-describedby="addon-imdb"
+            aria-describedby="addon-imdb-id"
           />
         </div>
       </div>
@@ -62,13 +62,15 @@
       <div class="row">
         <div class="input-group col-md-4 movie-id-input">
           <div class="input-group-prepend">
-            <span class="input-group-text" id="addon-imdb">Search</span>
+            <span class="input-group-text" id="addon-imdb-search">Search</span>
           </div>
           <input
             id="movieSearch"
             type="text"
             class="form-control"
             placeholder="Search here..."
+            aria-label="Search here..."
+            aria-describedby="addon-imdb-search"
             autocomplete="off"
           />
         </div>
