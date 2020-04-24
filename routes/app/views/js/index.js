@@ -38,6 +38,7 @@ $(function () {
         document.getElementById("movies").append(cardDeck.render())
       }
 
+      // TODO: get rental status from Java API
       hackstack.showRentalItemSmallOverlay(2, "Unavailable")
     })
   })(window.hackstack)
