@@ -99,7 +99,7 @@ $(function () {
     function removeLastActorListener(e) {
       e.preventDefault()
       $("#actors").children().last().remove()
-      numActors--
+      if (numActors > 0) numActors--
     }
 
     function addActor(name, picture) {
