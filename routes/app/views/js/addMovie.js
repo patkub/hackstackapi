@@ -5,6 +5,9 @@ $(function () {
     const navbar = new HackStackNavBar("addMovie")
     navbar.inject("#navbar")
 
+    // remember current number of actors
+    let numActors = 0
+
     $("#imdbID").tooltip({
       trigger: "focus",
       title: "Link to movie on imdb.com",
@@ -82,6 +85,56 @@ $(function () {
     })
 
     /**
+     * Adding and removing movie actors
+     */
+
+    $("#addActor").on("click", (e) => addActorListener(e))
+    $("#removeActor").on("click", (e) => removeLastActorListener(e))
+
+    function addActorListener(e) {
+      e.preventDefault()
+      addActor("", "")
+    }
+
+    function removeLastActorListener(e) {
+      e.preventDefault()
+      $("#actors").children().last().remove()
+      numActors--
+    }
+
+    function addActor(name, picture) {
+      numActors++
+      $("#actors").append(
+        $(
+          [
+            "<div class='form-group'>",
+            "<label for='inputActorName{0}'>Actor {1}</label>".format(
+              numActors,
+              numActors
+            ),
+            "<input",
+            "  id='inputActorName{0}'".format(numActors),
+            "  type='text'",
+            "  class='inputActorName form-control'",
+            "  placeholder='actor&#39;s name'",
+            "  value='{0}'".format(name),
+            "  required",
+            "/>",
+            "<input",
+            "  id='inputActorPicture{0}'".format(numActors),
+            "  type='text'",
+            "  class='inputActorPicture form-control'",
+            "  placeholder='actor&#39;s picture'",
+            "  value='{0}'".format(picture),
+            "  required",
+            "/>",
+            "</div>",
+          ].join("\n")
+        )
+      )
+    }
+
+    /**
      * Fill the add movie form with data
      * @param {Object} data movie data from OMDb API
      */
@@ -95,12 +148,54 @@ $(function () {
         $("#inputImagePath").val(data.Poster)
       }
       $("#inputRuntime").val(data.Runtime.match(/\d+/)[0])
+
+      // use data.imdbID to get actors
+      const credits_url = "https://api.themoviedb.org/3/movie/{0}/credits?api_key={1}".format(
+        data.imdbID,
+        hackstack.API_KEYS.TMDB
+      )
+      $.getJSON(credits_url, (data) => {
+        // get only the first 5 actors that have a profile image
+        const actors = data.cast.filter((a) => a.profile_path).slice(0, 5)
+        // add actors to form
+        for (const actor of actors) {
+          addActor(
+            actor.name,
+            "https://image.tmdb.org/t/p/w200/" + actor.profile_path
+          )
+        }
+      })
     }
 
     /**
      * Add the new movie
      */
-    $("#addNewMovie").submit(function () {
+    $("#addNewMovie").submit(function (e) {
+      e.preventDefault()
+
+      // get actors from form
+      const actorNames = $(".inputActorName")
+        .map(function () {
+          return $(this).val()
+        })
+        .get()
+      const actorPictures = $(".inputActorPicture")
+        .map(function () {
+          return $(this).val()
+        })
+        .get()
+
+      // list of actors
+      const actors = []
+
+      $(actorNames).each((i, name) => {
+        const new_actor = {
+          name: name,
+          imagePath: actorPictures[i],
+        }
+        actors.push(new_actor)
+      })
+
       const data = {
         title: $("#inputTitle").val(),
         year: $("#inputYear").val(),
@@ -109,6 +204,12 @@ $(function () {
         rating: $("#inputContentRating").val(),
         imagePath: $("#inputImagePath").val(),
         runtime: $("#inputRuntime").val(),
+        /**
+         * @param {Object[]} actors movie actors
+         * @param {string} actors[].name - The name of an actor
+         * @param {string} actors[].imagePath - The profile picture of an actor
+         */
+        actors: actors,
       }
       console.log(data)
 

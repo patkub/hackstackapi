@@ -1,3 +1,7 @@
+button[type="submit"] {
+  margin-bottom: 1em;
+}
+
 .nav {
   margin-bottom: 1rem;
 }
@@ -77,7 +81,11 @@ h2,
   margin-bottom: 1rem;
 }
 
-#customers .card {
+#movies .card,
+#games .card,
+#customers .card,
+#addActor,
+#removeActor {
   margin-bottom: 1em;
 }
 
@@ -85,12 +93,9 @@ h2,
 #games .card-title {
   font-weight: bold;
 }
-#movies .card,
-#games .card {
-  margin-bottom: 1em;
-}
 
-.list-group-flush .list-group-item:first-child {
+#bigmovie .list-group-flush .list-group-item:first-child,
+#biggame .list-group-flush .list-group-item:first-child {
   border-top-width: 1px;
 }
 
