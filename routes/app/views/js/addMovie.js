@@ -214,7 +214,12 @@ $(function () {
       console.log(data)
 
       // it will return a boolean with whether or not the item was added
-      $.post("http://localhost:8080/movies/add", data)
+      $.ajax({
+        'type': 'POST',
+        'url': 'http://localhost:8080/movies/add',
+        'contentType': 'application/json; charset=utf-8',
+        'data': JSON.stringify(data)
+      })
         .done(function (msg) {
           // successfully added
           $("#alert")
