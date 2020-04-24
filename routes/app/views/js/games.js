@@ -33,7 +33,7 @@ $(function () {
       // make a card deck out of current games
       // aligns empty spaces evenly
       let cardDeck = new HackStackCardDeck(games, NUM_CHUNKS)
-      document.getElementById("games").append(cardDeck.render())
+      document.getElementById("games").appendChild(cardDeck.render())
     }
   })
 })

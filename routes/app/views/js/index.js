@@ -9,6 +9,7 @@ $(function () {
 
   $.getJSON(window.hackstack.API_SERVER + "movies", function (data) {
     // movies per row
+    console.log(data)
     const NUM_CHUNKS = 3
 
     for (let i = 0; i < data.length; i += NUM_CHUNKS) {
@@ -33,7 +34,7 @@ $(function () {
       // make a card deck out of current movies
       // aligns empty spaces evenly
       let cardDeck = new HackStackCardDeck(movies, NUM_CHUNKS)
-      document.getElementById("movies").append(cardDeck.render())
+      document.getElementById("movies").appendChild(cardDeck.render())
     }
   })
 })

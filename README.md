@@ -23,10 +23,11 @@ node index.js
 
 ### Babel Transpile ES6 (ES2015) to ES5
 
-There are ES6 (ES2015) classes in `app/views/js/components`. In order for them to work on browsers that only support ES5 (ex. IE), they need to be transpiled with babel. This command will generate `app/views/js/components.js` which is included on every page.
+There are ES6 (ES2015) classes in `app/views/js/components`. In order for them to work on browsers that only support ES5 (ex. IE), they need to be transpiled with babel. The JavaScript for each page also needs to be transpiled. These commands will generate `app/views/js/components.js` and `[page].min.js` for each page.
 
 ```
-yarn transpile
+yarn transpileComponents
+yarn transpilePages
 ```
 
 ### Old Stuff Below

@@ -113,7 +113,7 @@ $(function () {
       console.log(data)
 
       // it will return a boolean with whether or not the item was added
-      $.post("http://localhost:8080/movies/add", data)
+      $.post("http://192.168.122.1:8080/movies/add", data)
         .done(function (msg) {
           // successfully added
           $("#alert")

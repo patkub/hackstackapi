@@ -2,6 +2,7 @@ window.hackstack = window.hackstack || {}
 
 // the Java api
 window.hackstack.API_SERVER = "http://127.0.0.1:8080/"
+window.hackstack.API_SERVER = "http://192.168.122.1:8080/"
 
 // the express.js api for testing purposes
 //window.hackstack.API_SERVER = "http://127.0.0.1:3000/api/"
