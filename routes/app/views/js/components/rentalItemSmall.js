@@ -39,6 +39,9 @@ class HackStackRentalItemSmall extends Injectable {
   render() {
     return `
       <div class='card'>
+        <div id="${this.itemID}overlay" class="rentalItemSmall--overlay">
+          <div class="rentalItemSmall--overlay-text"></div>
+        </div>
         <img class='card-img-top' src='${this.imagePath}' alt='Poster' />
         <div class='card-body'>
           <h5 class='card-title'>${this._computeCardTitle()}</h5>
