@@ -52,7 +52,7 @@ $(function () {
             "          <div class='tags'>",
             hsRentalMovie.computeGenreTags(),
             "          </div>",
-            "          <div class='badges'>",
+            "          <div class='badges mb-3'>",
             "             <span class='badge badge-secondary'><i class='fa fa-clock-o'></i> Runtime: " +
               hsRentalMovie.getRuntime() +
               " min</span> ",

@@ -17,7 +17,7 @@ $(function () {
         $(
           [
             "<div class='col-md-6'>",
-            "  <div class='card'>",
+            "  <div class='card mb-3'>",
             "    <div class='card-body'>",
             "      <h5 class='card-title'>" + val.name + "</h5>",
             "      <p class='card-text'>",

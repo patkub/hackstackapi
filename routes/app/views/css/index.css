@@ -81,19 +81,6 @@ h2,
   margin-bottom: 1rem;
 }
 
-#movies .card,
-#games .card,
-#customers .card,
-#addActor,
-#removeActor {
-  margin-bottom: 1em;
-}
-
-#movies .card-title,
-#games .card-title {
-  font-weight: bold;
-}
-
 #bigmovie .list-group-flush .list-group-item:first-child,
 #biggame .list-group-flush .list-group-item:first-child {
   border-top-width: 1px;
@@ -107,9 +94,7 @@ h2,
 .big-movie .tags {
   margin-bottom: 0.5em;
 }
-.big-movie .badges {
-  margin-bottom: 1em;
-}
+
 .big-movie .card-body {
   /*background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
     url("https://image.tmdb.org/t/p/original/upUy2QhMZEmtypPW3PdieKLAHxh.jpg")
