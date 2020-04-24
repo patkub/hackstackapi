@@ -161,7 +161,7 @@ $(function () {
         for (const actor of actors) {
           addActor(
             actor.name,
-            "https://image.tmdb.org/t/p/w200/" + actor.profile_path
+            "https://image.tmdb.org/t/p/w200" + actor.profile_path
           )
         }
       })
