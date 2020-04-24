@@ -37,7 +37,9 @@ if (!String.prototype.format) {
    * @param {String} text text to overlay
    */
   function showRentalItemSmallOverlay(itemID, text) {
-    const overlay = document.getElementById("{0}overlay".format(itemID))
+    const overlay = document.getElementById(
+      "rentalItemSmallOverlay{0}".format(itemID)
+    )
     overlay.style.display = "block"
     const textEl = overlay.querySelector(".rentalItemSmall--overlay-text")
     textEl.textContent = text
