@@ -156,6 +156,10 @@ h2,
   color: white;
 }
 
+.report-pdf {
+  margin-bottom: 2em;
+}
+
 @media (max-width: 768px) {
   /* make the movie less giant on mobile */
   .big-movie .card-img {
