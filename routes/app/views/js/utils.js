@@ -32,6 +32,18 @@ if (!String.prototype.format) {
   }
 
   /**
+   * Set loading progress
+   * Looks for element with id #loadingProgress on the page
+   *
+   * @param {String} val Progress percentage
+   */
+  function setLoadingProgress(val) {
+    $("#loadingProgress")
+      .css("width", val + "%")
+      .attr("aria-valuenow", val)
+  }
+
+  /**
    * Show overlay text on small rental item
    * @param {String} itemID item index starting at 0
    * @param {String} text text to overlay
@@ -46,5 +58,6 @@ if (!String.prototype.format) {
   }
 
   hackstack.computeURLItemID = computeURLItemID
+  hackstack.setLoadingProgress = setLoadingProgress
   hackstack.showRentalItemSmallOverlay = showRentalItemSmallOverlay
 })(window.hackstack)

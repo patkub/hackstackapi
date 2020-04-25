@@ -7,19 +7,13 @@ $(function () {
 
     let hsRentalMovie
 
-    function setLoadingProgress(val) {
-      $("#loadingProgress")
-        .css("width", val + "%")
-        .attr("aria-valuenow", val)
-    }
-
     // get movie id from url
     const movieID = hackstack.computeURLItemID()
     // get movie data
     $.getJSON(
       hackstack.API_SERVER + "rentalItem/movie?itemID={0}".format(movieID),
       function (data) {
-        setLoadingProgress(50)
+        hackstack.setLoadingProgress(50)
         hsRentalMovie = new HackStackRentalMovie(
           data.itemID,
           data.title,
@@ -138,7 +132,7 @@ $(function () {
         })
 
         // done
-        setLoadingProgress(100)
+        hackstack.setLoadingProgress(100)
 
         // hide progress after 0.5 seconds
         setTimeout(function () {

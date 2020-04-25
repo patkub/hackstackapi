@@ -7,19 +7,13 @@ $(function () {
 
     let hsRentalGame
 
-    function setLoadingProgress(val) {
-      $("#loadingProgress")
-        .css("width", val + "%")
-        .attr("aria-valuenow", val)
-    }
-
     // get the game id from url
     const gameID = hackstack.computeURLItemID()
     // get game data
     $.getJSON(
       hackstack.API_SERVER + "rentalItem/game?itemID={0}".format(gameID),
       function (data) {
-        setLoadingProgress(50)
+        hackstack.setLoadingProgress(50)
         hsRentalGame = new HackStackRentalGame(
           data.itemID,
           data.title,
@@ -137,7 +131,7 @@ $(function () {
         })
 
         // done
-        setLoadingProgress(100)
+        hackstack.setLoadingProgress(100)
 
         // hide progress after 0.5 seconds
         setTimeout(function () {
