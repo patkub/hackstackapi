@@ -9,7 +9,11 @@ $(function () {
       $("#gameSearch").autocomplete({
         source: function (request, response) {
           return $.ajax({
-            url: encodeURI("/api/rentalItem/giantbombSearch/" + request.term),
+            url: encodeURI(
+              hackstack.WRAPPER_API_SERVER +
+                "/gameSearch/giantbombSearch/" +
+                request.term
+            ),
             dataType: "json",
             success: function (data) {
               response(data)
@@ -25,14 +29,18 @@ $(function () {
       //console.log(gameName)
 
       $.getJSON(
-        encodeURI("/api/rentalItem/giantbombInfo/" + gameName),
+        encodeURI(
+          hackstack.WRAPPER_API_SERVER + "/gameSearch/giantbombInfo/" + gameName
+        ),
         (data) => {
           fillFormData(data)
           const gameId = data.id
           console.log(gameId)
           // use gameId to get genre
           $.getJSON(
-            encodeURI("/api/rentalItem/giantbomb/" + gameId),
+            encodeURI(
+              hackstack.WRAPPER_API_SERVER + "/gameSearch/giantbomb/" + gameId
+            ),
             (data2) => {
               $("#inputGenre").val(data2.genre)
             }

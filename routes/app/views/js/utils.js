@@ -13,8 +13,8 @@ if (!String.prototype.format) {
   // the Java api
   hackstack.API_SERVER = "http://127.0.0.1:8080/"
 
-  // the express.js api for testing purposes
-  //hackstack.API_SERVER = "http://127.0.0.1:3000/api/"
+  // the express.js api wrapper used for game search
+  hackstack.WRAPPER_API_SERVER = "http://127.0.0.1:3000/api/"
 
   hackstack.API_KEYS = Object.freeze({
     OMDB: "87daca5d",
