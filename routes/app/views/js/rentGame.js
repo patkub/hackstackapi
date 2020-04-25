@@ -89,7 +89,7 @@ $(function () {
             const data = {
               itemID: hsRentalGame.getItemID(),
             }
-            $.post("http://localhost:8080/rent", data)
+            $.post(hackstack.API_SERVER + "rent", data)
               .done(function (msg) {
                 // successfully rented
                 $("#alert")
@@ -116,7 +116,7 @@ $(function () {
             const data = {
               itemID: hsRentalGame.getItemID(),
             }
-            $.post("http://localhost:8080/reserve", data)
+            $.post(hackstack.API_SERVER + "reserve", data)
               .done(function (msg) {
                 // successfully reserved
                 $("#alert")
