@@ -9,6 +9,10 @@ $(function () {
     const navbar = new HackStackNavBar("manageCustomers")
     navbar.inject("#navbar")
 
+    // render the footer
+    const footer = new HackStackFooter()
+    footer.inject("#footer")
+
     $.getJSON(hackstack.API_SERVER + "customer", function (data) {
       function parseEmail(email) {
         return email.recipient + "@" + email.domain

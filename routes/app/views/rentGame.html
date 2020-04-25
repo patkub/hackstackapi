@@ -29,29 +29,34 @@
     <script src="/static/js/components.js"></script>
     <script src="/static/js/rentGame.js"></script>
 
-    <title>Hello, world!</title>
+    <title>The Hack Stack</title>
   </head>
   <body>
-    <!-- anchor point for navbar html -->
-    <div id="navbar"></div>
+    <div class="content">
+      <!-- anchor point for navbar html -->
+      <div id="navbar"></div>
 
-    <div class="progress">
-      <div
-        id="loadingProgress"
-        class="progress-bar progress-bar-striped progress-bar-animated"
-        role="progressbar"
-        aria-valuenow="0"
-        aria-valuemin="0"
-        aria-valuemax="100"
-        style="width: 0%;"
-      ></div>
+      <div class="progress">
+        <div
+          id="loadingProgress"
+          class="progress-bar progress-bar-striped progress-bar-animated"
+          role="progressbar"
+          aria-valuenow="0"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          style="width: 0%;"
+        ></div>
+      </div>
+
+      <div id="alert" class="alert alert-primary d-none" role="alert"></div>
+
+      <h2 class="text-center">Get this Game!</h2>
+
+      <!-- Big display for game -->
+      <div id="biggame" class="container big-movie"></div>
     </div>
 
-    <div id="alert" class="alert alert-primary d-none" role="alert"></div>
-
-    <h2 class="text-center">Get this Game!</h2>
-
-    <!-- Big display for game -->
-    <div id="biggame" class="container big-movie"></div>
+    <!-- anchor point for footer html -->
+    <div id="footer" class="footer"></div>
   </body>
 </html>

@@ -9,6 +9,10 @@ $(function () {
     const navtabs = new HackStackNavTabs("games")
     navtabs.inject("#navtabs")
 
+    // render the footer
+    const footer = new HackStackFooter()
+    footer.inject("#footer")
+
     $.getJSON(hackstack.API_SERVER + "games", function (data) {
       // games per row
       const NUM_CHUNKS = 3

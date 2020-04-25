@@ -9,6 +9,10 @@ $(function () {
     const navtabs = new HackStackNavTabs("movies")
     navtabs.inject("#navtabs")
 
+    // render the footer
+    const footer = new HackStackFooter()
+    footer.inject("#footer")
+
     $.getJSON(window.hackstack.API_SERVER + "movies", function (data) {
       // movies per row
       const NUM_CHUNKS = 3

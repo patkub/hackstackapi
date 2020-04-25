@@ -5,6 +5,10 @@ $(function () {
     const navbar = new HackStackNavBar("addMovie")
     navbar.inject("#navbar")
 
+    // render the footer
+    const footer = new HackStackFooter()
+    footer.inject("#footer")
+
     // remember current number of actors
     let numActors = 0
 
@@ -228,10 +232,10 @@ $(function () {
 
       // it will return a boolean with whether or not the item was added
       $.ajax({
-        'type': 'POST',
-        'url': 'http://localhost:8080/movies/add',
-        'contentType': 'application/json; charset=utf-8',
-        'data': JSON.stringify(data)
+        type: "POST",
+        url: "http://localhost:8080/movies/add",
+        contentType: "application/json; charset=utf-8",
+        data: JSON.stringify(data),
       })
         .done(function (msg) {
           // successfully added

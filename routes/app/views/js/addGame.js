@@ -5,6 +5,10 @@ $(function () {
     const navbar = new HackStackNavBar("addGame")
     navbar.inject("#navbar")
 
+    // render the footer
+    const footer = new HackStackFooter()
+    footer.inject("#footer")
+
     $("#gameSearch").on("input", function () {
       $("#gameSearch").autocomplete({
         source: function (request, response) {

@@ -1,3 +1,19 @@
+html,
+body {
+  height: 100%;
+}
+body {
+  display: flex;
+  flex-direction: column;
+}
+.content {
+  flex: 1 0 auto;
+  margin-bottom: 2em;
+}
+.footer {
+  flex-shrink: 0;
+}
+
 button[type="submit"] {
   margin-bottom: 1em;
 }
@@ -143,6 +159,10 @@ h2,
 
 .report-pdf {
   margin-bottom: 2em;
+}
+
+.footer {
+  background-color: #e0e0e0;
 }
 
 @media (max-width: 768px) {

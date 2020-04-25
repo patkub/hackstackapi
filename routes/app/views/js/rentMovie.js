@@ -5,6 +5,10 @@ $(function () {
     const navbar = new HackStackNavBar("home")
     navbar.inject("#navbar")
 
+    // render the footer
+    const footer = new HackStackFooter()
+    footer.inject("#footer")
+
     let hsRentalMovie
 
     // get movie id from url

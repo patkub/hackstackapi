@@ -32,115 +32,122 @@
     <script src="/static/js/components.js"></script>
     <script src="/static/js/addGame.js"></script>
 
-    <title>Hello, world!</title>
+    <title>The Hack Stack</title>
   </head>
   <body>
-    <!-- anchor point for navbar html -->
-    <div id="navbar"></div>
+    <div class="content">
+      <!-- anchor point for navbar html -->
+      <div id="navbar"></div>
 
-    <div id="alert" class="alert d-none" role="alert"></div>
+      <div id="alert" class="alert d-none" role="alert"></div>
 
-    <h2 class="text-center">Add a new Game!</h2>
+      <h2 class="text-center">Add a new Game!</h2>
 
-    <div class="container">
-      <div class="row">
-        <div class="input-group col-md-4 game-search-input">
-          <div class="input-group-prepend">
-            <span class="input-group-text">Search</span>
-          </div>
-          <input
-            id="gameSearch"
-            type="text"
-            class="form-control"
-            placeholder="Search here..."
-            autocomplete="off"
-          />
-        </div>
-      </div>
-
-      <form id="addNewGame">
-        <div class="form-group">
-          <label for="inputTitle">Title</label>
-          <input
-            id="inputTitle"
-            type="text"
-            class="form-control"
-            placeholder="game title"
-            required
-          />
-        </div>
-        <div class="form-group">
-          <label for="inputYear">Year</label>
-          <input
-            id="inputYear"
-            type="number"
-            class="form-control"
-            placeholder="year released"
-            min="0"
-            required
-          />
-        </div>
-        <div class="form-group">
-          <label for="inputGenre">Genre</label>
-          <input
-            id="inputGenre"
-            type="text"
-            class="form-control"
-            placeholder="genre"
-            required
-          />
-        </div>
-        <div class="form-group">
-          <label for="inputDesc">Description</label>
-          <textarea
-            id="inputDesc"
-            class="form-control"
-            rows="5"
-            required
-          ></textarea>
-        </div>
-        <div class="form-group">
-          <!-- https://en.wikipedia.org/wiki/Entertainment_Software_Rating_Board#Ratings -->
-          <label for="inputContentRating">Content Rating</label>
-          <select class="form-control" id="inputContentRating" required>
-            <option></option>
-            <option>Rating Pending (RP)</option>
-            <option>Early Childhood (EC)</option>
-            <option>Everyone (E)</option>
-            <option>Everyone 10+ (E10+)</option>
-            <option>Teen (T)</option>
-            <option>Mature (M)</option>
-            <option>Adults Only (AO)</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="inputImagePath">Poster</label>
-          <input
-            id="inputImagePath"
-            type="text"
-            class="form-control"
-            placeholder="poster image"
-          />
-        </div>
-        <div class="form-check">
-          <label class="checkbox-container form-check-label" for="isMultiplayer"
-            >Is multiplayer?
+      <div class="container">
+        <div class="row">
+          <div class="input-group col-md-4 game-search-input">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Search</span>
+            </div>
             <input
-              type="checkbox"
-              class="form-check-input"
-              id="isMultiplayer"
+              id="gameSearch"
+              type="text"
+              class="form-control"
+              placeholder="Search here..."
+              autocomplete="off"
             />
-            <span class="checkmark"></span>
-          </label>
+          </div>
+        </div>
 
-          <!-- <input type="checkbox" class="form-check-input" id="isMultiplayer" />
+        <form id="addNewGame">
+          <div class="form-group">
+            <label for="inputTitle">Title</label>
+            <input
+              id="inputTitle"
+              type="text"
+              class="form-control"
+              placeholder="game title"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="inputYear">Year</label>
+            <input
+              id="inputYear"
+              type="number"
+              class="form-control"
+              placeholder="year released"
+              min="0"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="inputGenre">Genre</label>
+            <input
+              id="inputGenre"
+              type="text"
+              class="form-control"
+              placeholder="genre"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="inputDesc">Description</label>
+            <textarea
+              id="inputDesc"
+              class="form-control"
+              rows="5"
+              required
+            ></textarea>
+          </div>
+          <div class="form-group">
+            <!-- https://en.wikipedia.org/wiki/Entertainment_Software_Rating_Board#Ratings -->
+            <label for="inputContentRating">Content Rating</label>
+            <select class="form-control" id="inputContentRating" required>
+              <option></option>
+              <option>Rating Pending (RP)</option>
+              <option>Early Childhood (EC)</option>
+              <option>Everyone (E)</option>
+              <option>Everyone 10+ (E10+)</option>
+              <option>Teen (T)</option>
+              <option>Mature (M)</option>
+              <option>Adults Only (AO)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="inputImagePath">Poster</label>
+            <input
+              id="inputImagePath"
+              type="text"
+              class="form-control"
+              placeholder="poster image"
+            />
+          </div>
+          <div class="form-check">
+            <label
+              class="checkbox-container form-check-label"
+              for="isMultiplayer"
+              >Is multiplayer?
+              <input
+                type="checkbox"
+                class="form-check-input"
+                id="isMultiplayer"
+              />
+              <span class="checkmark"></span>
+            </label>
+
+            <!-- <input type="checkbox" class="form-check-input" id="isMultiplayer" />
           <label class="form-check-label" for="isMultiplayer">
             Is multiplayer?</label
           > -->
-        </div>
+          </div>
 
-        <button type="submit" class="btn btn-primary">Add</button>
-      </form>
+          <button type="submit" class="btn btn-primary">Add</button>
+        </form>
+      </div>
     </div>
+
+    <!-- anchor point for footer html -->
+    <div id="footer" class="footer"></div>
   </body>
 </html>
