@@ -7,7 +7,7 @@
 - [ ] Adding a movie
 - [x] Generating an inventory report
 
-Pulls movie and game data from [OMDb](https://www.omdbapi.com/), [TMDb](https://www.themoviedb.org/), and [IGDB](https://www.igdb.com/discover)
+Pulls movie data from [OMDb](https://www.omdbapi.com/) and [TMDb](https://www.themoviedb.org/), and game data from [GiantBomb](https://www.giantbomb.com/).
 
 ### Setup
 
