@@ -1,17 +1,15 @@
 $(function () {
   window.hackstack = window.hackstack || {}
   ;(function (hackstack) {
-    // render the navbar
+    // create the components
     const navbar = new HackStackNavBar("home")
-    navbar.inject("#navbar")
-
-    // render the navtabs
     const navtabs = new HackStackNavTabs("games")
-    navtabs.inject("#navtabs")
-
-    // render the footer
     const footer = new HackStackFooter()
-    footer.inject("#footer")
+
+    // render the components
+    $("#navbar").append(navbar.render())
+    $("#navtabs").append(navtabs.render())
+    $("#footer").append(footer.render())
 
     $.getJSON(hackstack.API_SERVER + "games", function (data) {
       // games per row

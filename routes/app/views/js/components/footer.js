@@ -1,8 +1,4 @@
-class HackStackFooter extends Injectable {
-  constructor() {
-    super()
-  }
-
+class HackStackFooter {
   /**
    * Render the footer
    * @return template literal html

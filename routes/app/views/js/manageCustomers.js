@@ -5,13 +5,13 @@ $(function () {
   // the express.js api for testing purposes
   window.hackstack.API_SERVER = "http://127.0.0.1:3000/api/"
   ;(function (hackstack) {
-    // render the navbar
+    // create the components
     const navbar = new HackStackNavBar("manageCustomers")
-    navbar.inject("#navbar")
-
-    // render the footer
     const footer = new HackStackFooter()
-    footer.inject("#footer")
+
+    // render the components
+    $("#navbar").append(navbar.render())
+    $("#footer").append(footer.render())
 
     $.getJSON(hackstack.API_SERVER + "customer", function (data) {
       function parseEmail(email) {

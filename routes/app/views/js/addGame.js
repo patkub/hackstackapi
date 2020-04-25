@@ -1,13 +1,12 @@
 $(function () {
   window.hackstack = window.hackstack || {}
   ;(function (hackstack) {
-    // render the navbar
     const navbar = new HackStackNavBar("addGame")
-    navbar.inject("#navbar")
-
-    // render the footer
     const footer = new HackStackFooter()
-    footer.inject("#footer")
+
+    // render the navbar and footer
+    $("#navbar").append(navbar.render())
+    $("#footer").append(footer.render())
 
     $("#gameSearch").on("input", function () {
       $("#gameSearch").autocomplete({

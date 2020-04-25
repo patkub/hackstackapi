@@ -1,7 +1,5 @@
-class HackStackNavTabs extends Injectable {
+class HackStackNavTabs {
   constructor(active) {
-    super()
-
     /** The active tab. 'movies', or 'games' */
     this.active = active
   }

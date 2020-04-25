@@ -1,7 +1,5 @@
-class HackStackRentalItemSmall extends Injectable {
+class HackStackRentalItemSmall {
   constructor(type, itemID, title, year, description, imagePath, rentLink) {
-    super()
-
     /** 'movie' or 'game' */
     this.type = type
 
