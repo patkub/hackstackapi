@@ -5,6 +5,8 @@ $(function () {
     const navbar = new HackStackNavBar("home")
     navbar.inject("#navbar")
 
+    let hsRentalGame
+
     function setLoadingProgress(val) {
       $("#loadingProgress")
         .css("width", val + "%")
@@ -17,10 +19,9 @@ $(function () {
     $.getJSON(
       hackstack.API_SERVER + "rentalItem/game?itemID={0}".format(gameID),
       function (data) {
-        console.log(data)
         setLoadingProgress(50)
-        const hsRentalGame = new HackStackRentalGame(
-          gameID,
+        hsRentalGame = new HackStackRentalGame(
+          data.itemID,
           data.title,
           data.year,
           data.description,
@@ -84,17 +85,55 @@ $(function () {
         ).appendTo("#biggame")
 
         $("#btnRent").click(function () {
-          //alert( "Rent button clicked" );
-          $("#alert")
-            .removeClass("d-none")
-            .html("<strong>You Rented the Game!</strong>")
+          if (hsRentalGame) {
+            const data = {
+              itemID: hsRentalGame.getItemID(),
+            }
+            $.post("http://localhost:8080/rent", data)
+              .done(function (msg) {
+                // successfully rented
+                $("#alert")
+                  .removeClass("d-none")
+                  .removeClass("alert-danger")
+                  .addClass("alert-success")
+                  .html("<strong>Game rented successfully!</strong>")
+              })
+              .fail(function (xhr, textStatus, errorThrown) {
+                // failed to rent
+                $("#alert")
+                  .removeClass("d-none")
+                  .removeClass("alert-success")
+                  .addClass("alert-danger")
+                  .html(
+                    "<strong>Oh no! An error occurred trying to rent the game.</strong>"
+                  )
+              })
+          }
         })
 
         $("#btnReserve").click(function () {
-          //alert( "Reserve button clicked" );
-          $("#alert")
-            .removeClass("d-none")
-            .html("<strong>You Reserved the Game!</strong>")
+          if (hsRentalGame) {
+            const data = {
+              itemID: hsRentalGame.getItemID(),
+            }
+            $.post("http://localhost:8080/reserve", data)
+              .done(function (msg) {
+                // successfully reserved
+                $("#alert")
+                  .removeClass("d-none")
+                  .addClass("alert-success")
+                  .html("<strong>Game reserved successfully!</strong>")
+              })
+              .fail(function (xhr, textStatus, errorThrown) {
+                // failed to reserve
+                $("#alert")
+                  .removeClass("d-none")
+                  .addClass("alert-danger")
+                  .html(
+                    "<strong>Oh no! An error occurred trying to reserve the game.</strong>"
+                  )
+              })
+          }
         })
 
         // done

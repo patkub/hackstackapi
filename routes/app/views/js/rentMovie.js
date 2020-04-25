@@ -5,6 +5,8 @@ $(function () {
     const navbar = new HackStackNavBar("home")
     navbar.inject("#navbar")
 
+    let hsRentalMovie
+
     function setLoadingProgress(val) {
       $("#loadingProgress")
         .css("width", val + "%")
@@ -18,8 +20,8 @@ $(function () {
       hackstack.API_SERVER + "rentalItem/movie?itemID={0}".format(movieID),
       function (data) {
         setLoadingProgress(50)
-        const hsRentalMovie = new HackStackRentalMovie(
-          movieID,
+        hsRentalMovie = new HackStackRentalMovie(
+          data.itemID,
           data.title,
           data.year,
           data.description,
@@ -84,17 +86,55 @@ $(function () {
         ).appendTo("#bigmovie")
 
         $("#btnRent").click(function () {
-          //alert( "Rent button clicked" );
-          $("#alert")
-            .removeClass("d-none")
-            .html("<strong>You Rented the Movie!</strong>")
+          if (hsRentalMovie) {
+            const data = {
+              itemID: hsRentalMovie.getItemID(),
+            }
+            $.post("http://localhost:8080/rent", data)
+              .done(function (msg) {
+                // successfully rented
+                $("#alert")
+                  .removeClass("d-none")
+                  .removeClass("alert-danger")
+                  .addClass("alert-success")
+                  .html("<strong>Movie rented successfully!</strong>")
+              })
+              .fail(function (xhr, textStatus, errorThrown) {
+                // failed to rent
+                $("#alert")
+                  .removeClass("d-none")
+                  .addClass("alert-danger")
+                  .html(
+                    "<strong>Oh no! An error occurred trying to rent the movie.</strong>"
+                  )
+              })
+          }
         })
 
         $("#btnReserve").click(function () {
-          //alert( "Reserve button clicked" );
-          $("#alert")
-            .removeClass("d-none")
-            .html("<strong>You Reserved the Movie!</strong>")
+          if (hsRentalMovie) {
+            const data = {
+              itemID: hsRentalMovie.getItemID(),
+            }
+            $.post("http://localhost:8080/reserve", data)
+              .done(function (msg) {
+                // successfully reserved
+                $("#alert")
+                  .removeClass("d-none")
+                  .removeClass("alert-success")
+                  .addClass("alert-success")
+                  .html("<strong>Movie reserved successfully!</strong>")
+              })
+              .fail(function (xhr, textStatus, errorThrown) {
+                // failed to reserve
+                $("#alert")
+                  .removeClass("d-none")
+                  .addClass("alert-danger")
+                  .html(
+                    "<strong>Oh no! An error occurred trying to reserve the movie.</strong>"
+                  )
+              })
+          }
         })
 
         // done
