@@ -227,9 +227,7 @@ $(function () {
          */
         actors: actors,
       }
-      //console.log(data)
-
-      // it will return a boolean with whether or not the item was added
+      
       $.ajax({
         type: "POST",
         url: hackstack.API_SERVER + "movies/add",

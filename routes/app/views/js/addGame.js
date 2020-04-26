@@ -65,9 +65,7 @@ $(function () {
         imagePath: $("#inputImagePath").val(),
         isMultiplayer: $("#isMultiplayer").is(":checked"),
       }
-      console.log(data)
 
-      // it will return a boolean with whether or not the item was added
       $.post(hackstack.API_SERVER + "games/add", data)
         .done(function (msg) {
           // successfully added

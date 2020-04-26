@@ -25,15 +25,8 @@ $(function () {
         mobilePhone: $("#inputMobilePhone").val(),
         email: $("#inputEmail").val(),
       }
-      console.log(data)
 
-      // it will return a boolean with whether or not the item was added
-      $.ajax({
-        type: "POST",
-        url:  hackstack.API_SERVER + "customers/add",
-        contentType: "application/json; charset=utf-8",
-        data: JSON.stringify(data),
-      })
+      $.post(hackstack.API_SERVER + "customers/add", data)
         .done(function (msg) {
           // successfully added
           $("#alert")
