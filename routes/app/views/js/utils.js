@@ -21,6 +21,9 @@ if (!String.prototype.format) {
     TMDB: "cf7c502592526f1498d082fd122d7309",
   })
 
+  // rentalStatus values that use an overlay for small rental items
+  hackstack.overlayStates = Object.freeze(["Unavailable", "Reserved"])
+
   /**
    * Get item id from url
    * @return {String} item id
