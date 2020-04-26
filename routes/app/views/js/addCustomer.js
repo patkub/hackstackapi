@@ -20,7 +20,7 @@ $(function () {
 
       const data = {
         name: $("#inputName").val(),
-        password: $("inputPassword").val(),
+        password: $("#inputPassword").val(),
         homeAddress: $("#inputHomeAddress").val(),
         homePhone: $("#inputHomePhone").val(),
         mobilePhone: $("#inputMobilePhone").val(),
