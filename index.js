@@ -1,6 +1,8 @@
 const config = require("./config")
 
+const fs = require("fs")
 const path = require("path")
+const https = require("https")
 const express = require("express")
 const app = express()
 
@@ -44,6 +46,16 @@ app.use(
   express.static(path.join(__dirname, "/routes/app/views/img"))
 )
 
-app.listen(config.port, () =>
-  console.log(`HackStackAPI listening at http://localhost:${config.port}`)
-)
+// we will pass our 'app' to 'https' server
+https
+  .createServer(
+    {
+      key: fs.readFileSync("./key.pem"),
+      cert: fs.readFileSync("./cert.pem"),
+      passphrase: "12345",
+    },
+    app
+  )
+  .listen(config.port, () =>
+    console.log(`HackStackAPI listening at https://localhost:${config.port}`)
+  )
