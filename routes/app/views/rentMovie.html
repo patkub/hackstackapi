@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-100">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
@@ -31,8 +31,8 @@
 
     <title>The Hack Stack</title>
   </head>
-  <body>
-    <div class="content">
+  <body class="d-flex flex-column h-100">
+    <div class="content flex-grow-1 flex-shrink-0 mb-4">
       <!-- anchor point for navbar html -->
       <div id="navbar"></div>
 
@@ -50,13 +50,13 @@
 
       <div id="alert" class="alert alert-primary d-none" role="alert"></div>
 
-      <h2 class="text-center">Get this Movie!</h2>
+      <h2 class="text-center mb-3">Get this Movie!</h2>
 
       <!-- Big display for movie -->
-      <div id="bigmovie" class="container big-movie"></div>
+      <div id="bigmovie" class="container rental-item"></div>
     </div>
 
     <!-- anchor point for footer html -->
-    <div id="footer" class="footer"></div>
+    <div id="footer"></div>
   </body>
 </html>

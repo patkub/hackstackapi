@@ -139,7 +139,7 @@ var HackStackNavTabs = /*#__PURE__*/function () {
   _createClass(HackStackNavTabs, [{
     key: "render",
     value: function render() {
-      return "\n      <ul class=\"nav nav-pills nav-justified\">\n        <li class=\"nav-item\">\n          <a class=\"nav-link ".concat(this.active === "movies" ? "active" : "", "\" href=\"").concat(this.active === "movies" ? "#" : "/", "\">Movies</a>\n        </li>\n        <li class=\"nav-item\">\n          <a class=\"nav-link ").concat(this.active === "games" ? "active" : "", "\" href=\"").concat(this.active === "games" ? "#" : "/games", "\">Games</a>\n        </li>\n      </ul>\n    ");
+      return "\n      <ul class=\"nav nav-pills nav-justified mb-3\">\n        <li class=\"nav-item\">\n          <a class=\"nav-link ".concat(this.active === "movies" ? "active" : "", "\" href=\"").concat(this.active === "movies" ? "#" : "/", "\">Movies</a>\n        </li>\n        <li class=\"nav-item\">\n          <a class=\"nav-link ").concat(this.active === "games" ? "active" : "", "\" href=\"").concat(this.active === "games" ? "#" : "/games", "\">Games</a>\n        </li>\n      </ul>\n    ");
     }
   }]);
 
@@ -166,7 +166,7 @@ var HackStackFooter = /*#__PURE__*/function () {
      * @return template literal html
      */
     value: function render() {
-      return "\n      <div class=\"footer\">\n        <div class=\"container p-5\">\n          <div class=\"row\">\n            <div class=\"col-sm-4\">\n              <a href=\"https://www.themoviedb.org/\" target=\"_blank\"\n                ><img\n                  width=\"200px\"\n                  src=\"https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg\"\n              /></a>\n              <p>\n                This product uses the TMDb API but is not endorsed or certified by\n                TMDb.\n              </p>\n            </div>\n\n            <div class=\"col-sm-4\">\n              Information courtesy of <a href=\"http://www.imdb.com\" target=\"_blank\">IMDb</a> (<a href=\"http://www.imdb.com\" target=\"_blank\">http://www.imdb.com</a>). Used with\n              permission.\n            </div>\n\n            <div class=\"col-sm-4\">\n              <a href=\"https://www.giantbomb.com/\" target=\"_blank\"\n                ><img height=\"100\" src=\"/static/img/giant-bomb-vector-logo.png\"\n              /></a>\n            </div>\n          </div>\n        </div>\n      </div>\n    ";
+      return "\n      <div class=\"footer flex-shrink-0\">\n        <div class=\"container p-5\">\n          <div class=\"row\">\n            <div class=\"col-sm-4\">\n              <a href=\"https://www.themoviedb.org/\" target=\"_blank\"\n                ><img\n                  width=\"200px\"\n                  src=\"https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg\"\n              /></a>\n              <p>\n                This product uses the TMDb API but is not endorsed or certified by\n                TMDb.\n              </p>\n            </div>\n\n            <div class=\"col-sm-4\">\n              Information courtesy of <a href=\"http://www.imdb.com\" target=\"_blank\">IMDb</a> (<a href=\"http://www.imdb.com\" target=\"_blank\">http://www.imdb.com</a>). Used with\n              permission.\n            </div>\n\n            <div class=\"col-sm-4\">\n              <a href=\"https://www.giantbomb.com/\" target=\"_blank\"\n                ><img height=\"100\" src=\"/static/img/giant-bomb-vector-logo.png\"\n              /></a>\n            </div>\n          </div>\n        </div>\n      </div>\n    ";
     }
   }]);
 
@@ -622,7 +622,7 @@ var HackStackRentalMovie = /*#__PURE__*/function (_HackStackRentalItem) {
       try {
         for (_iterator.s(); !(_step = _iterator.n()).done;) {
           var actor = _step.value;
-          content += ["<figure class='figure'>", "<img src='" + actor.imagePath + "' alt='actor' class='img-thumbnail figure-img img-fluid rounded' style='height: 75px'>", "<figcaption class='figure-caption'>" + actor.name + "</figcaption>", "</figure>"].join("\n");
+          content += ["<figure class='figure mr-3'>", "<img src='" + actor.imagePath + "' alt='actor' class='img-thumbnail figure-img img-fluid rounded' style='height: 75px'>", "<figcaption class='figure-caption'>" + actor.name + "</figcaption>", "</figure>"].join("\n");
         }
       } catch (err) {
         _iterator.e(err);

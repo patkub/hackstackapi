@@ -5,7 +5,7 @@ class HackStackFooter {
    */
   render() {
     return `
-      <div class="footer">
+      <div class="footer flex-shrink-0">
         <div class="container p-5">
           <div class="row">
             <div class="col-sm-4">

@@ -43,13 +43,13 @@ $(function () {
             "       alt='" + hsRentalMovie.getTitle() + " poster'",
             "      />",
             "    </div>",
-            "    <div class='col-md-8'>",
+            "    <div class='col-md-8 d-flex flex-column'>",
             "      <div class='card-body bg-dark'>",
             "        <h5 class='card-title font-weight-bolder'>",
             hsRentalMovie.computeCardTitle(),
             "</h5>",
             "        <div class='card-text'>",
-            "          <div class='tags'>",
+            "          <div class='tags mb-1'>",
             hsRentalMovie.computeGenreTags(),
             "          </div>",
             "          <div class='badges mb-3'>",
@@ -60,7 +60,7 @@ $(function () {
               hsRentalMovie.getRating() +
               "</span> ",
             "          </div>",
-            "          <p class='movie-description'>" +
+            "          <p class='movie-description mb-3'>" +
               hsRentalMovie.getDescription() +
               "</p>",
             hsRentalMovie.computeActors(),

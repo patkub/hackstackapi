@@ -1,26 +1,11 @@
-html,
-body {
-  height: 100%;
-}
-body {
-  display: flex;
-  flex-direction: column;
-}
-.content {
-  flex: 1 0 auto;
-  margin-bottom: 2em;
-}
 .footer {
-  flex-shrink: 0;
+  background-color: #e0e0e0;
 }
 
-button[type="submit"] {
-  margin-bottom: 1em;
-}
-
-.nav {
-  margin-bottom: 1rem;
-}
+/**
+ * Custom checkbox from w3schools
+ * https://www.w3schools.com/howto/howto_css_custom_checkbox.asp
+ */
 
 /* Customize the label (the container) */
 .checkbox-container {
@@ -91,49 +76,32 @@ button[type="submit"] {
   transform: rotate(45deg);
 }
 
-h2,
-.movie-id-input,
-.game-search-input {
-  margin-bottom: 1rem;
-}
-
-#bigmovie .list-group-flush .list-group-item:first-child,
-#biggame .list-group-flush .list-group-item:first-child {
+/**
+ * Big rental item styles
+ */
+.rental-item .list-group-flush .list-group-item:first-child {
   border-top-width: 1px;
 }
 
-/* big movie display */
-.big-movie .col-md-8 {
-  display: flex;
-  flex-flow: column;
-}
-.big-movie .tags {
-  margin-bottom: 0.5em;
-}
-
-.big-movie .card-body {
-  /*background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-    url("https://image.tmdb.org/t/p/original/upUy2QhMZEmtypPW3PdieKLAHxh.jpg")
-      center center/cover no-repeat #ccc;*/
+.rental-item .card-body {
   line-height: 1.7;
   font-size: 14pt;
 }
-.big-movie .card-body,
+.rental-item .card-body,
 .figure-caption {
   color: rgb(255, 255, 255);
   text-shadow: rgba(0, 0, 0, 0.8) 1.3px 1.5px;
 }
-.big-movie .card-title {
+.rental-item .card-title {
   font-size: 16pt;
 }
-.big-movie figure {
+.rental-item figure {
   width: 100px;
-  margin-right: 1em;
-}
-.big-movie .movie-description {
-  margin-bottom: 1.5rem;
 }
 
+/**
+ * Small rental item styles
+ */
 .rentalItemSmall--overlay {
   position: absolute;
   display: none;
@@ -157,17 +125,9 @@ h2,
   color: white;
 }
 
-.report-pdf {
-  margin-bottom: 2em;
-}
-
-.footer {
-  background-color: #e0e0e0;
-}
-
 @media (max-width: 768px) {
-  /* make the movie less giant on mobile */
-  .big-movie .card-img {
+  /* make the big rental item image less giant when stacked */
+  .rental-item .card-img {
     max-width: 300px;
     margin: 0 auto;
     display: block;

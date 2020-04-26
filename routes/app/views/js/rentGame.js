@@ -42,13 +42,13 @@ $(function () {
             "       alt='" + hsRentalGame.getTitle() + " poster'",
             "      />",
             "    </div>",
-            "    <div class='col-md-8'>",
+            "    <div class='col-md-8 d-flex flex-column'>",
             "      <div class='card-body bg-dark'>",
             "        <h5 class='card-title font-weight-bolder'>" +
               hsRentalGame.computeCardTitle(),
             "</h5>",
             "        <div class='card-text'>",
-            "          <div class='tags'>",
+            "          <div class='tags mb-1'>",
             hsRentalGame.computeGenreTags(),
             "          </div>",
             "          <div class='badges'>",
@@ -59,7 +59,7 @@ $(function () {
               hsRentalGame.getRating() +
               "</span> ",
             "          </div>",
-            "          <p class='movie-description'>" +
+            "          <p class='movie-description mb-3'>" +
               hsRentalGame.getDescription() +
               "</p>",
             //getCredits(cast),
