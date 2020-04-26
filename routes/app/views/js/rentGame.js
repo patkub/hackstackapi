@@ -62,7 +62,6 @@ $(function () {
             "          <p class='movie-description mb-3'>" +
               hsRentalGame.getDescription() +
               "</p>",
-            //getCredits(cast),
             "        </div>",
             "      </div>",
             "      <ul class='list-group list-group-flush'>",
