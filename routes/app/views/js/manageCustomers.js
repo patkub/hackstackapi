@@ -21,9 +21,13 @@ $(function () {
             "         Email: <a href='mailto:" + val.email + "'>",
             val.email + "</a><br>",
             "         Home Address: " + val.homeAddress + "<br>",
-            "         Home Phone: <a href='tel:" + val.homePhone + "'>",
+            "         Home Phone: <a href='tel:" +
+              val.homePhone +
+              "' class='phone_us'>",
             val.homePhone + "</a><br>",
-            "         Mobile Phone: <a href='tel:" + val.mobilePhone + "'>",
+            "         Mobile Phone: <a href='tel:" +
+              val.mobilePhone +
+              "' class='phone_us'>",
             val.mobilePhone + "</a>" + "<br>",
             "      </p><a href='mailto:" +
               val.email +
@@ -41,6 +45,8 @@ $(function () {
           ].join("\n")
         ).appendTo("#customers")
       })
+
+      $(".phone_us").mask("(000) 000-0000")
     })
   })(window.hackstack)
 })
