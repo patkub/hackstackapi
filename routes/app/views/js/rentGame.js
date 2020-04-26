@@ -29,7 +29,7 @@ $(function () {
           data.rentalStatus,
           data.late,
           data.fine,
-          data.isMultiplayer
+          data.multiplayer
         )
         $(
           [
