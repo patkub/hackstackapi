@@ -73,12 +73,19 @@ if (!String.prototype.format) {
    * @param {String} text text to overlay
    */
   function showRentalItemSmallOverlay(itemID, text) {
-    const overlay = document.getElementById(
-      "rentalItemSmallOverlay{0}".format(itemID)
-    )
-    overlay.style.display = "block"
-    const textEl = overlay.querySelector(".rentalItemSmall--overlay-text")
-    textEl.textContent = text
+    const overlay = $("#rentalItemSmallOverlay{0}".format(itemID))
+    overlay.addClass("rentalItemSmall--overlay")
+    overlay.find(".rentalItemSmall--overlay-text").text(text)
+  }
+
+  /**
+   * Hide overlay text on small rental item
+   * @param {String} itemID item index starting at 0
+   */
+  function hideRentalItemSmallOverlay(itemID) {
+    const overlay = $("#rentalItemSmallOverlay{0}".format(itemID))
+    overlay.removeClass("rentalItemSmall--overlay")
+    overlay.find(".rentalItemSmall--overlay-text").text("")
   }
 
   hackstack.computeURLItemID = computeURLItemID
@@ -86,4 +93,5 @@ if (!String.prototype.format) {
   hackstack.alertSuccess = alertSuccess
   hackstack.alertDanger = alertDanger
   hackstack.showRentalItemSmallOverlay = showRentalItemSmallOverlay
+  hackstack.hideRentalItemSmallOverlay = hideRentalItemSmallOverlay
 })(window.hackstack)

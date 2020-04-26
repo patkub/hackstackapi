@@ -41,7 +41,8 @@ $(function () {
       }
 
       // TODO: get rental status from Java API
-      //hackstack.showRentalItemSmallOverlay(2, "Unavailable")
+      hackstack.showRentalItemSmallOverlay(2, "Unavailable")
+      //hackstack.hideRentalItemSmallOverlay(2)
     })
   })(window.hackstack)
 })

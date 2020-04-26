@@ -767,7 +767,7 @@ var HackStackRentalItemSmall = /*#__PURE__*/function () {
   }, {
     key: "render",
     value: function render() {
-      return "\n      <div class='card mb-3'>\n        <div id=\"rentalItemSmallOverlay".concat(this.itemID, "\" class=\"rentalItemSmall--overlay\">\n          <div class=\"rentalItemSmall--overlay-text\"></div>\n        </div>\n        <img class='card-img-top' src='").concat(this.imagePath, "' alt='Poster' />\n        <div class='card-body'>\n          <h5 class='card-title font-weight-bold'>").concat(this._computeCardTitle(), "</h5>\n          <p class='card-text'>").concat(this.description, "</p>\n        </div>\n        <div class='card-footer'>\n          <a href='").concat(this._computeRentLink(), "' class='btn btn-primary'>Rent</a>\n          <a href='").concat(this._computeRentLink(), "' class='btn btn-secondary'>Reserve</a>\n        </div>\n      </div>");
+      return "\n      <div class='card mb-3'>\n        <div id=\"rentalItemSmallOverlay".concat(this.itemID, "\">\n          <img class='card-img-top' src='").concat(this.imagePath, "' alt='Poster' />\n          <div class=\"rentalItemSmall--overlay-text\"></div>\n        </div>\n        <div class='card-body'>\n          <h5 class='card-title font-weight-bold'>").concat(this._computeCardTitle(), "</h5>\n          <p class='card-text'>").concat(this.description, "</p>\n        </div>\n        <div class='card-footer'>\n          <a href='").concat(this._computeRentLink(), "' class='btn btn-primary'>Rent</a>\n          <a href='").concat(this._computeRentLink(), "' class='btn btn-secondary'>Reserve</a>\n        </div>\n      </div>");
     }
   }]);
 
