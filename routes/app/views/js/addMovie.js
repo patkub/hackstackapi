@@ -30,8 +30,8 @@ $(function () {
       // 2) tt1502397
       const imdb_id = $("#imdbID").val().match(/tt\d+/)
 
-      // http://www.omdbapi.com/?apikey=[yourkey]&
-      const omdb_url = "http://www.omdbapi.com/?apikey={0}&i={1}".format(
+      // https://www.omdbapi.com/?apikey=[yourkey]&
+      const omdb_url = "https://www.omdbapi.com/?apikey={0}&i={1}".format(
         hackstack.API_KEYS.OMDB,
         imdb_id
       )
@@ -53,8 +53,8 @@ $(function () {
           // replace spaces with a '+'
           const search = request.term.replace(/\s/g, "+")
           return $.ajax({
-            // http://www.omdbapi.com/?apikey=[yourkey]&
-            url: "http://www.omdbapi.com/?apikey={0}&s={1}&type=movie&r=json".format(
+            // https://www.omdbapi.com/?apikey=[yourkey]&
+            url: "https://www.omdbapi.com/?apikey={0}&s={1}&type=movie&r=json".format(
               hackstack.API_KEYS.OMDB,
               search
             ),
@@ -81,8 +81,8 @@ $(function () {
     $("#movieSearch").on("autocompleteselect", function (_, ui) {
       //console.log(ui.item.value)
       const imdbID = ui.item.value
-      // http://www.omdbapi.com/?apikey=[yourkey]&
-      const omdb_url = "http://www.omdbapi.com/?apikey={0}&i={1}".format(
+      // https://www.omdbapi.com/?apikey=[yourkey]&
+      const omdb_url = "https://www.omdbapi.com/?apikey={0}&i={1}".format(
         hackstack.API_KEYS.OMDB,
         imdbID
       )
@@ -240,7 +240,9 @@ $(function () {
         })
         .fail(function (xhr, textStatus, errorThrown) {
           // failed to add
-          hackstack.alertDanger("<strong>Oh no! An error occurred trying to add the movie.</strong>")
+          hackstack.alertDanger(
+            "<strong>Oh no! An error occurred trying to add the movie.</strong>"
+          )
         })
 
       // disable default browser form submit action
