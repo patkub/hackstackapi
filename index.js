@@ -28,6 +28,10 @@ app.use(
   "/vendor/inputmask",
   express.static(path.join(__dirname, "/node_modules/inputmask/dist"))
 )
+app.use(
+  "/vendor/jquery-mask-plugin",
+  express.static(path.join(__dirname, "/node_modules/jquery-mask-plugin/dist/"))
+)
 
 app.use(
   "/static/css",
