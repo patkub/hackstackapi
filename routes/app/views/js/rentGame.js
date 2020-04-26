@@ -59,7 +59,7 @@ $(function () {
               hsRentalGame.getRating() +
               "</span> ",
             "          </div>",
-            "          <p class='movie-description mb-3'>" +
+            "          <p class='Game-description mb-3'>" +
               hsRentalGame.getDescription() +
               "</p>",
             "        </div>",
@@ -81,40 +81,130 @@ $(function () {
           ].join("\n")
         ).appendTo("#biggame")
 
-        $("#btnRent").click(function () {
-          if (hsRentalGame) {
-            const data = {
-              itemID: hsRentalGame.getItemID(),
-              paymentMethod: $("#paymentMethod").val(),
+        //rent Game button
+        if(hsRentalGame.getRentalStatus() == 'Available') {
+          $("#btnRent").click(function () {
+            if (hsRentalGame) {
+              const data = {
+                itemID: hsRentalGame.getItemID(),
+                paymentMethod: $("#paymentMethod").val(),
+              }
+              $.post(hackstack.API_SERVER + "rent", data)
+                .done(function (msg) {
+                  // successfully rented
+                  hackstack.alertSuccess("<strong>Game rented successfully!</strong>");
+                  location.reload();
+                })
+                .fail(function (xhr, textStatus, errorThrown) {
+                  // failed to rent
+                  hackstack.alertDanger("<strong>Oh no! An error occurred trying to rent the Game.</strong>")
+                })
             }
-            $.post(hackstack.API_SERVER + "rent", data)
-              .done(function (msg) {
-                // successfully added
-                hackstack.alertSuccess("<strong>Game rented successfully!</strong>")
-              })
-              .fail(function (xhr, textStatus, errorThrown) {
-                // failed to add
-                hackstack.alertDanger("<strong>Oh no! An error occurred trying to rent the game.</strong>")
-              })
-          }
-        })
+          })
+          $("#btnRent").html("Rent");
+        } else if (hsRentalGame.getRentalStatus() == 'Reserved') {
+          $("#btnRent").click(function () {
+            if (hsRentalGame) {
+              const data = {
+                itemID: hsRentalGame.getItemID(),
+                paymentMethod: $("#paymentMethod").val(),
+              }
+              $.post(hackstack.API_SERVER + "rent", data)
+                .done(function (msg) {
+                  // successfully rented
+                  hackstack.alertSuccess("<strong>Game rented successfully!</strong>");
+                  location.reload();
+                })
+                .fail(function (xhr, textStatus, errorThrown) {
+                  // failed to rent
+                  hackstack.alertDanger("<strong>Oh no! An error occurred trying to rent the Game.</strong>")
+                })
+            }
+          });
+          $("#btnRent").html("Pick Up");
+        //rented
+        } else {
+          $("#btnRent").click(function () {
+            if (hsRentalGame) {
+              const data = {
+                itemID: hsRentalGame.getItemID()
+              }
+              $.post(hackstack.API_SERVER + "returnRental", data)
+                .done(function (msg) {
+                  // successfully rented
+                  hackstack.alertSuccess("<strong>Game returned successfully!</strong>");
+                  location.reload();
+                })
+                .fail(function (xhr, textStatus, errorThrown) {
+                  // failed to rent
+                  hackstack.alertDanger("<strong>Oh no! An error occurred trying to return the Game.</strong>")
+                })
+            }
+          });
+          $("#btnRent").html("Return");
+        }
 
-        $("#btnReserve").click(function () {
-          if (hsRentalGame) {
-            const data = {
-              itemID: hsRentalGame.getItemID(),
+        //reserve Game button
+        if(hsRentalGame.getRentalStatus() != 'Reserved') {
+    
+          //create reservation
+          $("#btnReserve").click(function () {
+            if (hsRentalGame) {
+      
+              //reserve on backend
+              const data = {
+                itemID: hsRentalGame.getItemID(),
+              }
+              $.post(hackstack.API_SERVER + "reserve", data)
+                .done(function (msg) {
+                  if(msg) {
+                    // successfully reserved
+                    hackstack.alertSuccess("<strong>Game reserved successfully!</strong>");
+                    location.reload();
+                  } else {
+                    // failed to reserve
+                    hackstack.alertDanger("<strong>Oh no! An error occurred trying to reserve the Game.</strong>")
+                  }
+                })
+                .fail(function (xhr, textStatus, errorThrown) {
+                  // failed to reserve
+                  hackstack.alertDanger("<strong>Oh no! An error occurred trying to reserve the Game.</strong>")
+                })
             }
-            $.post(hackstack.API_SERVER + "reserve", data)
-              .done(function (msg) {
-                // successfully reserved
-                hackstack.alertSuccess("<strong>Game reserved successfully!</strong>")
-              })
-              .fail(function (xhr, textStatus, errorThrown) {
-                // failed to reserve
-                hackstack.alertDanger("<strong>Oh no! An error occurred trying to reserve the game.</strong>")
-              })
-          }
-        })
+          });
+          //change text
+          $("#btnReserve").html("Reserve");
+        } else {
+          //cancel reservation
+          $("#btnReserve").click(function () {
+            if (hsRentalGame) {
+      
+              //reserve on backend
+              const data = {
+                itemID: hsRentalGame.getItemID(),
+              }
+              $.post(hackstack.API_SERVER + "cancelReservation", data)
+                .done(function (msg) {
+                  if(msg) {
+                    // successfully reserved
+                    hackstack.alertSuccess("<strong>Game reserved successfully!</strong>");
+                    location.reload();
+                  } else {
+                    // failed to reserve
+                    hackstack.alertDanger("<strong>Oh no! An error occurred trying to reserve the Game.</strong>")
+                  }
+                })
+                .fail(function (xhr, textStatus, errorThrown) {
+                  // failed to reserve
+                  hackstack.alertDanger("<strong>Oh no! An error occurred trying to cancel the reservation.</strong>")
+                })
+              
+            }
+          });
+      
+          //change buttons
+          $("#btnReserve").html("Cancel Reservation");
+        }
 
         // done
         hackstack.setLoadingProgress(100)
