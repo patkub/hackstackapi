@@ -83,26 +83,130 @@ $(function () {
           ].join("\n")
         ).appendTo("#bigmovie")
 
-        $("#btnRent").click(function () {
-          if (hsRentalMovie) {
-            const data = {
-              itemID: hsRentalMovie.getItemID(),
-              paymentMethod: $("#paymentMethod").val(),
+        //rent movie button
+        if(hsRentalMovie.getRentalStatus() == 'Available') {
+          $("#btnRent").click(function () {
+            if (hsRentalMovie) {
+              const data = {
+                itemID: hsRentalMovie.getItemID(),
+                paymentMethod: $("#paymentMethod").val(),
+              }
+              $.post(hackstack.API_SERVER + "rent", data)
+                .done(function (msg) {
+                  // successfully rented
+                  hackstack.alertSuccess("<strong>Movie rented successfully!</strong>");
+                  location.reload();
+                })
+                .fail(function (xhr, textStatus, errorThrown) {
+                  // failed to rent
+                  hackstack.alertDanger("<strong>Oh no! An error occurred trying to rent the movie.</strong>")
+                })
             }
-            $.post(hackstack.API_SERVER + "rent", data)
-              .done(function (msg) {
-                // successfully rented
-                hackstack.alertSuccess("<strong>Movie rented successfully!</strong>")
-              })
-              .fail(function (xhr, textStatus, errorThrown) {
-                // failed to rent
-                hackstack.alertDanger("<strong>Oh no! An error occurred trying to rent the movie.</strong>")
-              })
-          }
-        })
+          })
+          $("#btnRent").html("Rent");
+        } else if (hsRentalMovie.getRentalStatus() == 'Reserved') {
+          $("#btnRent").click(function () {
+            if (hsRentalMovie) {
+              const data = {
+                itemID: hsRentalMovie.getItemID(),
+                paymentMethod: $("#paymentMethod").val(),
+              }
+              $.post(hackstack.API_SERVER + "rent", data)
+                .done(function (msg) {
+                  // successfully rented
+                  hackstack.alertSuccess("<strong>Movie rented successfully!</strong>");
+                  location.reload();
+                })
+                .fail(function (xhr, textStatus, errorThrown) {
+                  // failed to rent
+                  hackstack.alertDanger("<strong>Oh no! An error occurred trying to rent the movie.</strong>")
+                })
+            }
+          });
+          $("#btnRent").html("Pick Up");
+        //rented
+        } else {
+          $("#btnRent").click(function () {
+            if (hsRentalMovie) {
+              const data = {
+                itemID: hsRentalMovie.getItemID()
+              }
+              $.post(hackstack.API_SERVER + "returnRental", data)
+                .done(function (msg) {
+                  // successfully rented
+                  hackstack.alertSuccess("<strong>Movie returned successfully!</strong>");
+                  location.reload();
+                })
+                .fail(function (xhr, textStatus, errorThrown) {
+                  // failed to rent
+                  hackstack.alertDanger("<strong>Oh no! An error occurred trying to return the movie.</strong>")
+                })
+            }
+          });
+          $("#btnRent").html("Return");
+        }
 
-        //init reserve button
-        toggleReserveButton(hsRentalMovie);
+        //reserve movie button
+        if(hsRentalMovie.getRentalStatus() != 'Reserved') {
+    
+          //create reservation
+          $("#btnReserve").click(function () {
+            if (hsRentalMovie) {
+      
+              //reserve on backend
+              const data = {
+                itemID: hsRentalMovie.getItemID(),
+              }
+              $.post(hackstack.API_SERVER + "reserve", data)
+                .done(function (msg) {
+                  if(msg) {
+                    // successfully reserved
+                    hackstack.alertSuccess("<strong>Movie reserved successfully!</strong>");
+                    location.reload();
+                  } else {
+                    // failed to reserve
+                    hackstack.alertDanger("<strong>Oh no! An error occurred trying to reserve the movie.</strong>")
+                  }
+                })
+                .fail(function (xhr, textStatus, errorThrown) {
+                  // failed to reserve
+                  hackstack.alertDanger("<strong>Oh no! An error occurred trying to reserve the movie.</strong>")
+                })
+            }
+          });
+          //change text
+          $("#btnReserve").html("Reserve");
+        } else {
+          //cancel reservation
+          $("#btnReserve").click(function () {
+            if (hsRentalMovie) {
+      
+              //reserve on backend
+              const data = {
+                itemID: hsRentalMovie.getItemID(),
+              }
+              $.post(hackstack.API_SERVER + "cancelReservation", data)
+                .done(function (msg) {
+                  if(msg) {
+                    // successfully reserved
+                    hackstack.alertSuccess("<strong>Movie reserved successfully!</strong>");
+                    location.reload();
+                  } else {
+                    // failed to reserve
+                    hackstack.alertDanger("<strong>Oh no! An error occurred trying to reserve the movie.</strong>")
+                  }
+                })
+                .fail(function (xhr, textStatus, errorThrown) {
+                  // failed to reserve
+                  hackstack.alertDanger("<strong>Oh no! An error occurred trying to cancel the reservation.</strong>")
+                })
+              
+            }
+          });
+      
+          //change buttons
+          $("#btnReserve").html("Cancel Reservation");
+        }
 
         // done
         hackstack.setLoadingProgress(100)
@@ -119,72 +223,3 @@ $(function () {
     
   })(window.hackstack)
 })
-
-function toggleReserveButton(hsRentalMovie) {
-  //remove previous action
-  $("#btnReserve").off('click');
-
-  if(hsRentalMovie.getRentalStatus() != 'Reserved') {
-    
-    //create reservation
-    $("#btnReserve").click(function () {
-      if (hsRentalMovie) {
-
-        //reserve on backend
-        const data = {
-          itemID: hsRentalMovie.getItemID(),
-        }
-        $.post(hackstack.API_SERVER + "reserve", data)
-          .done(function (msg) {
-            if(msg) {
-              // successfully reserved
-              hackstack.alertSuccess("<strong>Movie reserved successfully!</strong>");
-              hsRentalMovie.rentalStatus = 'Reserved';
-              toggleReserveButton(hsRentalMovie);
-            } else {
-              // failed to reserve
-              hackstack.alertDanger("<strong>Oh no! An error occurred trying to reserve the movie.</strong>")
-            }
-          })
-          .fail(function (xhr, textStatus, errorThrown) {
-            // failed to reserve
-            hackstack.alertDanger("<strong>Oh no! An error occurred trying to reserve the movie.</strong>")
-          })
-      }
-    });
-    //change text
-    $("#btnReserve").html("Reserve");
-  } else {
-    //cancel reservation
-    $("#btnReserve").click(function () {
-      if (hsRentalMovie) {
-
-        //reserve on backend
-        const data = {
-          itemID: hsRentalMovie.getItemID(),
-        }
-        $.post(hackstack.API_SERVER + "cancelReservation", data)
-          .done(function (msg) {
-            if(msg) {
-              // successfully reserved
-              hackstack.alertSuccess("<strong>Movie reserved successfully!</strong>");
-              hsRentalMovie.rentalStatus = 'Available';
-              toggleReserveButton(hsRentalMovie);
-            } else {
-              // failed to reserve
-              hackstack.alertDanger("<strong>Oh no! An error occurred trying to reserve the movie.</strong>")
-            }
-          })
-          .fail(function (xhr, textStatus, errorThrown) {
-            // failed to reserve
-            hackstack.alertDanger("<strong>Oh no! An error occurred trying to cancel the reservation.</strong>")
-          })
-        
-      }
-    });
-
-    //change buttons
-    $("#btnReserve").html("Cancel Reservation");
-  }
-
-}
