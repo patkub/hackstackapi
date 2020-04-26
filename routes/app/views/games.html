@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-100">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
@@ -23,27 +23,32 @@
     <!-- Bootstrap JS -->
     <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <link rel="stylesheet" href="/static/css/index.css" />
+    <link rel="stylesheet" href="/static/css/styles.css" />
     <script src="/static/js/utils.js"></script>
     <!-- Transpiled ES6 Classes -->
     <script src="/static/js/components.js"></script>
     <script src="/static/js/games.js"></script>
 
-    <title>Hello, world!</title>
+    <title>The Hack Stack</title>
   </head>
-  <body>
-    <!-- anchor point for navbar html -->
-    <div id="navbar"></div>
+  <body class="d-flex flex-column h-100">
+    <div class="content flex-grow-1 flex-shrink-0 mb-4">
+      <!-- anchor point for navbar html -->
+      <div id="navbar"></div>
 
-    <div class="alert alert-primary" role="alert">
-      Welcome to <strong>The Hack Stack, LLC</strong> store!
+      <div class="alert alert-primary" role="alert">
+        Welcome to <strong>The Hack Stack, LLC</strong> store!
+      </div>
+
+      <div class="container">
+        <!-- anchor point for nav tabs html -->
+        <div id="navtabs"></div>
+
+        <div id="games"></div>
+      </div>
     </div>
 
-    <div class="container">
-      <!-- anchor point for nav tabs html -->
-      <div id="navtabs"></div>
-
-      <div id="games"></div>
-    </div>
+    <!-- anchor point for footer html -->
+    <div id="footer"></div>
   </body>
 </html>

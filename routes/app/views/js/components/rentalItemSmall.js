@@ -1,7 +1,5 @@
-class HackStackRentalItemSmall extends Injectable {
+class HackStackRentalItemSmall {
   constructor(type, itemID, title, year, description, imagePath, rentLink) {
-    super()
-
     /** 'movie' or 'game' */
     this.type = type
 
@@ -38,15 +36,15 @@ class HackStackRentalItemSmall extends Injectable {
    */
   render() {
     return `
-      <div class='card'>
+      <div class='card mb-3'>
         <div id="rentalItemSmallOverlay${
           this.itemID
-        }" class="rentalItemSmall--overlay">
+        }">
+          <img class='card-img-top' src='${this.imagePath}' alt='Poster' />
           <div class="rentalItemSmall--overlay-text"></div>
         </div>
-        <img class='card-img-top' src='${this.imagePath}' alt='Poster' />
         <div class='card-body'>
-          <h5 class='card-title'>${this._computeCardTitle()}</h5>
+          <h5 class='card-title font-weight-bold'>${this._computeCardTitle()}</h5>
           <p class='card-text'>${this.description}</p>
         </div>
         <div class='card-footer'>

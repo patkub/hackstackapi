@@ -24,6 +24,10 @@ app.use(
   "/vendor/jquery-ui",
   express.static(path.join(__dirname, "/node_modules/jquery-ui-dist"))
 )
+app.use(
+  "/vendor/inputmask",
+  express.static(path.join(__dirname, "/node_modules/inputmask/dist"))
+)
 
 app.use(
   "/static/css",

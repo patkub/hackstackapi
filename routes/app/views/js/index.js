@@ -1,13 +1,15 @@
 $(function () {
   window.hackstack = window.hackstack || {}
   ;(function (hackstack) {
-    // render the navbar
+    // create the components
     const navbar = new HackStackNavBar("home")
-    navbar.inject("#navbar")
-
-    // render the navtabs
     const navtabs = new HackStackNavTabs("movies")
-    navtabs.inject("#navtabs")
+    const footer = new HackStackFooter()
+
+    // render the components
+    $("#navbar").append(navbar.render())
+    $("#navtabs").append(navtabs.render())
+    $("#footer").append(footer.render())
 
     $.getJSON(window.hackstack.API_SERVER + "movies", function (data) {
       // movies per row
@@ -38,8 +40,12 @@ $(function () {
         document.getElementById("movies").append(cardDeck.render())
       }
 
-      // TODO: get rental status from Java API
-      hackstack.showRentalItemSmallOverlay(2, "Unavailable")
+      $(data).each((_, val) => {
+        // show rental status overlay
+        if (hackstack.overlayStates.includes(val.rentalStatus)) {
+          hackstack.showRentalItemSmallOverlay(val.itemID, val.rentalStatus)
+        }
+      })
     })
   })(window.hackstack)
 })

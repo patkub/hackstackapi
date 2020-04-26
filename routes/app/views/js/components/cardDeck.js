@@ -1,15 +1,13 @@
 /**
  * Makes an evenly aligned deck out of cards
  */
-class HackStackCardDeck extends Injectable {
+class HackStackCardDeck {
   /**
    * Constructor
    * @param {Array} cards array of cards
    * @param {Integer} itemsPerRow number of cards per row
    */
   constructor(cards, itemsPerRow) {
-    super()
-
     /** the cards */
     this.cards = cards
 

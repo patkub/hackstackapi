@@ -13,13 +13,16 @@ if (!String.prototype.format) {
   // the Java api
   hackstack.API_SERVER = "http://127.0.0.1:8080/"
 
-  // the express.js api for testing purposes
-  //hackstack.API_SERVER = "http://127.0.0.1:3000/api/"
+  // the express.js api wrapper used for game search
+  hackstack.WRAPPER_API_SERVER = "http://127.0.0.1:3000/api/"
 
   hackstack.API_KEYS = Object.freeze({
     OMDB: "87daca5d",
     TMDB: "cf7c502592526f1498d082fd122d7309",
   })
+
+  // rentalStatus values that use an overlay for small rental items
+  hackstack.overlayStates = Object.freeze(["Unavailable", "Reserved"])
 
   /**
    * Get item id from url
@@ -32,19 +35,66 @@ if (!String.prototype.format) {
   }
 
   /**
+   * Set loading progress
+   * Looks for element with id #loadingProgress on the page
+   *
+   * @param {String} val Progress percentage
+   */
+  function setLoadingProgress(val) {
+    $("#loadingProgress")
+      .css("width", val + "%")
+      .attr("aria-valuenow", val)
+  }
+
+  /**
+   * Show a success alert on the page
+   * @param {String} html to set
+   */
+  function alertSuccess(html) {
+    $("#alert")
+        .removeClass("d-none")
+        .removeClass("alert-danger")
+        .addClass("alert-success")
+        .html(html)
+  }
+
+  /**
+   * Show a failure alert on the page
+   * @param {String} html to set
+   */
+  function alertDanger(html) {
+    $("#alert")
+        .removeClass("d-none")
+        .removeClass("alert-success")
+        .addClass("alert-danger")
+        .html(html)
+  }
+
+  /**
    * Show overlay text on small rental item
    * @param {String} itemID item index starting at 0
    * @param {String} text text to overlay
    */
   function showRentalItemSmallOverlay(itemID, text) {
-    const overlay = document.getElementById(
-      "rentalItemSmallOverlay{0}".format(itemID)
-    )
-    overlay.style.display = "block"
-    const textEl = overlay.querySelector(".rentalItemSmall--overlay-text")
-    textEl.textContent = text
+    const overlay = $("#rentalItemSmallOverlay{0}".format(itemID))
+    overlay.addClass("rentalItemSmall--overlay")
+    overlay.find(".rentalItemSmall--overlay-text").text(text)
+  }
+
+  /**
+   * Hide overlay text on small rental item
+   * @param {String} itemID item index starting at 0
+   */
+  function hideRentalItemSmallOverlay(itemID) {
+    const overlay = $("#rentalItemSmallOverlay{0}".format(itemID))
+    overlay.removeClass("rentalItemSmall--overlay")
+    overlay.find(".rentalItemSmall--overlay-text").text("")
   }
 
   hackstack.computeURLItemID = computeURLItemID
+  hackstack.setLoadingProgress = setLoadingProgress
+  hackstack.alertSuccess = alertSuccess
+  hackstack.alertDanger = alertDanger
   hackstack.showRentalItemSmallOverlay = showRentalItemSmallOverlay
+  hackstack.hideRentalItemSmallOverlay = hideRentalItemSmallOverlay
 })(window.hackstack)

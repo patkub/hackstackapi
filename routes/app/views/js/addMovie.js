@@ -1,9 +1,12 @@
 $(function () {
   window.hackstack = window.hackstack || {}
   ;(function (hackstack) {
-    // render the navbar
     const navbar = new HackStackNavBar("addMovie")
-    navbar.inject("#navbar")
+    const footer = new HackStackFooter()
+
+    // render the navbar and footer
+    $("#navbar").append(navbar.render())
+    $("#footer").append(footer.render())
 
     // remember current number of actors
     let numActors = 0
@@ -20,6 +23,7 @@ $(function () {
     $("#imdbID").on("input", function (e) {
       // clear movie search
       $("#movieSearch").val("")
+      removeAllActors()
 
       // extract imdb id, supported formats:
       // 1) https://www.imdb.com/title/tt1502397/
@@ -42,6 +46,7 @@ $(function () {
     $("#movieSearch").on("input", function () {
       // clear imdb id
       $("#imdbID").val("")
+      removeAllActors()
 
       $("#movieSearch").autocomplete({
         source: function (request, response) {
@@ -73,8 +78,8 @@ $(function () {
       })
     })
 
-    $("#movieSearch").on("autocompleteselect", function (e, ui) {
-      console.log(ui.item.value)
+    $("#movieSearch").on("autocompleteselect", function (_, ui) {
+      //console.log(ui.item.value)
       const imdbID = ui.item.value
       // http://www.omdbapi.com/?apikey=[yourkey]&
       const omdb_url = "http://www.omdbapi.com/?apikey={0}&i={1}".format(
@@ -90,6 +95,7 @@ $(function () {
 
     $("#addActor").on("click", (e) => addActorListener(e))
     $("#removeActor").on("click", (e) => removeLastActorListener(e))
+    $("#removeAllActors").on("click", (e) => removeAllActorsListener(e))
 
     function addActorListener(e) {
       e.preventDefault()
@@ -100,6 +106,11 @@ $(function () {
       e.preventDefault()
       $("#actors").children().last().remove()
       if (numActors > 0) numActors--
+    }
+
+    function removeAllActorsListener(e) {
+      e.preventDefault()
+      removeAllActors()
     }
 
     function addActor(name, picture) {
@@ -132,6 +143,11 @@ $(function () {
           ].join("\n")
         )
       )
+    }
+
+    function removeAllActors() {
+      numActors = 0
+      $("#actors").children().remove()
     }
 
     /**
@@ -211,25 +227,20 @@ $(function () {
          */
         actors: actors,
       }
-      console.log(data)
 
-      // it will return a boolean with whether or not the item was added
-      $.post("http://localhost:8080/movies/add", data)
+      $.ajax({
+        type: "POST",
+        url: hackstack.API_SERVER + "movies/add",
+        contentType: "application/json; charset=utf-8",
+        data: JSON.stringify(data),
+      })
         .done(function (msg) {
           // successfully added
-          $("#alert")
-            .removeClass("d-none")
-            .addClass("alert-success")
-            .html("<strong>Movie added successfully!</strong>")
+          hackstack.alertSuccess("<strong>Movie added successfully!</strong>")
         })
         .fail(function (xhr, textStatus, errorThrown) {
           // failed to add
-          $("#alert")
-            .removeClass("d-none")
-            .addClass("alert-danger")
-            .html(
-              "<strong>Oh no! An error occurred trying to add the movie.</strong>"
-            )
+          hackstack.alertDanger("<strong>Oh no! An error occurred trying to add the movie.</strong>")
         })
 
       // disable default browser form submit action
