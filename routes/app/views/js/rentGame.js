@@ -89,22 +89,12 @@ $(function () {
             }
             $.post(hackstack.API_SERVER + "rent", data)
               .done(function (msg) {
-                // successfully rented
-                $("#alert")
-                  .removeClass("d-none")
-                  .removeClass("alert-danger")
-                  .addClass("alert-success")
-                  .html("<strong>Game rented successfully!</strong>")
+                // successfully added
+                hackstack.alertSuccess("<strong>Game rented successfully!</strong>")
               })
               .fail(function (xhr, textStatus, errorThrown) {
-                // failed to rent
-                $("#alert")
-                  .removeClass("d-none")
-                  .removeClass("alert-success")
-                  .addClass("alert-danger")
-                  .html(
-                    "<strong>Oh no! An error occurred trying to rent the game.</strong>"
-                  )
+                // failed to add
+                hackstack.alertDanger("<strong>Oh no! An error occurred trying to rent the game.</strong>")
               })
           }
         })
@@ -117,19 +107,11 @@ $(function () {
             $.post(hackstack.API_SERVER + "reserve", data)
               .done(function (msg) {
                 // successfully reserved
-                $("#alert")
-                  .removeClass("d-none")
-                  .addClass("alert-success")
-                  .html("<strong>Game reserved successfully!</strong>")
+                hackstack.alertSuccess("<strong>Game reserved successfully!</strong>")
               })
               .fail(function (xhr, textStatus, errorThrown) {
                 // failed to reserve
-                $("#alert")
-                  .removeClass("d-none")
-                  .addClass("alert-danger")
-                  .html(
-                    "<strong>Oh no! An error occurred trying to reserve the game.</strong>"
-                  )
+                hackstack.alertDanger("<strong>Oh no! An error occurred trying to reserve the game.</strong>")
               })
           }
         })

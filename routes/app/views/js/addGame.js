@@ -69,19 +69,11 @@ $(function () {
       $.post(hackstack.API_SERVER + "games/add", data)
         .done(function (msg) {
           // successfully added
-          $("#alert")
-            .removeClass("d-none")
-            .addClass("alert-success")
-            .html("<strong>Game added successfully!</strong>")
+          hackstack.alertSuccess("<strong>Game added successfully!</strong>")
         })
         .fail(function (xhr, textStatus, errorThrown) {
           // failed to add
-          $("#alert")
-            .removeClass("d-none")
-            .addClass("alert-danger")
-            .html(
-              "<strong>Oh no! An error occurred trying to add the game.</strong>"
-            )
+          hackstack.alertDanger("<strong>Oh no! An error occurred trying to add the game.</strong>")
         })
 
       // disable default browser form submit action

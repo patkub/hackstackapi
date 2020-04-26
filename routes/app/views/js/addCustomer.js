@@ -30,19 +30,11 @@ $(function () {
       $.post(hackstack.API_SERVER + "customers/add", data)
         .done(function (msg) {
           // successfully added
-          $("#alert")
-            .removeClass("d-none")
-            .addClass("alert-success")
-            .html("<strong>Customer added successfully!</strong>")
+          hackstack.alertSuccess("<strong>Customer added successfully!</strong>")
         })
         .fail(function (xhr, textStatus, errorThrown) {
           // failed to add
-          $("#alert")
-            .removeClass("d-none")
-            .addClass("alert-danger")
-            .html(
-              "<strong>Oh no! An error occurred trying to add the customer.</strong>"
-            )
+          hackstack.alertDanger("<strong>Oh no! An error occurred trying to add the customer.</strong>")
         })
 
       // disable default browser form submit action

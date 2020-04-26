@@ -92,20 +92,11 @@ $(function () {
             $.post(hackstack.API_SERVER + "rent", data)
               .done(function (msg) {
                 // successfully rented
-                $("#alert")
-                  .removeClass("d-none")
-                  .removeClass("alert-danger")
-                  .addClass("alert-success")
-                  .html("<strong>Movie rented successfully!</strong>")
+                hackstack.alertSuccess("<strong>Movie rented successfully!</strong>")
               })
               .fail(function (xhr, textStatus, errorThrown) {
                 // failed to rent
-                $("#alert")
-                  .removeClass("d-none")
-                  .addClass("alert-danger")
-                  .html(
-                    "<strong>Oh no! An error occurred trying to rent the movie.</strong>"
-                  )
+                hackstack.alertDanger("<strong>Oh no! An error occurred trying to rent the movie.</strong>")
               })
           }
         })
@@ -118,20 +109,11 @@ $(function () {
             $.post(hackstack.API_SERVER + "reserve", data)
               .done(function (msg) {
                 // successfully reserved
-                $("#alert")
-                  .removeClass("d-none")
-                  .removeClass("alert-success")
-                  .addClass("alert-success")
-                  .html("<strong>Movie reserved successfully!</strong>")
+                hackstack.alertSuccess("<strong>Movie reserved successfully!</strong>")
               })
               .fail(function (xhr, textStatus, errorThrown) {
                 // failed to reserve
-                $("#alert")
-                  .removeClass("d-none")
-                  .addClass("alert-danger")
-                  .html(
-                    "<strong>Oh no! An error occurred trying to reserve the movie.</strong>"
-                  )
+                hackstack.alertDanger("<strong>Oh no! An error occurred trying to reserve the movie.</strong>")
               })
           }
         })

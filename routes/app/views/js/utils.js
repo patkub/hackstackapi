@@ -44,6 +44,30 @@ if (!String.prototype.format) {
   }
 
   /**
+   * Show a success alert on the page
+   * @param {String} html to set
+   */
+  function alertSuccess(html) {
+    $("#alert")
+        .removeClass("d-none")
+        .removeClass("alert-danger")
+        .addClass("alert-success")
+        .html(html)
+  }
+
+  /**
+   * Show a failure alert on the page
+   * @param {String} html to set
+   */
+  function alertDanger(html) {
+    $("#alert")
+        .removeClass("d-none")
+        .removeClass("alert-success")
+        .addClass("alert-danger")
+        .html(html)
+  }
+
+  /**
    * Show overlay text on small rental item
    * @param {String} itemID item index starting at 0
    * @param {String} text text to overlay
@@ -59,5 +83,7 @@ if (!String.prototype.format) {
 
   hackstack.computeURLItemID = computeURLItemID
   hackstack.setLoadingProgress = setLoadingProgress
+  hackstack.alertSuccess = alertSuccess
+  hackstack.alertDanger = alertDanger
   hackstack.showRentalItemSmallOverlay = showRentalItemSmallOverlay
 })(window.hackstack)
