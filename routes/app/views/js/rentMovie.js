@@ -87,6 +87,7 @@ $(function () {
           if (hsRentalMovie) {
             const data = {
               itemID: hsRentalMovie.getItemID(),
+              paymentMethod: $("#paymentMethod").val(),
             }
             $.post(hackstack.API_SERVER + "rent", data)
               .done(function (msg) {
