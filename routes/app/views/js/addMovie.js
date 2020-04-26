@@ -227,7 +227,7 @@ $(function () {
          */
         actors: actors,
       }
-      
+
       $.ajax({
         type: "POST",
         url: hackstack.API_SERVER + "movies/add",
