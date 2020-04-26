@@ -14,7 +14,7 @@ if (!String.prototype.format) {
   hackstack.API_SERVER = "http://127.0.0.1:8080/"
 
   // the express.js api wrapper used for game search
-  hackstack.WRAPPER_API_SERVER = "http://127.0.0.1:3000/api/"
+  hackstack.WRAPPER_API_SERVER = "https://127.0.0.1:3000/api/"
 
   hackstack.API_KEYS = Object.freeze({
     OMDB: "87daca5d",
@@ -52,10 +52,10 @@ if (!String.prototype.format) {
    */
   function alertSuccess(html) {
     $("#alert")
-        .removeClass("d-none")
-        .removeClass("alert-danger")
-        .addClass("alert-success")
-        .html(html)
+      .removeClass("d-none")
+      .removeClass("alert-danger")
+      .addClass("alert-success")
+      .html(html)
   }
 
   /**
@@ -64,10 +64,10 @@ if (!String.prototype.format) {
    */
   function alertDanger(html) {
     $("#alert")
-        .removeClass("d-none")
-        .removeClass("alert-success")
-        .addClass("alert-danger")
-        .html(html)
+      .removeClass("d-none")
+      .removeClass("alert-success")
+      .addClass("alert-danger")
+      .html(html)
   }
 
   /**
