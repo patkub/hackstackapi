@@ -74,6 +74,13 @@ class HackStackNavBar {
       this.active === "addGame" ? "<span class='sr-only'>(current)</span>" : ""
     }</a
                 >
+                <a
+                  class="dropdown-item ${
+                    this.active === "addCustomer" ? "active" : ""
+                  }" href="/addCustomer">Add a Customer ${
+      this.active === "addCustomer" ? "<span class='sr-only'>(current)</span>" : ""
+    }</a
+                >
               </div>
             </li>
             <li class="nav-item dropdown">
