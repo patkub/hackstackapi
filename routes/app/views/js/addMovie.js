@@ -79,7 +79,6 @@ $(function () {
     })
 
     $("#movieSearch").on("autocompleteselect", function (_, ui) {
-      //console.log(ui.item.value)
       const imdbID = ui.item.value
       // https://www.omdbapi.com/?apikey=[yourkey]&
       const omdb_url = "https://www.omdbapi.com/?apikey={0}&i={1}".format(
@@ -163,7 +162,7 @@ $(function () {
       if (data.Poster !== "N/A") {
         $("#inputImagePath").val(data.Poster)
       }
-      $("#inputRuntime").val(data.Runtime.match(/\d+/)[0])
+      $("#inputRuntime").val(data.Runtime.match(/\d+/))
 
       // use data.imdbID to get actors
       const credits_url = "https://api.themoviedb.org/3/movie/{0}/credits?api_key={1}".format(

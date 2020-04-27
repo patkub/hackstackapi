@@ -45,7 +45,7 @@ router
     const query = req.params.query
 
     gb.search({
-      query: query,
+      query: encodeURIComponent(query),
       format: "json",
       fields: ["name"],
       limit: 10,
@@ -66,10 +66,8 @@ router
   .get("/giantbombInfo/:query", (req, res) => {
     const query = req.params.query
 
-    //console.log(query)
-
     gb.search({
-      query: query,
+      query: encodeURIComponent(query),
       format: "json",
       fields: [
         "id",
