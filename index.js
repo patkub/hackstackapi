@@ -50,8 +50,8 @@ app.use(
 https
   .createServer(
     {
-      key: fs.readFileSync("./key.pem"),
-      cert: fs.readFileSync("./cert.pem"),
+      key: fs.readFileSync("./local-cert-generator/server.key"),
+      cert: fs.readFileSync("./local-cert-generator/server.crt"),
       passphrase: "12345",
     },
     app
