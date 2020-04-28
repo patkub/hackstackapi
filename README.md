@@ -30,3 +30,49 @@ yarn transpile
 ```
 
 Dependencies are defined in `index.js`. For example, bootstrap is under `/vendor/bootstrap/css/bootstrap.min.css`. App css and js are under `static/css/` and `static/js/` respectively.
+
+### Hack Stack, LLC SSL
+
+Generated SSL certificate using https://github.com/dakshshah96/local-cert-generator
+
+Create root certificate:
+
+```
+sh createRootCA.sh
+```
+
+```
+Country Name (2 letter code) [AU]:US
+State or Province Name (full name) [Some-State]:New York
+Locality Name (eg, city) []:Rochester
+Organization Name (eg, company) [Internet Widgits Pty Ltd]:Hack Stack, LLC
+Organizational Unit Name (eg, section) []:Hack Stack, LLC
+Common Name (e.g. server FQDN or YOUR name) []:localhost
+Email Address []:
+```
+
+Create domain certificate for localhost:
+
+```
+sh createSelfSigned.sh
+```
+
+Edit `index.js` and set the paths to `server.key` and `server.crt`
+
+```
+.createServer(
+    {
+      key: fs.readFileSync("./local-cert-generator/server.key"),
+      cert: fs.readFileSync("./local-cert-generator/server.crt"),
+      passphrase: "12345",
+    },
+    app
+  )
+```
+
+### Import the Certificate into Chrome
+
+1. Go to `chrome://settings/certificates` > Authorities tab > Import `rootCA.pem`.
+2. Trust this certificate for identifying websites.
+3. Restart chrome.
+4. Navigate to `https://localhost:3000/` and you should have a green lock.
