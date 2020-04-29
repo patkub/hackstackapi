@@ -42,7 +42,7 @@ $(function () {
 
       $(data).each((_, val) => {
         // show rental status overlay
-        if (hackstack.overlayStates.includes(val.rentalStatus)) {
+        if (hackstack.overlayStates.indexOf(val.rentalStatus) >= 0) {
           hackstack.showRentalItemSmallOverlay(val.itemID, val.rentalStatus)
         }
       })
