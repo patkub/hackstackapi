@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-100">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
@@ -19,28 +19,33 @@
 
     <!-- jQuery -->
     <script src="/vendor/jquery/jquery.min.js"></script>
+    <!-- jQuery mask -->
+    <script src="/vendor/jquery-mask-plugin/jquery.mask.min.js"></script>
 
     <!-- Bootstrap JS -->
     <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <link rel="stylesheet" href="/static/css/index.css" />
+    <link rel="stylesheet" href="/static/css/styles.css" />
     <script src="/static/js/utils.js"></script>
     <!-- Transpiled ES6 Classes -->
     <script src="/static/js/components.js"></script>
     <script src="/static/js/manageCustomers.min.js"></script>
 
-    <title>Hello, world!</title>
+    <title>The Hack Stack</title>
   </head>
-  <body>
-    <!-- anchor point for navbar html -->
-    <div id="navbar"></div>
+  <body class="d-flex flex-column h-100">
+    <div class="content flex-grow-1 flex-shrink-0 mb-4">
+      <!-- anchor point for navbar html -->
+      <div id="navbar"></div>
 
-    <div class="alert alert-primary" role="alert">
-      A simple primary alert—check it out!
+      <h2 class="text-center mb-3">Manage Customers</h2>
+
+      <div class="container">
+        <div id="customers" class="row"></div>
+      </div>
     </div>
 
-    <div class="container">
-      <div id="customers" class="row"></div>
-    </div>
+    <!-- anchor point for footer html -->
+    <div id="footer"></div>
   </body>
 </html>

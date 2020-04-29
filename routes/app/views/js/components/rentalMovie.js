@@ -90,7 +90,7 @@ class HackStackRentalMovie extends HackStackRentalItem {
     let content = ""
     for (const actor of this.actors) {
       content += [
-        "<figure class='figure'>",
+        "<figure class='figure mr-3'>",
         "<img src='" +
           actor.imagePath +
           "' alt='actor' class='img-thumbnail figure-img img-fluid rounded' style='height: 75px'>",

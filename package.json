@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "transpileComponents": "babel ./routes/app/views/js/components/injectable.js ./routes/app/views/js/components/cardDeck.js ./routes/app/views/js/components/navbar.js ./routes/app/views/js/components/navtabs.js ./routes/app/views/js/components/rentalItem.js ./routes/app/views/js/components/rentalMovie.js ./routes/app/views/js/components/rentalGame.js ./routes/app/views/js/components/rentalItemSmall.js --out-file ./routes/app/views/js/components.js",
+    "transpileComponents": "babel ./routes/app/views/js/components/injectable.js ./routes/app/views/js/components/cardDeck.js ./routes/app/views/js/components/navbar.js ./routes/app/views/js/components/navtabs.js ./routes/app/views/js/components/footer.js ./routes/app/views/js/components/rentalItem.js ./routes/app/views/js/components/rentalMovie.js ./routes/app/views/js/components/rentalGame.js ./routes/app/views/js/components/rentalItemSmall.js --out-file ./routes/app/views/js/components.js",
     "transpilePages": "babel ./routes/app/views/js/addGame.js --out-file ./routes/app/views/js/addGame.min.js && babel ./routes/app/views/js/addMovie.js --out-file ./routes/app/views/js/addMovie.min.js && babel ./routes/app/views/js/games.js --out-file ./routes/app/views/js/games.min.js && babel ./routes/app/views/js/index.js --out-file ./routes/app/views/js/index.min.js && babel ./routes/app/views/js/inventoryReport.js --out-file ./routes/app/views/js/inventoryReport.min.js && babel ./routes/app/views/js/manageCustomers.js --out-file ./routes/app/views/js/manageCustomers.min.js && babel ./routes/app/views/js/rentGame.js --out-file ./routes/app/views/js/rentGame.min.js && babel ./routes/app/views/js/rentMovie.js --out-file ./routes/app/views/js/rentMovie.min.js && babel ./routes/app/views/js/utils.js --out-file ./routes/app/views/js/utils.min.js"
   },
   "babel": {
@@ -24,7 +24,9 @@
     "bootstrap": "^4.4.1",
     "express": "^4.17.1",
     "giant-bomb": "^2.0.1",
+    "inputmask": "^5.0.3",
     "jquery": "3.4.1",
+    "jquery-mask-plugin": "^1.14.16",
     "jquery-ui-dist": "^1.12.1",
     "marked": "^0.8.2",
     "moviedb": "^0.2.10",

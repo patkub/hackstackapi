@@ -1,6 +1,8 @@
 const config = require("./config")
 
+const fs = require("fs")
 const path = require("path")
+const https = require("https")
 const express = require("express")
 const app = express()
 
@@ -22,6 +24,14 @@ app.use(
   "/vendor/jquery-ui",
   express.static(path.join(__dirname, "/node_modules/jquery-ui-dist"))
 )
+app.use(
+  "/vendor/inputmask",
+  express.static(path.join(__dirname, "/node_modules/inputmask/dist"))
+)
+app.use(
+  "/vendor/jquery-mask-plugin",
+  express.static(path.join(__dirname, "/node_modules/jquery-mask-plugin/dist/"))
+)
 
 app.use(
   "/static/css",
@@ -36,6 +46,16 @@ app.use(
   express.static(path.join(__dirname, "/routes/app/views/img"))
 )
 
-app.listen(config.port, () =>
-  console.log(`HackStackAPI listening at http://localhost:${config.port}`)
-)
+// we will pass our 'app' to 'https' server
+https
+  .createServer(
+    {
+      key: fs.readFileSync("./local-cert-generator/server.key"),
+      cert: fs.readFileSync("./local-cert-generator/server.crt"),
+      passphrase: "12345",
+    },
+    app
+  )
+  .listen(config.port, () =>
+    console.log(`HackStackAPI listening at https://localhost:${config.port}`)
+  )

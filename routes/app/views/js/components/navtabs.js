@@ -1,7 +1,5 @@
-class HackStackNavTabs extends Injectable {
+class HackStackNavTabs {
   constructor(active) {
-    super()
-
     /** The active tab. 'movies', or 'games' */
     this.active = active
   }
@@ -12,7 +10,7 @@ class HackStackNavTabs extends Injectable {
    */
   render() {
     return `
-      <ul class="nav nav-pills nav-justified">
+      <ul class="nav nav-pills nav-justified mb-3">
         <li class="nav-item">
           <a class="nav-link ${
             this.active === "movies" ? "active" : ""

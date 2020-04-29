@@ -1,7 +1,5 @@
-class HackStackNavBar extends Injectable {
+class HackStackNavBar {
   constructor(active) {
-    super()
-
     /** The active tab. 'home', 'manageCustomers', 'addMovie', or 'inventoryReport' */
     this.active = active
   }
@@ -74,6 +72,13 @@ class HackStackNavBar extends Injectable {
                     this.active === "addGame" ? "active" : ""
                   }" href="/addGame">Add a Game ${
       this.active === "addGame" ? "<span class='sr-only'>(current)</span>" : ""
+    }</a
+                >
+                <a
+                  class="dropdown-item ${
+                    this.active === "addCustomer" ? "active" : ""
+                  }" href="/addCustomer">Add a Customer ${
+      this.active === "addCustomer" ? "<span class='sr-only'>(current)</span>" : ""
     }</a
                 >
               </div>

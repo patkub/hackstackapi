@@ -1,46 +1,52 @@
-// TODO: port to Java api
-// the express.js api for testing purposes
-window.hackstack.API_SERVER = "http://127.0.0.1:3000/api/"
-
 $(function () {
-  // render the navbar
-  const navbar = new HackStackNavBar("manageCustomers")
-  navbar.inject("#navbar")
+  window.hackstack = window.hackstack || {}
+  ;(function (hackstack) {
+    // create the components
+    const navbar = new HackStackNavBar("manageCustomers")
+    const footer = new HackStackFooter()
 
-  $.getJSON(window.hackstack.API_SERVER + "customer", function (data) {
-    function parseEmail(email) {
-      return email.recipient + "@" + email.domain
-    }
-    $.each(data, function (_, val) {
-      $(
-        [
-          "<div class='col-md-6'>",
-          "  <div class='card'>",
-          "    <div class='card-body'>",
-          "      <h5 class='card-title'>" + val.name + "</h5>",
-          "      <p class='card-text'>",
-          "         Email: <a href='mailto:" + parseEmail(val.email) + "'>",
-          parseEmail(val.email) + "</a><br>",
-          "         Home Address: " + val.homeAddress + "<br>",
-          "         Home Phone: <a href='tel:" + val.homePhone + "'>",
-          val.homePhone + "</a><br>",
-          "         Mobile Phone: <a href='tel:" + val.mobilePhone + "'>",
-          val.mobilePhone + "</a>" + "<br>",
-          "      </p><a href='mailto:" +
-            parseEmail(val.email) +
-            "' class='card-link'>Email",
-          "      </a>",
-          "<a href='tel:" +
-            val.homePhone +
-            "' class='card-link'>Home Phone</a>",
-          "<a href='tel:" +
-            val.mobilePhone +
-            "' class='card-link'>Mobile Phone</a>",
-          "    </div>",
-          "  </div>",
-          "</div>",
-        ].join("\n")
-      ).appendTo("#customers")
+    // render the components
+    $("#navbar").append(navbar.render())
+    $("#footer").append(footer.render())
+
+    $.getJSON(hackstack.API_SERVER + "customers", function (data) {
+      $.each(data, function (_, val) {
+        $(
+          [
+            "<div class='col-md-6'>",
+            "  <div class='card mb-3'>",
+            "    <div class='card-body'>",
+            "      <h5 class='card-title'>" + val.name + "</h5>",
+            "      <p class='card-text'>",
+            "         Email: <a href='mailto:" + val.email + "'>",
+            val.email + "</a><br>",
+            "         Home Address: " + val.homeAddress + "<br>",
+            "         Home Phone: <a href='tel:" +
+              val.homePhone +
+              "' class='phone_us'>",
+            val.homePhone + "</a><br>",
+            "         Mobile Phone: <a href='tel:" +
+              val.mobilePhone +
+              "' class='phone_us'>",
+            val.mobilePhone + "</a>" + "<br>",
+            "      </p><a href='mailto:" +
+              val.email +
+              "' class='card-link'>Email",
+            "      </a>",
+            "<a href='tel:" +
+              val.homePhone +
+              "' class='card-link'>Home Phone</a>",
+            "<a href='tel:" +
+              val.mobilePhone +
+              "' class='card-link'>Mobile Phone</a>",
+            "    </div>",
+            "  </div>",
+            "</div>",
+          ].join("\n")
+        ).appendTo("#customers")
+      })
+
+      $(".phone_us").mask("(000) 000-0000")
     })
-  })
+  })(window.hackstack)
 })

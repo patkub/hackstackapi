@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css" />
+
+    <!-- Font Awesome -->
+    <script
+      src="https://kit.fontawesome.com/cfea56daf0.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- jQuery -->
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <!-- jQuery UI -->
+    <link rel="stylesheet" href="/vendor/jquery-ui/jquery-ui.min.css" />
+    <script src="/vendor/jquery-ui/jquery-ui.min.js"></script>
+    <!-- jQuery inputmask -->
+    <script src="/vendor/inputmask/jquery.inputmask.min.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <link rel="stylesheet" href="/static/css/styles.css" />
+    <script src="/static/js/utils.js"></script>
+    <!-- Transpiled ES6 Classes -->
+    <script src="/static/js/components.js"></script>
+    <script src="/static/js/addCustomer.min.js"></script>
+
+    <title>The Hack Stack</title>
+  </head>
+  <body class="d-flex flex-column h-100">
+    <div class="content flex-grow-1 flex-shrink-0 mb-4">
+      <!-- anchor point for navbar html -->
+      <div id="navbar"></div>
+
+      <div id="alert" class="alert d-none" role="alert"></div>
+
+      <h2 class="text-center mb-3">Add a new Customer!</h2>
+
+      <div class="container">
+        <form id="addNewCustomer">
+          <div class="form-group">
+            <label for="inputName">Name</label>
+            <input
+              id="inputName"
+              type="text"
+              class="form-control"
+              placeholder="customer's name"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="inputPassword">Password</label>
+            <input
+              id="inputPassword"
+              type="password"
+              class="form-control"
+              placeholder="customer's password"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="inputHomeAddress">Home Address</label>
+            <input
+              id="inputHomeAddress"
+              type="text"
+              class="form-control"
+              placeholder="customer's home address"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="inputHomePhone">Home Phone</label>
+            <input
+              id="inputHomePhone"
+              type="tel"
+              class="form-control"
+              placeholder="customer's home phone"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="inputMobilePhone">Mobile Phone</label>
+            <input
+              id="inputMobilePhone"
+              type="tel"
+              class="form-control"
+              placeholder="customer's mobile phone"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="inputEmail">Email</label>
+            <input
+              id="inputEmail"
+              type="email"
+              class="form-control"
+              placeholder="customer's email"
+              required
+            />
+          </div>
+
+          <button type="submit" class="btn btn-primary mb-3">Add</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- anchor point for footer html -->
+    <div id="footer"></div>
+  </body>
+</html>
