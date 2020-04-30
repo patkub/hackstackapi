@@ -15,7 +15,7 @@ $(function () {
             url:
               hackstack.WRAPPER_API_SERVER +
               "/gameSearch/giantbombSearch/" +
-              request.term,
+              encodeURIComponent(request.term),
             dataType: "json",
             success: function (data) {
               response(data)
@@ -29,7 +29,7 @@ $(function () {
       const gameName = ui.item.value
 
       $.getJSON(
-        hackstack.WRAPPER_API_SERVER + "/gameSearch/giantbombInfo/" + gameName,
+        hackstack.WRAPPER_API_SERVER + "/gameSearch/giantbombInfo/" + encodeURIComponent(gameName),
         (data) => {
           fillFormData(data)
           const gameId = data.id
