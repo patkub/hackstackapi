@@ -27,7 +27,7 @@
     "jquery": "^3.5.1",
     "jquery-mask-plugin": "^1.14.16",
     "jquery-ui-dist": "^1.12.1",
-    "marked": "^0.8.2",
+    "marked": "^4.0.10",
     "moviedb": "^0.2.10",
     "omdb-api-pt": "^2.0.1"
   },
