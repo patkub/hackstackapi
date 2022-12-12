@@ -21,7 +21,7 @@
     "@babel/register": "^7.9.0",
     "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "giant-bomb": "^2.0.1",
     "inputmask": "^5.0.3",
     "jquery": "^3.5.1",
